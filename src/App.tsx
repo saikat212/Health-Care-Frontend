@@ -1,0 +1,35 @@
+import { DoctorDetails } from "components/Doctor/doctor-details";
+import ResponsiveAppBar from "components/Doctor/doctor-page-Appbar";
+import Front_Page from "components/front-page";
+import Header from "components/header";
+import { DoctorInfo } from "doctor-info";
+import { DoctorListUI } from "doctor-list";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Router } from "react-router-dom";
+import { SpecialitiesUI } from "specialities";
+
+
+function F2({ var1, var2, children }) {
+  return (
+    <div>
+      from f1 value1: {var1} value2: {var2}
+      {children}
+    </div>
+  );
+}
+
+function App() {
+  return(
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Front_Page/>} />
+      <Route path="/specialities" element={<SpecialitiesUI/>} />
+      <Route path="/doctor-list" element={<DoctorListUI/>} />
+      <Route path="/doctor-info" element={<DoctorInfo/>} />
+      <Route path="/doctor-home-page" element={<ResponsiveAppBar/>}/>
+  </Routes>
+  </BrowserRouter>
+  );
+}
+
+export default App;
