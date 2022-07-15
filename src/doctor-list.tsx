@@ -27,7 +27,7 @@ export function DoctorListUI() {
         >
           {Array.from(Array(10).keys()).map((i, idx) => (
             <Grid key={idx} item>
-              <Link to="/doctor-info">
+            
               <DoctorDetailsCard
                 title="Card Tittle"
                 description="Necessary description"
@@ -45,7 +45,7 @@ export function DoctorListUI() {
 
                 } */
               />
-              </Link>
+        
             </Grid>
           ))}
         </Grid>

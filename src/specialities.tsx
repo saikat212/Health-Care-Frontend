@@ -12,7 +12,7 @@ import {
 import Header from "components/header";
 import SearchBar from "components/search-bar";
 import SpecialityCard from "components/speciality-card";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 /* function LoopLoop(){
     let jsx = "";
     let i;
@@ -23,6 +23,7 @@ import { Link } from "react-router-dom";
 
 } */
 export function SpecialitiesUI() {
+ 
   return (
     <Grid container spacing={2} sx={{ backgroundColor: "gray" }}>
       <Grid item>
@@ -32,13 +33,14 @@ export function SpecialitiesUI() {
         <Grid container spacing={2}>
           {Array.from(Array(10).keys()).map((i, idx) => (
             <Grid key={idx} item xs={12} sm={6} md={4} lg={3} xl={2}>
-                <Link to="/doctor-list"> 
-              <SpecialityCard
-                title="Card Tittle"
-                description="Necessary description"
+               
+              <SpecialityCard 
+               
+                title="Medicine"
+                description="Cold, flu, fever, vomiting, infections, headaches or any other general health issues."
                 image={require("./images/heaa.jpg")}
               />
-              </Link>
+          
             </Grid>
           ))}
         </Grid>

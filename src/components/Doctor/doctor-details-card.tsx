@@ -10,10 +10,12 @@ import {
 import { fontWeight } from "@mui/system";
 import React from "react";
 import { DoctorDetails } from "components/Doctor/doctor-details";
+import { useNavigate } from "react-router-dom";
 
 export default function DoctorDetailsCard({ image, title, description }) {
+  const navigate = useNavigate();
   return (
-    <Card sx={{ width: "100%" }}>
+    <Card  onClick={()=>navigate("/doctor-info")} sx={{ width: "100%" }}>
       <CardActionArea>
         <CardContent>
          <DoctorDetails/>

@@ -1,9 +1,12 @@
 import { Button, Grid, Typography } from "@mui/material";
 import Header_Front_Page from "./header-front-page";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SpecialitiesUI } from "specialities";
 
+
+
 export default function Front_Page(){
+    const navigate = useNavigate();
     return(
         <>
         <Header_Front_Page />
@@ -27,7 +30,7 @@ export default function Front_Page(){
                     <Grid item><Typography variant="h4" gutterBottom component="div">Find the best doctor of the country</Typography></Grid>
                     <Grid item>
                        
-                        <Button onClick={SpecialitiesUI} variant="contained">Find Doctor Now</Button>
+                        <Button onClick={()=>navigate("/specialities")} variant="contained">Find Doctor Now</Button>
                        
                     </Grid>
                 </Grid>
