@@ -1,8 +1,10 @@
 import { AppBar, Grid, Typography, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import SearchBar from "./search-bar";
 
 
 export default function Header_Front_Page(){
+  const navigate = useNavigate();
 return(
 <AppBar position="fixed" sx={{ backgroundColor: "indigo" }}>
         <Grid
@@ -39,7 +41,7 @@ return(
             <Button >FAQs</Button>
             </Grid>
             <Grid item>
-              <Button variant="contained">Log In</Button>
+              <Button onClick={()=>navigate("/sign-in")} variant="contained">Log In</Button>
             </Grid>
           </Grid>
           </Grid>

@@ -6,6 +6,9 @@ import { DoctorInfo } from "doctor-info";
 import { DoctorListUI } from "doctor-list";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Router } from "react-router-dom";
+import SignIn from "SignIn";
+import SignUpDoctor from "SignUpDoctor";
+import SignUpPatient from "SignUpPatient";
 import { SpecialitiesUI } from "specialities";
 
 
@@ -27,6 +30,9 @@ function App() {
       <Route path="/doctor-list" element={<DoctorListUI/>} />
       <Route path="/doctor-info" element={<DoctorInfo/>} />
       <Route path="/doctor-home-page" element={<ResponsiveAppBar/>}/>
+      <Route path="/sign-up-patient" element={<SignUpPatient/>} />
+      <Route path="/sign-up-doctor" element={<SignUpDoctor/>} />
+      <Route path="/sign-in" element={<SignIn/>} />
   </Routes>
   </BrowserRouter>
   );
