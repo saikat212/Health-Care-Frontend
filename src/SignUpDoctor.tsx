@@ -13,7 +13,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { MenuItem } from "@mui/material";
-import GenderRadioButton from "components/gender";
+import GenderRadioButton from "./components/gender";
 
 function Copyright(props: any) {
   return (

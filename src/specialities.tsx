@@ -9,9 +9,9 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import Header from "components/header";
-import SearchBar from "components/search-bar";
-import SpecialityCard from "components/speciality-card";
+import Header from "./components/header";
+import SearchBar from "./components/search-bar";
+import SpecialityCard from "./components/speciality-card";
 import { Link, useNavigate } from "react-router-dom";
 /* function LoopLoop(){
     let jsx = "";

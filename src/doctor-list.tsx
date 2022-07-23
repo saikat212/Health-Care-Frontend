@@ -1,6 +1,6 @@
 import { Button, Grid, Typography } from "@mui/material";
-import DoctorDetailsCard from "components/Doctor/doctor-details-card";
-import Header from "components/header";
+import DoctorDetailsCard from "./components/Doctor/doctor-details-card";
+import Header from "./components/header";
 import { Link } from "react-router-dom";
 
 export function DoctorListUI() {

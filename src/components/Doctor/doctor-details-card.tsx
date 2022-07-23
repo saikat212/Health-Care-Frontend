@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { fontWeight } from "@mui/system";
 import React from "react";
-import { DoctorDetails } from "components/Doctor/doctor-details";
+import { DoctorDetails } from "./doctor-details";
 import { useNavigate } from "react-router-dom";
 
 export default function DoctorDetailsCard({ image, title, description }) {

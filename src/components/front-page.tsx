@@ -1,7 +1,7 @@
 import { Button, Grid, Typography } from "@mui/material";
 import Header_Front_Page from "./header-front-page";
 import { Link, useNavigate } from "react-router-dom";
-import { SpecialitiesUI } from "specialities";
+import { SpecialitiesUI } from "C:/Users/SAIKAT/Desktop/SAIKAT/BUET_4_1/CSE 408 - SE/SakibGithub/Health-Care/src/specialities";
 
 
 

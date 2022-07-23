@@ -1,15 +1,15 @@
-import { DoctorDetails } from "components/Doctor/doctor-details";
-import ResponsiveAppBar from "components/Doctor/doctor-page-Appbar";
-import Front_Page from "components/front-page";
-import Header from "components/header";
-import { DoctorInfo } from "doctor-info";
-import { DoctorListUI } from "doctor-list";
+import { DoctorDetails } from "C:/Users/SAIKAT/Desktop/SAIKAT/BUET_4_1/CSE 408 - SE/SakibGithub/Health-Care/src/components/Doctor/doctor-details";
+import ResponsiveAppBar from "./components/Doctor/doctor-page-Appbar";
+import Front_Page from "./components/front-page";
+import Header from "./components/header";
+import { DoctorInfo } from "./doctor-info";
+import { DoctorListUI } from "./doctor-list";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Router } from "react-router-dom";
-import SignIn from "SignIn";
-import SignUpDoctor from "SignUpDoctor";
-import SignUpPatient from "SignUpPatient";
-import { SpecialitiesUI } from "specialities";
+import SignIn from "./SignIn";
+import SignUpDoctor from "./SignUpDoctor";
+import SignUpPatient from "./SignUpPatient";
+import { SpecialitiesUI } from "./specialities";
 
 
 function F2({ var1, var2, children }) {
