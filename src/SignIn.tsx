@@ -13,6 +13,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
+import { API } from 'API Handler/api';
 
 function Copyright(props: any) {
   return (
@@ -31,14 +32,35 @@ const theme = createTheme();
 
 export default function SignInSide() {
     const navigate = useNavigate();
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+   // const { enqueueSnackbar } = useSnackbar();
+    const [state, setState] = React.useState({
+      email: "",
+      password: "",
     });
-  };
+
+  function errorVerify() {
+    if (!state.email || !state.password) {
+     /*  enqueueSnackbar("Please fill up all field properly", {
+        variant: "error",
+      }); */
+      return false;
+    }
+    return true;
+  }
+  function handleClickSignIn() {
+    if (errorVerify()) {
+      API.signInAuthentication.login(state.email, state.password).then((response) => {
+        if (response.status == 200) {
+         /*  showSnackbar(enqueueSnackbar, response.data, () => {
+            localStorage.setItem("adminId", response.data.adminId);
+            
+          }); */
+          console.log(response);
+        }
+      });
+    }
+  }
+ 
 
   return (
     <ThemeProvider theme={theme}>
@@ -50,7 +72,7 @@ export default function SignInSide() {
           sm={4}
           md={7}
           sx={{
-            //backgroundImage: 'url(https://source.unsplash.com/random)',
+            backgroundImage: 'url('+require("./images/heaa.jpg")+"'",
             //backgroundImage: require("./images/doctor.jpg"),          
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
@@ -75,7 +97,7 @@ export default function SignInSide() {
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box component="div" sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
                 required
@@ -85,6 +107,9 @@ export default function SignInSide() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                onChange={(e)=>{
+                  setState({...state,email:e.target.value});
+                }}
               />
               <TextField
                 margin="normal"
@@ -95,6 +120,9 @@ export default function SignInSide() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={(e)=>{
+                  setState({...state,password:e.target.value});
+                }}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
@@ -105,6 +133,7 @@ export default function SignInSide() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                onClick={handleClickSignIn}
               >
                 Sign In
               </Button>
@@ -128,3 +157,11 @@ export default function SignInSide() {
     </ThemeProvider>
   );
 }
+
+function useSnackbar(): { enqueueSnackbar: any; } {
+  throw new Error('Function not implemented.');
+}
+function showSnackbar(enqueueSnackbar: any, data: any, arg2: () => void) {
+  throw new Error('Function not implemented.');
+}
+

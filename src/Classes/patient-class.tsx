@@ -18,6 +18,7 @@ export class Doctor{
     chamber?:string;
     bmdcNo?:string;
     nid?:string;
+    speciality?:string;
     person?: Person;
 
 }
