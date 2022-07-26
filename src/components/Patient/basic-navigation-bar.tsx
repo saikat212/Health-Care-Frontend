@@ -24,7 +24,7 @@ return(
                 />
               </Grid>
               <Grid item>
-                <Typography color={"bisque"} fontSize={"6"}>Health Care</Typography>
+                <Typography color={"red"} fontSize={"6"}>Health Care</Typography>
               </Grid>
             </Grid>
           </Grid>

@@ -12,6 +12,7 @@ import SignUpPatient from "./SignUpPatient";
 import { SpecialitiesUI } from "./specialities";
 import PatientHomepage from "./components/Patient/patient-homepage";
 
+import SetAppointmentDetails from "./components/Patient/set-appointment-details";
 
 function F2({ var1, var2, children }) {
   return (
@@ -36,6 +37,9 @@ function App() {
       <Route path="/sign-in" element={<SignIn/>} />
 
       <Route path="/patient-homepage" element={<PatientHomepage/>} />
+
+      <Route path="/set-appointment-details" element={<SetAppointmentDetails/>} />
+      
 
 
   </Routes>
