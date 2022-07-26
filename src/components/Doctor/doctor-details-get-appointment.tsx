@@ -1,6 +1,8 @@
 import { Grid, Typography, Rating, Stack, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export function DoctorDetails_Get_Appointment() {
+  const navigate = useNavigate();
   return (
     <Grid
       container
@@ -169,8 +171,8 @@ export function DoctorDetails_Get_Appointment() {
             </Grid>
           </Grid>
           <Grid item>
-            <Button variant="contained" color="success">
-              Get appointment
+            <Button  onClick={()=>navigate("/sign-in")}  variant="contained" color="success">
+             Get Appointment
             </Button>
           </Grid>
         </Grid>

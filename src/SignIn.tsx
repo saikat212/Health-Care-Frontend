@@ -30,7 +30,7 @@ function Copyright(props: any) {
 const theme = createTheme();
 
 export default function SignInSide() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -105,6 +105,8 @@ export default function SignInSide() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+
+                onClick={()=>navigate("/patient-homepage")} 
               >
                 Sign In
               </Button>

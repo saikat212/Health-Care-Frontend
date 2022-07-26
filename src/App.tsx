@@ -10,6 +10,7 @@ import SignIn from "./SignIn";
 import SignUpDoctor from "./SignUpDoctor";
 import SignUpPatient from "./SignUpPatient";
 import { SpecialitiesUI } from "./specialities";
+import PatientHomepage from "./components/Patient/patient-homepage";
 
 
 function F2({ var1, var2, children }) {
@@ -33,6 +34,10 @@ function App() {
       <Route path="/sign-up-patient" element={<SignUpPatient/>} />
       <Route path="/sign-up-doctor" element={<SignUpDoctor/>} />
       <Route path="/sign-in" element={<SignIn/>} />
+
+      <Route path="/patient-homepage" element={<PatientHomepage/>} />
+
+
   </Routes>
   </BrowserRouter>
   );

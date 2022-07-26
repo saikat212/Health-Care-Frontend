@@ -1,9 +1,7 @@
 import { Button, Grid, Typography } from "@mui/material";
 import Header_Front_Page from "./header-front-page";
 import { Link, useNavigate } from "react-router-dom";
-import { SpecialitiesUI } from "C:/Users/SAIKAT/Desktop/SAIKAT/BUET_4_1/CSE 408 - SE/SakibGithub/Health-Care/src/specialities";
-
-
+import { SpecialitiesUI } from "../specialities";
 
 export default function Front_Page(){
     const navigate = useNavigate();
@@ -40,6 +38,7 @@ export default function Front_Page(){
                     src={require("../images/f.jpg")}
                     height="400px" />
             </Grid>
-        </Grid></>
+        </Grid>
+        </>
     );
 }
