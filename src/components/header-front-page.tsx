@@ -5,6 +5,7 @@ import SearchBar from "./search-bar";
 
 export default function Header_Front_Page(){
   const navigate = useNavigate();
+  
 return(
 <AppBar position="fixed" sx={{ backgroundColor: "indigo" }}>
         <Grid
