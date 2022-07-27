@@ -40,15 +40,4 @@ function App() {
 }
 
 export default App;
-    import SignInSide from "./SignIn";
-    
-import SignIn from "./SignIn";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ResponsiveAppBar from "./components/Doctor/doctor-page-Appbar";
-import Front_Page from "./components/front-page";
-import { DoctorInfo } from "./doctor-info";
-import { DoctorListUI } from "./doctor-list";
-import SignUpDoctor from "./SignUpDoctor";
-import SignUpPatient from "./SignUpPatient";
-import { SpecialitiesUI } from "./specialities";
 
