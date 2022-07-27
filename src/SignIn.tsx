@@ -134,7 +134,8 @@ export default function SignInSide() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
-                onClick={handleClickSignIn}
+
+                onClick={()=>navigate("/patient-homepage")} 
               >
                 Sign In
               </Button>

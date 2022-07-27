@@ -171,8 +171,8 @@ export function DoctorDetails_Get_Appointment() {
             </Grid>
           </Grid>
           <Grid item>
-            <Button onClick={()=>navigate("/sign-in")} variant="contained" color="success">
-              Get appointment
+            <Button  onClick={()=>navigate("/set-appointment-details")}  variant="contained" color="success">
+             Get Appointment
             </Button>
           </Grid>
         </Grid>
