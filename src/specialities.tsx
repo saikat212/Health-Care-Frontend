@@ -9,13 +9,13 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import { API } from "API Handler/api";
-import { Speciality } from "Classes/patient-class";
-import Header from "components/header";
-import SearchBar from "components/search-bar";
-import SpecialityCard from "components/speciality-card";
+
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { API } from "./API Handler/api";
+import { Speciality } from "./Classes/patient-class";
+import Header from "./components/header";
+import SpecialityCard from "./components/speciality-card";
 /* function LoopLoop(){
     let jsx = "";
     let i;
