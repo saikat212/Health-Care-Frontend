@@ -12,10 +12,10 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import GenderRadioButton from "components/gender";
+import GenderRadioButton from "./components/gender";
 import { useNavigate } from "react-router-dom";
-import { Patient } from "Classes/patient-class";
-import { API } from "API Handler/api";
+import { Patient } from "./Classes/patient-class";
+import { API } from "./API Handler/api";
 import { DatePicker } from "@mui/lab";
 
 function Copyright(props: any) {

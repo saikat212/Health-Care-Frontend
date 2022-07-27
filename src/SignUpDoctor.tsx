@@ -13,10 +13,10 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { MenuItem } from "@mui/material";
-import GenderRadioButton from "components/gender";
+import GenderRadioButton from "./components/gender";
 import { useNavigate } from "react-router-dom";
-import { Doctor } from "Classes/patient-class";
-import { API } from "API Handler/api";
+import { Doctor } from "./Classes/patient-class";
+import { API } from "./API Handler/api";
 import { DatePicker } from "@mui/lab";
 
 function Copyright(props: any) {
