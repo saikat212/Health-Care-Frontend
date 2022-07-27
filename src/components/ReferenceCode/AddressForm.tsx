@@ -80,7 +80,7 @@ export default function AddressForm() {
           <TextField
             id="state"
             name="state"
-            label="Hight"
+            label="Height"
             fullWidth
             variant="standard"
           />
