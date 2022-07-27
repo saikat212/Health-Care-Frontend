@@ -9,10 +9,9 @@ import { Router } from "react-router-dom";
 import SignIn from "./SignIn";
 import SignUpDoctor from "./SignUpDoctor";
 import SignUpPatient from "./SignUpPatient";
-import { SpecialitiesUI } from "./specialities";
 import PatientHomepage from "./components/Patient/patient-homepage";
-
 import SetAppointmentDetails from "./components/Patient/set-appointment-details";
+import { SpecialitiesUI } from "./specialities";
 
 
 function App() {
