@@ -4,12 +4,21 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import { useState } from 'react';
 
 export default function AddressForm() {
+
+
+  const [myCar, setMyCar] = useState("Volvo");
+
+  const handleChange = (event) => {
+    setMyCar(event.target.value)
+  }
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
-        Shipping address
+        Patient's info
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
@@ -34,22 +43,23 @@ export default function AddressForm() {
             variant="standard"
           />
         </Grid>
+         <label htmlFor="Main symptom"></label>
+        <Grid>
+
+        </Grid> 
         <Grid item xs={12}>
-          <TextField
-            required
-            id="address1"
-            name="address1"
-            label="Address line 1"
-            fullWidth
-            autoComplete="shipping address-line1"
-            variant="standard"
-          />
+        <select value={myCar} onChange={handleChange}>
+        <option value="Ford">Headache</option>
+        <option value="Volvo">Cold</option>
+        <option value="Fiat">Pain</option>
+        </select>
+
         </Grid>
         <Grid item xs={12}>
           <TextField
             id="address2"
             name="address2"
-            label="Address line 2"
+            label="Briefly explain the problem"
             fullWidth
             autoComplete="shipping address-line2"
             variant="standard"
@@ -60,7 +70,7 @@ export default function AddressForm() {
             required
             id="city"
             name="city"
-            label="City"
+            label="Weight"
             fullWidth
             autoComplete="shipping address-level2"
             variant="standard"
@@ -70,7 +80,7 @@ export default function AddressForm() {
           <TextField
             id="state"
             name="state"
-            label="State/Province/Region"
+            label="Hight"
             fullWidth
             variant="standard"
           />
@@ -80,7 +90,7 @@ export default function AddressForm() {
             required
             id="zip"
             name="zip"
-            label="Zip / Postal code"
+            label="Mobile No."
             fullWidth
             autoComplete="shipping postal-code"
             variant="standard"
@@ -91,7 +101,7 @@ export default function AddressForm() {
             required
             id="country"
             name="country"
-            label="Country"
+            label="Email"
             fullWidth
             autoComplete="shipping country"
             variant="standard"

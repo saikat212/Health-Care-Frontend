@@ -47,6 +47,7 @@ export default function SetAppointmentDetails() {
   return (
    <>
      <Basic_Structure/>
+     <Checkout/>
     
    
    </>

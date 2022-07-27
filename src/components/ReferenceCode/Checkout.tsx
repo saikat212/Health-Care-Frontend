@@ -29,7 +29,7 @@ function Copyright() {
   );
 }
 
-const steps = ['Shipping address', 'Payment details', 'Review your order'];
+const steps = ['Patient info', 'Payment details', 'Review appointment details'];
 
 function getStepContent(step: number) {
   switch (step) {
@@ -91,12 +91,12 @@ export default function Checkout() {
             {activeStep === steps.length ? (
               <React.Fragment>
                 <Typography variant="h5" gutterBottom>
-                  Thank you for your order.
+                  Thank you for your appointment.
                 </Typography>
                 <Typography variant="subtitle1">
-                  Your order number is #2001539. We have emailed your order
-                  confirmation, and will send you an update when your order has
-                  shipped.
+                  Your appointment number is #2001539. We have emailed your appointment
+                  confirmation, and will send you an update when your appointment has
+                  scheduled.
                 </Typography>
               </React.Fragment>
             ) : (
@@ -113,7 +113,7 @@ export default function Checkout() {
                     onClick={handleNext}
                     sx={{ mt: 3, ml: 1 }}
                   >
-                    {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                    {activeStep === steps.length - 1 ? 'Confirm' : 'Next'}
                   </Button>
                 </Box>
               </React.Fragment>
