@@ -17,6 +17,7 @@ import GenderRadioButton from "components/gender";
 import { useNavigate } from "react-router-dom";
 import { Doctor } from "Classes/patient-class";
 import { API } from "API Handler/api";
+import { DatePicker } from "@mui/lab";
 
 function Copyright(props: any) {
   return (
@@ -130,6 +131,21 @@ export default function SignUpDoctor() {
                     person:{...doctor?.person,lastName: event.target.value }});
                   }}
                 />
+              </Grid>
+              <Grid item xs={12}>
+              <DatePicker
+                label="Date of birth"
+                value={doctor?.person?.dateOfBirth}
+                onChange={(newValue) => {
+                  setDoctor({
+                    ...doctor,
+                    person: { ...doctor?.person, dateOfBirth: newValue },
+                  });
+                }}
+                renderInput={(params) => (
+                  <TextField required fullWidth {...params} />
+                )}
+              />
               </Grid>
               <Grid item xs={12}>
                 <TextField

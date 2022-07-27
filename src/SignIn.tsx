@@ -14,6 +14,7 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import { API } from 'API Handler/api';
+import { useSnackbar } from 'notistack';
 
 function Copyright(props: any) {
   return (
@@ -32,7 +33,7 @@ const theme = createTheme();
 
 export default function SignInSide() {
     const navigate = useNavigate();
-   // const { enqueueSnackbar } = useSnackbar();
+    //const { enqueueSnackbar } = useSnackbar();
     const [state, setState] = React.useState({
       email: "",
       password: "",
@@ -40,9 +41,9 @@ export default function SignInSide() {
 
   function errorVerify() {
     if (!state.email || !state.password) {
-     /*  enqueueSnackbar("Please fill up all field properly", {
+       /* enqueueSnackbar("Please fill up all field properly", {
         variant: "error",
-      }); */
+      });  */
       return false;
     }
     return true;
@@ -51,10 +52,10 @@ export default function SignInSide() {
     if (errorVerify()) {
       API.signInAuthentication.login(state.email, state.password).then((response) => {
         if (response.status == 200) {
-         /*  showSnackbar(enqueueSnackbar, response.data, () => {
-            localStorage.setItem("adminId", response.data.adminId);
+           /* showSnackbar(enqueueSnackbar, response.data, () => {
+            localStorage.setItem("personId", response.data.personId);
             
-          }); */
+          });  */
           console.log(response);
         }
       });
@@ -158,10 +159,5 @@ export default function SignInSide() {
   );
 }
 
-function useSnackbar(): { enqueueSnackbar: any; } {
-  throw new Error('Function not implemented.');
-}
-function showSnackbar(enqueueSnackbar: any, data: any, arg2: () => void) {
-  throw new Error('Function not implemented.');
-}
+
 

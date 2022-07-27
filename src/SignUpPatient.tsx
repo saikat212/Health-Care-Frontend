@@ -16,6 +16,7 @@ import GenderRadioButton from "components/gender";
 import { useNavigate } from "react-router-dom";
 import { Patient } from "Classes/patient-class";
 import { API } from "API Handler/api";
+import { DatePicker } from "@mui/lab";
 
 function Copyright(props: any) {
   return (
@@ -56,8 +57,10 @@ export default function SignUpPatient() {
   const handleClickSignUp = (e) => {
     e.preventDefault();
     console.log(patient);
-   patient && API.patient.addPatient(patient).
-   then((response)=>{console.log(response)})
+    patient &&
+      API.patient.addPatient(patient).then((response) => {
+        console.log(response);
+      });
   };
 
   return (
@@ -105,8 +108,13 @@ export default function SignUpPatient() {
                   label="First Name"
                   autoFocus
                   onChange={(event) => {
-                    setPatient({ ...patient, 
-                    person:{...patient?.person,firstName: event.target.value }});
+                    setPatient({
+                      ...patient,
+                      person: {
+                        ...patient?.person,
+                        firstName: event.target.value,
+                      },
+                    });
                   }}
                 />
               </Grid>
@@ -119,10 +127,31 @@ export default function SignUpPatient() {
                   name="lastName"
                   //autoComplete="family-name"
                   onChange={(event) => {
-                    setPatient({ ...patient,
-                    person:{...patient?.person,lastName: event.target.value }});
+                    setPatient({
+                      ...patient,
+                      person: {
+                        ...patient?.person,
+                        lastName: event.target.value,
+                      },
+                    });
                   }}
                 />
+              </Grid>
+              <Grid item xs={12}>
+             
+              <DatePicker
+                label="Date of birth"
+                value={patient?.person?.dateOfBirth}
+                onChange={(newValue) => {
+                  setPatient({
+                    ...patient,
+                    person: { ...patient?.person, dateOfBirth: newValue },
+                  });
+                }}
+                renderInput={(params) => (
+                  <TextField required fullWidth {...params} />
+                )}
+              />
               </Grid>
               <Grid item xs={12}>
                 <TextField
@@ -149,8 +178,13 @@ export default function SignUpPatient() {
                   name="mobile_n"
                   //autoComplete="mobile_no"
                   onChange={(event) => {
-                    setPatient({ ...patient, 
-                      person:{...patient?.person, mobileNo:event.target.value} });
+                    setPatient({
+                      ...patient,
+                      person: {
+                        ...patient?.person,
+                        mobileNo: event.target.value,
+                      },
+                    });
                   }}
                 />
               </Grid>
@@ -164,17 +198,24 @@ export default function SignUpPatient() {
                   id="password"
                   //autoComplete="new-password"
                   onChange={(event) => {
-                    setPatient({...patient,
-                      person:{...patient?.person, password:event.target.value}});
+                    setPatient({
+                      ...patient,
+                      person: {
+                        ...patient?.person,
+                        password: event.target.value,
+                      },
+                    });
                   }}
                 />
               </Grid>
               <Grid item>
-                <GenderRadioButton 
-                onChange={(value)=>{
-                  setPatient({...patient,
-                    person:{...patient?.person, gender:value}});
-                }}
+                <GenderRadioButton
+                  onChange={(value) => {
+                    setPatient({
+                      ...patient,
+                      person: { ...patient?.person, gender: value },
+                    });
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -207,5 +248,6 @@ export default function SignUpPatient() {
         {/* <Copyright sx={{ mt: 5 }} /> */}
       </Container>
     </ThemeProvider>
+       
   );
 }

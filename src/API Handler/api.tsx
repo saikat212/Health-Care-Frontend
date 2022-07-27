@@ -1,6 +1,6 @@
 import { PlayForWork } from "@mui/icons-material";
 import axios from "axios";
-import { Doctor, Patient } from "Classes/patient-class";
+import { Doctor, Patient, Speciality } from "Classes/patient-class";
 
 
 
@@ -40,6 +40,9 @@ export const API = {
         getDoctorByLastName: (lastName: string) => get("/get-doctor-by-first-name/"+lastName),
 
     },
+    speciality:{
+      getSpecialities:()=> get("/get-all-specialities")
+    }
     
 
 }
