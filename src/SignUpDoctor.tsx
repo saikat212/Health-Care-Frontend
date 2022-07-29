@@ -112,6 +112,8 @@ export default function SignUpDoctor() {
                                     fullWidth
                                     id="firstName"
                                     label="First Name"
+                                   
+                                    /*
                                     autoFocus
                                     onChange={(event) => {
                                         setDoctor({
@@ -119,6 +121,8 @@ export default function SignUpDoctor() {
                                             person: {...doctor?.person, firstName: event.target.value}
                                         });
                                     }}
+                                    */
+
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>
@@ -129,24 +133,29 @@ export default function SignUpDoctor() {
                                     label="Last Name"
                                     name="lastName"
                                     //autoComplete="family-name"
+                                    /*
+
                                     onChange={(event) => {
                                         setDoctor({
                                             ...doctor,
                                             person: {...doctor?.person, lastName: event.target.value}
                                         });
                                     }}
+                                    */
                                 />
                             </Grid>
                             <Grid item xs={12}>
                                 <DatePicker
                                     label="Date of birth"
                                     value={doctor?.person?.dateOfBirth}
+                                    /*
                                     onChange={(newValue) => {
                                         setDoctor({
                                             ...doctor,
                                             person: {...doctor?.person, dateOfBirth: newValue},
                                         });
                                     }}
+                                    */
                                     renderInput={(params) => (
                                         <TextField required fullWidth {...params} />
                                     )}
@@ -160,12 +169,14 @@ export default function SignUpDoctor() {
                                     label="Email Address"
                                     name="email"
                                     autoComplete="email"
+                                    /*
                                     onChange={(event) => {
                                         setDoctor({
                                             ...doctor,
                                             person: {...doctor?.person, email: event.target.value},
                                         });
                                     }}
+                                    */
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -176,12 +187,15 @@ export default function SignUpDoctor() {
                                     label="Mobile No."
                                     name="mobile_no"
                                     autoComplete="mobile_no"
+                                    /*
+
                                     onChange={(event) => {
                                         setDoctor({
                                             ...doctor,
                                             person: {...doctor?.person, mobileNo: event.target.value}
                                         });
                                     }}
+                                    */
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -191,12 +205,14 @@ export default function SignUpDoctor() {
                                     id="nid"
                                     label="National ID"
                                     name="nid"
+                                    /*
                                     onChange={(event) => {
                                         setDoctor({
                                             ...doctor,
                                             nid: event.target.value
                                         });
                                     }}
+                                    */
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -206,12 +222,14 @@ export default function SignUpDoctor() {
                                     fullWidth
                                     id="bmdc_no"
                                     label="BMDC No."
+                                    /*
                                     onChange={(event) => {
                                         setDoctor({
                                             ...doctor,
                                             bmdcNo: event.target.value
                                         });
                                     }}
+                                    */
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -221,12 +239,14 @@ export default function SignUpDoctor() {
                                     fullWidth
                                     id="chamber"
                                     label="Chamber Address"
+                                    /*
                                     onChange={(event) => {
                                         setDoctor({
                                             ...doctor,
                                             chamber: event.target.value
                                         });
                                     }}
+                                    */
                                 />
                             </Grid>
 
@@ -239,23 +259,19 @@ export default function SignUpDoctor() {
                                     type="password"
                                     id="password"
                                     autoComplete="new-password"
+                                    /*
                                     onChange={(event) => {
                                         setDoctor({
                                             ...doctor,
                                             person: {...doctor?.person, password: event.target.value}
                                         });
                                     }}
+                                    */
                                 />
                             </Grid>
                             <Grid item>
-                                <GenderRadioButton
-                                    onChange={(value) => {
-                                        setDoctor({
-                                            ...doctor,
-                                            person: {...doctor?.person, gender: value}
-                                        });
-                                    }}
-                                />
+                                
+                                
                             </Grid>
                             <Grid item xs={12}>
                                 <FormControlLabel
