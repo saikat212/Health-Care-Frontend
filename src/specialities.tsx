@@ -1,21 +1,22 @@
 import {
-  AppBar,
-  Button,
-  ButtonGroup,
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  Grid,
-  Typography,
+    AppBar,
+    Button,
+    ButtonGroup,
+    Card,
+    CardActionArea,
+    CardContent,
+    CardMedia,
+    Grid,
+    Typography,
 } from "@mui/material";
 
-import React, { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { API } from "./API Handler/api";
-import { Speciality } from "./Classes/patient-class";
+import React, {useEffect} from "react";
+import {Link, useNavigate} from "react-router-dom";
+import {API} from "./API Handler/api";
+import {Speciality} from "./Classes/patient-class";
 import Header from "./components/header";
 import SpecialityCard from "./components/speciality-card";
+
 /* function LoopLoop(){
     let jsx = "";
     let i;
@@ -26,43 +27,43 @@ import SpecialityCard from "./components/speciality-card";
 
 } */
 export function SpecialitiesUI() {
-  const [state,setState] = React.useState<Speciality[]>();
-  
-  useEffect(() => {   //Data will be loaded first time only
-    API.speciality.getSpecialities().then(response=>{
-      setState(response.data);
-   })
-  }, [])
-  
- 
-  return (
-    <Grid container spacing={2} sx={{ backgroundColor: "gray" }}>
-      <Grid item>
-        <Header />
-      </Grid>
-      <Grid item>
-        <Grid container spacing={2}>
-          {state?.map((speciality, idx) => (
-            <Grid key={idx} item xs={12} sm={6} md={4} lg={3} xl={2}>
-               
-              <SpecialityCard 
-               
-                title={speciality.name}
-                description={speciality.description}
-                
-                image={require("./images/heaa.jpg")}
-              />
-          
-            </Grid>
-          ))}
-        </Grid>
-      </Grid>
+    const [state, setState] = React.useState<Speciality[]>();
 
-      {/* {<ButtonGroup variant="contained" aria-label="outlined primary button group">
+    useEffect(() => {   //Data will be loaded first time only
+        API.speciality.getSpecialities().then(response => {
+            setState(response.data);
+        })
+    }, [])
+
+
+    return (
+        <Grid container spacing={2} sx={{backgroundColor: "gray"}}>
+            <Grid item>
+                <Header/>
+            </Grid>
+            <Grid item>
+                <Grid container spacing={2}>
+                    {state?.map((speciality, idx) => (
+                        <Grid key={idx} item xs={12} sm={6} md={4} lg={3} xl={2}>
+
+                            <SpecialityCard
+
+                                title={speciality.name}
+                                description={speciality.description}
+
+                                image={require("./images/heaa.jpg")}
+                            />
+
+                        </Grid>
+                    ))}
+                </Grid>
+            </Grid>
+
+            {/* {<ButtonGroup variant="contained" aria-label="outlined primary button group">
       <Button size="large">Medicine/General Physician</Button>
       <Button >Two</Button>
       <Button>Three</Button>
     </ButtonGroup>} */}
-    </Grid>
-  );
+        </Grid>
+    );
 }

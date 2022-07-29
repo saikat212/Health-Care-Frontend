@@ -1,12 +1,13 @@
 import React from "react";
 
-export function F1({var1, var2}){
+export function F1({var1, var2}) {
     return (
-      <div>
-        from f1 value1: {var1} value2: {var2}
-      </div>
+        <div>
+            from f1 value1: {var1} value2: {var2}
+        </div>
     )
-  }
+}
+
 var_name = {
     var1: "hello",
     var2: 10,
@@ -21,7 +22,7 @@ var_name = {
     x: [
         {
             name: 'sakib',
-             year: 2099
+            year: 2099
         },
         {}
     ]
