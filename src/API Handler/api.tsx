@@ -1,6 +1,6 @@
 import {PlayForWork} from "@mui/icons-material";
 import axios from "axios";
-import {Doctor, Patient, Speciality} from "Classes/patient-class";
+import {Doctor, Patient, Speciality} from "../Classes/patient-class";
 
 
 const HOST = "http://localhost:5052";

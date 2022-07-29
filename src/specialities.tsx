@@ -43,7 +43,7 @@ export function SpecialitiesUI() {
             </Grid>
             <Grid item>
                 <Grid container spacing={2}>
-                    {state?.map((speciality, idx) => (
+                    {/* {state?.map((speciality, idx) => (
                         <Grid key={idx} item xs={12} sm={6} md={4} lg={3} xl={2}>
 
                             <SpecialityCard
@@ -55,7 +55,7 @@ export function SpecialitiesUI() {
                             />
 
                         </Grid>
-                    ))}
+                    ))} */}
                 </Grid>
             </Grid>
 

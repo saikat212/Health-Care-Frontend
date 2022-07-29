@@ -107,6 +107,7 @@ export default function SignUpPatient() {
                                     id="firstName"
                                     label="First Name"
                                     autoFocus
+                                    /*
                                     onChange={(event) => {
                                         setPatient({
                                             ...patient,
@@ -116,6 +117,7 @@ export default function SignUpPatient() {
                                             },
                                         });
                                     }}
+                                    */
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>
@@ -126,6 +128,7 @@ export default function SignUpPatient() {
                                     label="Last Name"
                                     name="lastName"
                                     //autoComplete="family-name"
+                                    /*
                                     onChange={(event) => {
                                         setPatient({
                                             ...patient,
@@ -135,22 +138,25 @@ export default function SignUpPatient() {
                                             },
                                         });
                                     }}
+                                    */
                                 />
                             </Grid>
                             <Grid item xs={12}>
 
                                 <DatePicker
-                                    label="Date of birth"
-                                    value={patient?.person?.dateOfBirth}
+                                    // label="Date of birth"
+                                    // value={patient?.person?.dateOfBirth}
+                                    /*
                                     onChange={(newValue) => {
                                         setPatient({
                                             ...patient,
                                             person: {...patient?.person, dateOfBirth: newValue},
                                         });
                                     }}
-                                    renderInput={(params) => (
-                                        <TextField required fullWidth {...params} />
-                                    )}
+                                    */
+                                    // renderInput={(params) => (
+                                    //     <TextField required fullWidth {...params} />
+                                    // )}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -161,12 +167,14 @@ export default function SignUpPatient() {
                                     label="Email Address"
                                     name="email"
                                     autoComplete="email"
+                                    /*
                                     onChange={(event) => {
                                         setPatient({
                                             ...patient,
                                             person: {...patient?.person, email: event.target.value},
                                         });
                                     }}
+                                    */
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -177,6 +185,7 @@ export default function SignUpPatient() {
                                     label="Mobile Number"
                                     name="mobile_n"
                                     //autoComplete="mobile_no"
+                                    /*
                                     onChange={(event) => {
                                         setPatient({
                                             ...patient,
@@ -186,6 +195,7 @@ export default function SignUpPatient() {
                                             },
                                         });
                                     }}
+                                    */
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -197,6 +207,7 @@ export default function SignUpPatient() {
                                     type="password"
                                     id="password"
                                     //autoComplete="new-password"
+                                    /*
                                     onChange={(event) => {
                                         setPatient({
                                             ...patient,
@@ -206,17 +217,11 @@ export default function SignUpPatient() {
                                             },
                                         });
                                     }}
+                                    */
                                 />
                             </Grid>
                             <Grid item>
-                                <GenderRadioButton
-                                    onChange={(value) => {
-                                        setPatient({
-                                            ...patient,
-                                            person: {...patient?.person, gender: value},
-                                        });
-                                    }}
-                                />
+                               
                             </Grid>
                             <Grid item xs={12}>
                                 <FormControlLabel

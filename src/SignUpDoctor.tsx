@@ -146,8 +146,8 @@ export default function SignUpDoctor() {
                             </Grid>
                             <Grid item xs={12}>
                                 <DatePicker
-                                    label="Date of birth"
-                                    value={doctor?.person?.dateOfBirth}
+                                    // label="Date of birth"
+                                    // value={doctor?.person?.dateOfBirth}
                                     /*
                                     onChange={(newValue) => {
                                         setDoctor({
@@ -156,9 +156,9 @@ export default function SignUpDoctor() {
                                         });
                                     }}
                                     */
-                                    renderInput={(params) => (
-                                        <TextField required fullWidth {...params} />
-                                    )}
+                                    // renderInput={(params) => (
+                                    //     <TextField required fullWidth {...params} />
+                                    // )}
                                 />
                             </Grid>
                             <Grid item xs={12}>
