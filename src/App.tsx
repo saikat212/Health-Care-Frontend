@@ -1,4 +1,4 @@
-import {DoctorDetails} from "C:/Users/SAIKAT/Desktop/SAIKAT/BUET_4_1/CSE 408 - SE/SakibGithub/Health-Care/src/components/Doctor/doctor-details";
+import {DoctorDetails} from "./components/Doctor/doctor-details";
 import ResponsiveAppBar from "./components/Doctor/doctor-page-Appbar";
 import Front_Page from "./components/front-page";
 import Header from "./components/header";
