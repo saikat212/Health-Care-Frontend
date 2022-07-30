@@ -1,4 +1,6 @@
 import {Grid, Typography, Rating, Stack} from "@mui/material";
+import * as React from 'react';
+
 
 export function DoctorDetails() {
     return (

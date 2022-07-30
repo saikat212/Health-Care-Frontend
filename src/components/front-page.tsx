@@ -1,3 +1,6 @@
+
+import * as React from 'react';
+
 import {Button, Grid, Typography} from "@mui/material";
 import Header_Front_Page from "./header-front-page";
 import {Link, useNavigate} from "react-router-dom";

@@ -1,6 +1,7 @@
 import {AppBar, Grid, Typography, Button} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 // import SearchBar from "./search-bar";
+import * as React from 'react';
 
 export default function Basic_Structure() {
     const navigate = useNavigate();

@@ -8,7 +8,7 @@ import {
     Box,
 } from "@mui/material";
 import {fontWeight} from "@mui/system";
-import React from "react";
+import * as React from 'react';
 import {DoctorDetails} from "./doctor-details";
 import {useNavigate} from "react-router-dom";
 

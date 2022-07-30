@@ -1,3 +1,5 @@
+
+import * as React from 'react';
 import {DoctorDetails} from "./components/Doctor/doctor-details";
 import ResponsiveAppBar from "./components/Doctor/doctor-page-Appbar";
 import Front_Page from "./components/front-page";
