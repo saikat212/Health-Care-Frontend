@@ -12,7 +12,6 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { MenuItem } from "@mui/material";
 import GenderRadioButton from "components/gender";
 import { useNavigate } from "react-router-dom";
 import { Doctor } from "Classes/patient-class";
@@ -47,10 +46,9 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 }; */
 
 export default function SignUpDoctor() {
-
   const navigate = useNavigate();
   const [doctor, setDoctor] = React.useState<Doctor>();
-    /* const [firstName, setFirstName] = React.useState("");
+  /* const [firstName, setFirstName] = React.useState("");
     const [lastName, setLastName] = React.useState("");
     const [email, setEmail] = React.useState("");
     const [mobileNo, setMobileNo] = React.useState("");
@@ -68,13 +66,14 @@ export default function SignUpDoctor() {
     });
   };
 
-  const handleClickSignUp=(e)=>{
-    e.preventDefault()
+  const handleClickSignUp = (e) => {
+    e.preventDefault();
     console.log(doctor);
-    doctor && API.doctor.addDoctor(doctor).
-    then((response)=>{console.log(response)})
-   };
-
+    doctor &&
+      API.doctor.addDoctor(doctor).then((response) => {
+        console.log(response);
+      });
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -100,8 +99,6 @@ export default function SignUpDoctor() {
             onSubmit={handleSubmit}
             sx={{ mt: 3 }}
           >
-            
-          
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -113,8 +110,13 @@ export default function SignUpDoctor() {
                   label="First Name"
                   autoFocus
                   onChange={(event) => {
-                    setDoctor({ ...doctor, 
-                    person:{...doctor?.person,firstName: event.target.value }});
+                    setDoctor({
+                      ...doctor,
+                      person: {
+                        ...doctor?.person,
+                        firstName: event.target.value,
+                      },
+                    });
                   }}
                 />
               </Grid>
@@ -127,25 +129,30 @@ export default function SignUpDoctor() {
                   name="lastName"
                   //autoComplete="family-name"
                   onChange={(event) => {
-                    setDoctor({ ...doctor,
-                    person:{...doctor?.person,lastName: event.target.value }});
+                    setDoctor({
+                      ...doctor,
+                      person: {
+                        ...doctor?.person,
+                        lastName: event.target.value,
+                      },
+                    });
                   }}
                 />
               </Grid>
               <Grid item xs={12}>
-              <DatePicker
-                label="Date of birth"
-                value={doctor?.person?.dateOfBirth}
-                onChange={(newValue) => {
-                  setDoctor({
-                    ...doctor,
-                    person: { ...doctor?.person, dateOfBirth: newValue },
-                  });
-                }}
-                renderInput={(params) => (
-                  <TextField required fullWidth {...params} />
-                )}
-              />
+                <DatePicker
+                  label="Date of birth"
+                  value={doctor?.person?.dateOfBirth}
+                  onChange={(newValue) => {
+                    setDoctor({
+                      ...doctor,
+                      person: { ...doctor?.person, dateOfBirth: newValue },
+                    });
+                  }}
+                  renderInput={(params) => (
+                    <TextField required fullWidth {...params} />
+                  )}
+                />
               </Grid>
               <Grid item xs={12}>
                 <TextField
@@ -172,8 +179,13 @@ export default function SignUpDoctor() {
                   name="mobile_no"
                   autoComplete="mobile_no"
                   onChange={(event) => {
-                    setDoctor({ ...doctor, 
-                      person:{...doctor?.person, mobileNo:event.target.value} });
+                    setDoctor({
+                      ...doctor,
+                      person: {
+                        ...doctor?.person,
+                        mobileNo: event.target.value,
+                      },
+                    });
                   }}
                 />
               </Grid>
@@ -185,8 +197,7 @@ export default function SignUpDoctor() {
                   label="National ID"
                   name="nid"
                   onChange={(event) => {
-                    setDoctor({...doctor,
-                     nid:event.target.value});
+                    setDoctor({ ...doctor, nid: event.target.value });
                   }}
                 />
               </Grid>
@@ -198,8 +209,7 @@ export default function SignUpDoctor() {
                   id="bmdc_no"
                   label="BMDC No."
                   onChange={(event) => {
-                    setDoctor({...doctor,
-                      bmdcNo:event.target.value});
+                    setDoctor({ ...doctor, bmdcNo: event.target.value });
                   }}
                 />
               </Grid>
@@ -211,12 +221,11 @@ export default function SignUpDoctor() {
                   id="chamber"
                   label="Chamber Address"
                   onChange={(event) => {
-                    setDoctor({...doctor,
-                      chamber:event.target.value});
+                    setDoctor({ ...doctor, chamber: event.target.value });
                   }}
                 />
               </Grid>
-             
+
               <Grid item xs={12}>
                 <TextField
                   required
@@ -227,17 +236,24 @@ export default function SignUpDoctor() {
                   id="password"
                   autoComplete="new-password"
                   onChange={(event) => {
-                    setDoctor({...doctor,
-                      person:{...doctor?.person, password:event.target.value}});
+                    setDoctor({
+                      ...doctor,
+                      person: {
+                        ...doctor?.person,
+                        password: event.target.value,
+                      },
+                    });
                   }}
                 />
               </Grid>
               <Grid item>
-                <GenderRadioButton 
-                 onChange={(value)=>{
-                  setDoctor({...doctor,
-                    person:{...doctor?.person, gender:value}});
-                }}
+                <GenderRadioButton
+                  onChange={(value) => {
+                    setDoctor({
+                      ...doctor,
+                      person: { ...doctor?.person, gender: value },
+                    });
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>

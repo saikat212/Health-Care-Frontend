@@ -13,7 +13,7 @@ export default function GenderRadioButton({
   const [value, setValue] = React.useState("male");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue((event.target as HTMLInputElement).value);
+    //setValue((event.target as HTMLInputElement).value);
     onChange((event.target as HTMLInputElement).value)
   };
   return (
@@ -23,7 +23,7 @@ export default function GenderRadioButton({
         row
         aria-labelledby="demo-row-radio-buttons-group-label"
         name="row-radio-buttons-group"
-        value={value}
+        //value={value}
         onChange={handleChange}
       >
         <FormControlLabel value="female" control={<Radio />} label="Female" />

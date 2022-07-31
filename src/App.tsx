@@ -10,15 +10,10 @@ import SignUpPatient from "SignUpPatient";
 import { SpecialitiesUI } from "specialities";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers";
+import PatientHomepage from "components/Patient/patient-homepage";
+import SetAppointmentDetails from "components/Patient/set-appointment-details";
 
-function F2({ var1, var2, children }) {
-  return (
-    <div>
-      from f1 value1: {var1} value2: {var2}
-      {children}
-    </div>
-  );
-}
+
 
 function App() {
   return (
@@ -33,6 +28,7 @@ function App() {
           <Route path="/sign-up-patient" element={<SignUpPatient />} />
           <Route path="/sign-up-doctor" element={<SignUpDoctor />} />
           <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/set-appointment-details" element={<SetAppointmentDetails/>}/>
         </Routes>
       </BrowserRouter>
     </LocalizationProvider>
