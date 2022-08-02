@@ -16,7 +16,7 @@ import GenderRadioButton from "components/gender";
 import { useNavigate } from "react-router-dom";
 import { Patient } from "Classes/patient-class";
 import { API } from "API Handler/api";
-import { DatePicker } from "@mui/lab";
+import { DatePicker } from '@mui/x-date-pickers'
 
 function Copyright(props: any) {
   return (

@@ -6,7 +6,7 @@ export class Person{
     email?:string;
     mobileNo?:string;
     password?:string;
-    dateOfBirth?: Date;
+    dateOfBirth?: Date | null;
 }
 
 export class Patient{
@@ -19,12 +19,19 @@ export class Doctor{
     chamber?:string;
     bmdcNo?:string;
     nid?:string;
-    speciality?:string;
+    speciality?:Speciality;
     person?: Person;
 
 }
 export class Speciality{
     id?:number;
     name?:string;
-    description?:string;
+    description?:string | null;
+}
+
+export class _Rating{
+    id?:number;
+    ratingVal?:number | null;
+    patient?:Patient;
+    doctor?:Doctor;
 }

@@ -1,6 +1,6 @@
 import { PlayForWork } from "@mui/icons-material";
 import axios from "axios";
-import { Doctor, Patient, Speciality } from "Classes/patient-class";
+import { Doctor, Patient, _Rating, Speciality } from "Classes/patient-class";
 
 
 
@@ -18,6 +18,12 @@ function postBody(url, body) {
 }
 function get(url, param = {}) {
   return axios.get(HOST + url );
+}
+function put(url, body) {
+  return axios.put(HOST + url, body);
+}
+function del(url, body={}) {
+  return axios.delete(HOST + url , body);
 }
 
 export const API = {
@@ -42,6 +48,9 @@ export const API = {
     },
     speciality:{
       getSpecialities:()=> get("/get-all-specialities")
+    },
+    rating:{
+      giveRating:(rating:_Rating) =>  post("/addRating",rating)
     }
     
 

@@ -29,6 +29,8 @@ function App() {
           <Route path="/sign-up-doctor" element={<SignUpDoctor />} />
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/set-appointment-details" element={<SetAppointmentDetails/>}/>
+          
+          
         </Routes>
       </BrowserRouter>
     </LocalizationProvider>

@@ -14,7 +14,7 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import { API } from 'API Handler/api';
-import { useSnackbar } from 'notistack';
+
 
 function Copyright(props: any) {
   return (
@@ -56,6 +56,9 @@ export default function SignInSide() {
             localStorage.setItem("personId", response.data.personId);
             
           });  */
+
+          navigate("/set-appointment-details");
+          
           console.log(response);
         }
       });

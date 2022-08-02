@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -16,7 +16,10 @@ import GenderRadioButton from "components/gender";
 import { useNavigate } from "react-router-dom";
 import { Doctor } from "Classes/patient-class";
 import { API } from "API Handler/api";
-import { DatePicker } from "@mui/lab";
+import { DatePicker } from "@mui/x-date-pickers";
+import { Speciality } from "Classes/patient-class";
+import { useState } from "react";
+import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
 function Copyright(props: any) {
   return (
@@ -36,8 +39,6 @@ function Copyright(props: any) {
   );
 }
 
-const theme = createTheme();
-
 /* const doctor_title = ["Dr.", "Prof Dr.", "Assoc Prof Dr.", "Assit Prof Dr."];
 const  setTitle = React.useState('Dr.');
 
@@ -46,6 +47,7 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 }; */
 
 export default function SignUpDoctor() {
+  const theme = createTheme();
   const navigate = useNavigate();
   const [doctor, setDoctor] = React.useState<Doctor>();
   /* const [firstName, setFirstName] = React.useState("");
@@ -57,13 +59,30 @@ export default function SignUpDoctor() {
     const [nid, setNid] = React.useState("");
     const [chamber, setChamber] = React.useState(""); */
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const [specialities, setSpeciality] = useState<Speciality[]>([]);
+
+  useEffect(() => {
+    API.speciality.getSpecialities().then((response) => {
+      setSpeciality(response.data);
+      console.log(response.data);
+    });
+  }, []);
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
       email: data.get("email"),
       password: data.get("password"),
     });
+  }
+
+  const handleSpeciality = (event) => {
+    setDoctor({
+      ...doctor,
+      speciality: specialities.find((item) => item.id == event.target.value),
+    });
+    console.log(event.target.value);
   };
 
   const handleClickSignUp = (e) => {
@@ -212,6 +231,27 @@ export default function SignUpDoctor() {
                     setDoctor({ ...doctor, bmdcNo: event.target.value });
                   }}
                 />
+              </Grid>
+              <Grid item xs={12}>
+                <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">
+                    Select your speciality
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    //@ts-ignore
+                    value={doctor?.speciality?.id || null}
+                    label="Select your speciality"
+                    onChange={handleSpeciality}
+                  >
+                    {specialities?.map((speciality, idx) => (
+                      <MenuItem key={idx} value={speciality.id}>
+                        {speciality.name}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
               </Grid>
               <Grid item xs={12}>
                 <TextField

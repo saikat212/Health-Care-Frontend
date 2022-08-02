@@ -33,6 +33,7 @@ export function SpecialitiesUI() {
       setState(response.data);
    })
   }, [])
+
   
  
   return (
