@@ -42,7 +42,7 @@ const ResponsiveAppBar = () => {
   return (
     <>
   
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -61,7 +61,7 @@ const ResponsiveAppBar = () => {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            MEDI
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -121,7 +121,9 @@ const ResponsiveAppBar = () => {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               <Button  sx={{ my: 2, color: 'white', display: 'block' }} onClick={()=>navigate("/specialities")} variant="contained">Home</Button>
-              <Button onClick={()=>navigate("/specialities")} variant="contained">Duty</Button>
+              <Button sx={{ my: 2, color: 'white', display: 'block' }}  onClick={()=>navigate("/requested-appointment-ui")} variant="contained">Pending-Appointment</Button>
+              <Button sx={{ my: 2, color: 'white', display: 'block' }}  onClick={()=>navigate("/specialities")} variant="contained">MyPatient</Button>
+              <Button sx={{ my: 2, color: 'white', display: 'block' }}  onClick={()=>navigate("/specialities")} variant="contained">Overview</Button>
           </Box>
      
 
@@ -157,7 +159,6 @@ const ResponsiveAppBar = () => {
         </Toolbar>
       </Container>
     </AppBar>
-    <FixedBottomNavigation/>
     </>
   );
 };

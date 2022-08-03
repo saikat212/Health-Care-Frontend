@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 export default function SpecialityCard({image, title, description}) {
   const navigate = useNavigate();
   return (
-    <Card onClick={()=>navigate("/doctor-list")} sx={{ width: "100%" }}>
+    <Card onClick={()=>navigate("/doctor-list")} sx={{ width: "100%" }}>+
       <CardActionArea>
         <CardMedia
           component="img"

@@ -35,7 +35,7 @@ export function SpecialitiesUI() {
   }, [])
 
   
- 
+
   return (
     <Grid container spacing={2} sx={{ backgroundColor: "gray" }}>
       <Grid item>
@@ -47,10 +47,8 @@ export function SpecialitiesUI() {
             <Grid key={idx} item xs={12} sm={6} md={4} lg={3} xl={2}>
                
               <SpecialityCard 
-               
                 title={speciality.name}
                 description={speciality.description}
-                
                 image={require("./images/heaa.jpg")}
               />
           

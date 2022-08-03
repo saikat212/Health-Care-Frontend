@@ -12,7 +12,9 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import PatientHomepage from "components/Patient/patient-homepage";
 import SetAppointmentDetails from "components/Patient/set-appointment-details";
-
+import DoctorHomePage from "components/Doctor/doctor-home-page";
+import { SelectionAppointment } from "components/Doctor/AppointmentHandle/selection-appointment";
+import { RequestedAppointmentListUI } from "components/Doctor/AppointmentHandle/requested-appointment-list";
 
 
 function App() {
@@ -24,12 +26,14 @@ function App() {
           <Route path="/specialities" element={<SpecialitiesUI />} />
           <Route path="/doctor-list" element={<DoctorListUI />} />
           <Route path="/doctor-info" element={<DoctorInfo />} />
-          <Route path="/doctor-home-page" element={<ResponsiveAppBar />} />
+          <Route path="/doctor-home-page" element={<DoctorHomePage/>} />
           <Route path="/sign-up-patient" element={<SignUpPatient />} />
           <Route path="/sign-up-doctor" element={<SignUpDoctor />} />
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/set-appointment-details" element={<SetAppointmentDetails/>}/>
-          
+           
+          <Route path="/selection-appointment" element={<SelectionAppointment/>}/>
+          <Route path="/requested-appointment-ui" element={<RequestedAppointmentListUI/>}/>
           
         </Routes>
       </BrowserRouter>
