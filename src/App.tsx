@@ -17,6 +17,10 @@ import { SelectionAppointment } from "components/Doctor/AppointmentHandle/select
 import { RequestedAppointmentListUI } from "components/Doctor/AppointmentHandle/requested-appointment-list";
 import { SetAppointmentApproveInfo } from "components/Doctor/AppointmentHandle/set-appointment-approve-info";
 import ComboBox from "components/Doctor/AppointmentHandle/combo-box";
+import { SelectionApprovedAppointment } from "components/Doctor/MyPatientHandler/selection-approved-appointment";
+import { SetSeePatientInfo } from "components/Doctor/MyPatientHandler/set-see-patient-info";
+import ApprovedAppointmentList from "components/Doctor/MyPatientHandler/approved-appointment-list";
+
 function App() {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -35,9 +39,9 @@ function App() {
           <Route path="/selection-appointment" element={<SelectionAppointment/>}/>
           <Route path="/requested-appointment-ui" element={<RequestedAppointmentListUI/>}/>
           <Route path="/set-appointment-approve-info" element={<SetAppointmentApproveInfo/>}/>
-          <Route path="/combo-box" element={<ComboBox/>}/>
-
-
+          <Route path="/approved-appointment-list" element={<ApprovedAppointmentList/>}/>
+          <Route path="/selection-approved-appointment" element={<SelectionApprovedAppointment/>}/>
+          <Route path="/set-see-patient-info" element={<SetSeePatientInfo/>}/>
           
           
         </Routes>
