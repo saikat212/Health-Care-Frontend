@@ -171,7 +171,7 @@ export function ContentSelectedAppointment() {
             </Grid>
           </Grid>
           <Grid item>
-            <Button onClick={()=>navigate("/set-appointment-info")} variant="contained" color="success">
+            <Button onClick={()=>navigate("/set-appointment-approve-info")} variant="contained" color="success">
               Approve Appointment
             </Button>
           </Grid>
