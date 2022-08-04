@@ -3,7 +3,7 @@ import ResponsiveAppBar from "../doctor-page-Appbar";
 import BasicDateTimePicker from "./basic-date-time-picker";
 import ComboBox from "./combo-box";
 import BasicButton from "./basic-button";
-export function SetAppointmentApproveInfo(){
+export function SetAppointmentInfo(){
     return (
         <>
         <ResponsiveAppBar/>

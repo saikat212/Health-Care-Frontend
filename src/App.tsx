@@ -15,7 +15,7 @@ import SetAppointmentDetails from "components/Patient/set-appointment-details";
 import DoctorHomePage from "components/Doctor/doctor-home-page";
 import { SelectionAppointment } from "components/Doctor/AppointmentHandle/selection-appointment";
 import { RequestedAppointmentListUI } from "components/Doctor/AppointmentHandle/requested-appointment-list";
-import { SetAppointmentApproveInfo } from "components/Doctor/AppointmentHandle/set-appointment-approve-info";
+import { SetAppointmentInfo } from "components/Doctor/AppointmentHandle/set-appointment-info";
 import ComboBox from "components/Doctor/AppointmentHandle/combo-box";
 import { SelectionApprovedAppointment } from "components/Doctor/MyPatientHandler/selection-approved-appointment";
 import { SetSeePatientInfo } from "components/Doctor/MyPatientHandler/set-see-patient-info";
@@ -38,12 +38,10 @@ function App() {
            
           <Route path="/selection-appointment" element={<SelectionAppointment/>}/>
           <Route path="/requested-appointment-ui" element={<RequestedAppointmentListUI/>}/>
-          <Route path="/set-appointment-approve-info" element={<SetAppointmentApproveInfo/>}/>
+          <Route path="/set-appointment-info" element={<SetAppointmentInfo/>}/>
           <Route path="/approved-appointment-list" element={<ApprovedAppointmentList/>}/>
           <Route path="/selection-approved-appointment" element={<SelectionApprovedAppointment/>}/>
-          <Route path="/set-see-patient-info" element={<SetSeePatientInfo/>}/>
-          
-          
+          <Route path="/set-see-patient-info" element={<SetSeePatientInfo/>}/>           
         </Routes>
       </BrowserRouter>
     </LocalizationProvider>
