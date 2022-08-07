@@ -42,5 +42,6 @@ export default function SpecialityCard({spec}:SpecialiyCardProps) {
         </CardContent>
       </CardActionArea>
     </Card>
+    </Card>
   );
 }
