@@ -23,6 +23,10 @@ import { SnackbarProvider } from "notistack";
 import SetAppointment from "components/ReferenceCode/set-appointment";
 import { DoctorInfo } from "components/Doctor/doctor-info";
 import { DoctorListUI } from "components/Doctor/doctor-list";
+import PrescriptionPage from "components/Doctor/MyPatientHandler/GeneratePrescription/prescription-page";
+import SetPrescriptionInfo from "components/Doctor/MyPatientHandler/GeneratePrescription/set-prescription-info";
+import { PrescriptionListUI } from "components/Doctor/MyPatientHandler/ViewPreviousPrescription/prescription-list";
+import { SelectionPrescription } from "components/Doctor/MyPatientHandler/ViewPreviousPrescription/selection-prescription";
 
 function App() {
   return (
@@ -46,6 +50,13 @@ function App() {
           <Route path="/selection-approved-appointment" element={<SelectionApprovedAppointment/>}/>
           <Route path="/set-see-patient-info" element={<SetSeePatientInfo/>}/>           
           </Routes>
+
+          <Route path="/selection-prescription" element={<SelectionPrescription/>}/>  
+           <Route path="/prescription-list-ui" element={<PrescriptionListUI/>}/>  
+           <Route path="/prescription-page" element={<PrescriptionPage/>}/> 
+           <Route path="/set-prescription-info" element={<SetPrescriptionInfo/>}/>  
+
+
         </BrowserRouter>
       </SnackbarProvider>
     </LocalizationProvider>
