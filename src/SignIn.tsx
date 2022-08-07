@@ -59,14 +59,12 @@ export default function SignInSide() {
   }
   function handleClickSignIn() {
     if (errorVerify()) {
+      console.log("State: ",state)
       API.signInAuthentication
         .login(state.email, state.password)
         .then((response) => {
+          console.log(response);
           if (response.status == 200 && response.data.success) {
-            
-
-            console.log(response);
-
             API.person.getPersonByMail(state.email).then((response) => {
               if (response.status == 200 && response.data) {
                 setPerson(response.data);
