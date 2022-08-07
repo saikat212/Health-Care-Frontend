@@ -48,13 +48,18 @@ function App() {
           <Route path="/set-appointment-info" element={<SetAppointmentInfo/>}/>
           <Route path="/approved-appointment-list" element={<ApprovedAppointmentList/>}/>
           <Route path="/selection-approved-appointment" element={<SelectionApprovedAppointment/>}/>
-          <Route path="/set-see-patient-info" element={<SetSeePatientInfo/>}/>           
-          </Routes>
+          <Route path="/set-see-patient-info" element={<SetSeePatientInfo/>}/>   
 
           <Route path="/selection-prescription" element={<SelectionPrescription/>}/>  
            <Route path="/prescription-list-ui" element={<PrescriptionListUI/>}/>  
            <Route path="/prescription-page" element={<PrescriptionPage/>}/> 
            <Route path="/set-prescription-info" element={<SetPrescriptionInfo/>}/>  
+
+
+
+          </Routes>
+
+   
 
 
         </BrowserRouter>
