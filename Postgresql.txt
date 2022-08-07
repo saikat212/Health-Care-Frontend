@@ -1,0 +1,47 @@
+#Create Table query
+create table specialities (
+	id serial PRIMARY KEY,
+	name VARCHAR (50) UNIQUE NOT NULL,
+	description VARCHAR(50) NOT NULL,
+	image blob
+);
+
+#Speciality insertion query
+
+
+INSERT INTO speciality
+VALUES(1,'Cold, flu, fever, vomiting, infections, headaches or any other general health issues.','Medicine');
+
+INSERT INTO speciality
+VALUES(2,'Any childrens health related issues including physical, behavior and mental health.','Child Care');
+
+
+INSERT INTO speciality
+VALUES(3,'Any womens health related issues including pregnancy, menstruation, fertility issues, hormone disorders etc.','Gynecology');
+
+INSERT INTO speciality
+VALUES(4,'Treatment of diseases related to skin, hair and nails and some cosmetic problems.','Skin');
+
+
+#Update doctor query
+
+
+UPDATE doctor
+SET experience = 3,
+    fee = 500,
+    degree ='MBBS',
+    visiting_day='1110000'
+WHERE id = 2
+
+
+
+
+
+
+GitHub link of Mehedi's project
+
+https://github.com/Md-Mehedi/coaching-administrator-frontend
+
+https://github.com/shammya/coaching-administrator-backend
+
+
