@@ -20,7 +20,11 @@ import ComboBox from "components/Doctor/AppointmentHandle/combo-box";
 import { SelectionApprovedAppointment } from "components/Doctor/MyPatientHandler/selection-approved-appointment";
 import { SetSeePatientInfo } from "components/Doctor/MyPatientHandler/set-see-patient-info";
 import ApprovedAppointmentList from "components/Doctor/MyPatientHandler/approved-appointment-list";
+import { SelectionPrescription } from "components/Doctor/MyPatientHandler/ViewPreviousPrescription/selection-prescription";
+import { PrescriptionListUI } from "components/Doctor/MyPatientHandler/ViewPreviousPrescription/prescription-list";
 
+import PrescriptionPage from "components/Doctor/MyPatientHandler/GeneratePrescription/prescription-page";
+import SetPrescriptionInfo from "components/Doctor/MyPatientHandler/GeneratePrescription/set-prescription-info";
 function App() {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -41,7 +45,13 @@ function App() {
           <Route path="/set-appointment-info" element={<SetAppointmentInfo/>}/>
           <Route path="/approved-appointment-list" element={<ApprovedAppointmentList/>}/>
           <Route path="/selection-approved-appointment" element={<SelectionApprovedAppointment/>}/>
-          <Route path="/set-see-patient-info" element={<SetSeePatientInfo/>}/>           
+          <Route path="/set-see-patient-info" element={<SetSeePatientInfo/>}/>
+
+           <Route path="/selection-prescription" element={<SelectionPrescription/>}/>  
+           <Route path="/prescription-list-ui" element={<PrescriptionListUI/>}/>  
+           <Route path="/prescription-page" element={<PrescriptionPage/>}/> 
+           <Route path="/set-prescription-info" element={<SetPrescriptionInfo/>}/>  
+
         </Routes>
       </BrowserRouter>
     </LocalizationProvider>

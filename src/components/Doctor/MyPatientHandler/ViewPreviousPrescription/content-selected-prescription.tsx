@@ -1,7 +1,7 @@
 import { Grid, Typography, Rating, Stack, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-export function ContentSelectedApprovedAppointment() {
+export function ContentSelectedPrescription() {
   const navigate = useNavigate();
   return (
     <>
@@ -14,9 +14,7 @@ export function ContentSelectedApprovedAppointment() {
       spacing={2}
     >
       {/* Picture */}
-      <Grid item>
-        <img src={require("./images/me.PNG")} height="150px" />
-      </Grid>
+     
       {/* //1st Column */}
       <Grid item>
         <Grid
@@ -37,7 +35,7 @@ export function ContentSelectedApprovedAppointment() {
           >
             <Grid item>
               <Typography sx={{ fontWeight: "bold" }}>
-                Saikat Ghatak
+              
               </Typography>
             </Grid>
             <Grid item>
@@ -54,7 +52,7 @@ export function ContentSelectedApprovedAppointment() {
             spacing={2}
           >
             <Grid item>
-              <Typography sx={{ fontWeight: "bold" }}>Main Problem</Typography>
+              <Typography sx={{ fontWeight: "bold" }}>Here Set Prescription Details Page</Typography>
             </Grid>
             <Grid item>
               <Typography>Injury and Violence</Typography>
@@ -208,7 +206,7 @@ spacing={2}
       </Grid>
     </Grid>
     <Grid item>
-      <Button onClick={()=>navigate("/prescription-list-ui")} variant="contained" color="success">
+      <Button onClick={()=>navigate("/set-see-patient-info")} variant="contained" color="success">
       View Previous Prescription
       </Button>
     </Grid>
@@ -242,7 +240,7 @@ spacing={2}
       </Grid>
     </Grid>
     <Grid item>
-      <Button onClick={()=>navigate("/set-prescription-info")} variant="contained" color="success">
+      <Button onClick={()=>navigate("/set-see-patient-info")} variant="contained" color="success">
       Generate Prescription
       </Button>
     </Grid>

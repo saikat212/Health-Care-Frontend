@@ -1,10 +1,15 @@
 import { Grid, Typography, Rating, Stack, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-
-export function ContentSelectedApprovedAppointment() {
+import ResponsiveAppBar from "components/Doctor/doctor-page-Appbar";
+import DCTestList from "./dc-test-list";
+import MedicineList from "./medicine-list";
+export default function PrescriptionPage() {
   const navigate = useNavigate();
   return (
+
     <>
+
+    <ResponsiveAppBar/>
     <Grid
       container
       direction="row"
@@ -13,10 +18,7 @@ export function ContentSelectedApprovedAppointment() {
       sx={{ padding: "80px", height: "100%" }}
       spacing={2}
     >
-      {/* Picture */}
-      <Grid item>
-        <img src={require("./images/me.PNG")} height="150px" />
-      </Grid>
+    
       {/* //1st Column */}
       <Grid item>
         <Grid
@@ -37,8 +39,11 @@ export function ContentSelectedApprovedAppointment() {
           >
             <Grid item>
               <Typography sx={{ fontWeight: "bold" }}>
-                Saikat Ghatak
+                Patient: Saikat Ghatak
               </Typography>
+
+              <Typography>Age : 30 </Typography>
+              <Typography>Main Symtom: Injury</Typography>
             </Grid>
             <Grid item>
               <Typography></Typography>
@@ -54,10 +59,10 @@ export function ContentSelectedApprovedAppointment() {
             spacing={2}
           >
             <Grid item>
-              <Typography sx={{ fontWeight: "bold" }}>Main Problem</Typography>
+              <Typography sx={{ fontWeight: "bold" }}></Typography>
             </Grid>
             <Grid item>
-              <Typography>Injury and Violence</Typography>
+              <Typography></Typography>
             </Grid>
           </Grid>
         </Grid>
@@ -81,7 +86,8 @@ export function ContentSelectedApprovedAppointment() {
             spacing={2}
           >
             <Grid item>
-              <Typography sx={{ fontWeight: "bold" }}>Treatment Timeline</Typography>
+              <Typography sx={{ fontWeight: "bold" }}>Doctor: Dr.Kamrul Hasan</Typography>
+              <Typography >Degree: MBBS,FCPS</Typography>
             </Grid>
             <Grid item>
               <Typography></Typography>
@@ -107,11 +113,11 @@ export function ContentSelectedApprovedAppointment() {
               >
                 <Grid item>
                   <Typography sx={{ fontWeight: "bold" }}>
-                    Date
+            
                   </Typography>
                 </Grid>
                 <Grid item>
-                  <Typography>10/12/2021</Typography>
+                  <Typography></Typography>
                 </Grid>
               </Grid>
             </Grid>
@@ -126,17 +132,20 @@ export function ContentSelectedApprovedAppointment() {
                 spacing={2}
               >
                 <Grid item>
-                  <Typography sx={{ fontWeight: "bold" }}>
-                    Time
-                  </Typography>
+                  <Typography sx={{ fontWeight: "bold" }}></Typography>
                 </Grid>
                 <Grid item>
-                  <Typography>12:30 PM</Typography>
+                  {/* <Stack spacing={1}>
+                    <Rating
+                      name="half-rating-read"
+                      defaultValue={2.5}
+                      precision={0.5}
+                      readOnly
+                    />
+                  </Stack> */}
                 </Grid>
               </Grid>
             </Grid>
-
-  
           </Grid>
         </Grid>
       </Grid>
@@ -151,106 +160,91 @@ export function ContentSelectedApprovedAppointment() {
           sx={{ padding: "10px", height: "100%" }}
           spacing={2}
         >
-          <Grid
-            container
-            direction="column"
-            alignItems="center"
-            justifyContent="space-between"
-            sx={{ padding: "10px", height: "100%" }}
-            spacing={2}
-          >
-            <Grid item>
-              <Typography sx={{ fontWeight: "bold" }}>Chamber Address</Typography>
-            </Grid>
-            <Grid item>
-              <Typography>#20,Popular medical hospital</Typography>
+          <Grid item>
+            <Grid
+              container
+              direction="column"
+              alignItems="center"
+              justifyContent="space-between"
+              sx={{ padding: "10px", height: "100%" }}
+              spacing={2}
+            >
+              {/* <Grid item>
+                <Typography>Fee:</Typography>
+              </Grid>
+              <Grid item>
+                <Typography>500</Typography>
+              </Grid> */}
             </Grid>
           </Grid>
-
+          <Grid item>
+            {/* <Button onClick={()=>navigate("/set-appointment-info")} variant="contained" color="success">
+              Approve Appointment
+            </Button> */}
+          </Grid>
         </Grid>
       </Grid>
     </Grid>
 
-<Grid
-container
-direction="row"
-alignItems="center"
-justifyContent="space-between"
-sx={{ padding: "80px", height: "100%" }}
-spacing={2}
->
+    <Grid
+      container
+      direction="row"
+      alignItems="center"
+      justifyContent="space-between"
+      sx={{ padding: "10px", height: "100%" }}
+      spacing={2}
+    >  
+    
+        
+           <MedicineList/>
 
-{/*    //3rd column */}
-<Grid item>
-  <Grid
-    container
-    direction="row"
-    alignItems="center"
-    justifyContent="space-between"
-    sx={{ padding: "10px", height: "100%" }}
-    spacing={2}
-  >
-    <Grid item>
-      <Grid
-        container
-        direction="row"
-        alignItems="center"
-        justifyContent="space-between"
-        sx={{ padding: "10px", height: "100%" }}
-        spacing={2}
-      >
-        <Grid item>
-          <Typography></Typography>
-        </Grid>
-        <Grid item>
-          <Typography></Typography>
-        </Grid>
-      </Grid>
+
+     
+
     </Grid>
-    <Grid item>
-      <Button onClick={()=>navigate("/prescription-list-ui")} variant="contained" color="success">
-      View Previous Prescription
+
+    <Grid
+      container
+      direction="row"
+      alignItems="center"
+      justifyContent="space-between"
+      sx={{ padding: "80px", height: "100%" }}
+      spacing={2}
+    >
+  
+    <DCTestList/>
+
+    </Grid>
+    <Grid item
+     container
+     direction="row"
+     alignItems="center"
+     justifyContent="space-between"
+     sx={{ padding: "10px", height: "100%" }}
+     spacing={2}
+    
+    >
+      <Button onClick={()=>navigate("/")} variant="contained" color="success">
+      Search DC Center
       </Button>
     </Grid>
-  </Grid>
 
-
-
-  <Grid
-    container
-    direction="row"
-    alignItems="center"
-    justifyContent="space-between"
-    sx={{ padding: "10px", height: "100%" }}
-    spacing={2}
-  >
-    <Grid item>
-      <Grid
-        container
-        direction="row"
-        alignItems="center"
-        justifyContent="space-between"
-        sx={{ padding: "10px", height: "100%" }}
-        spacing={2}
-      >
-        <Grid item>
-          <Typography></Typography>
-        </Grid>
-        <Grid item>
-          <Typography></Typography>
-        </Grid>
-      </Grid>
-    </Grid>
-    <Grid item>
-      <Button onClick={()=>navigate("/set-prescription-info")} variant="contained" color="success">
-      Generate Prescription
+    <Grid item
+     container
+     direction="row"
+     alignItems="center"
+     justifyContent="space-between"
+     sx={{ padding: "10px", height: "100%" }}
+     spacing={2}
+    >
+      <Button onClick={()=>navigate("/")} variant="contained" color="success">
+      Download Prescription
       </Button>
     </Grid>
-  </Grid>
-</Grid>
-</Grid>
-</>
 
 
+ 
+
+    </>
   );
 }
