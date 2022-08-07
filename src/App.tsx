@@ -30,7 +30,9 @@ function App() {
             <Route path="/sign-up-patient" element={<SignUpPatient />} />
             <Route path="/sign-up-doctor" element={<SignUpDoctor />} />
             <Route path="/" element={<SignIn />} />
-            <Route path="/set-appointment-details" element={<SetAppointment />}
+            <Route
+              path="/set-appointment-details"
+              element={<SetAppointment />}
             />
           </Routes>
         </BrowserRouter>

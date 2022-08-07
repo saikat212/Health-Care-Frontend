@@ -17,10 +17,14 @@ export default function SpecialityCard({spec}:SpecialiyCardProps) {
   console.log(spec);
   const navigate = useNavigate();
   return (
+
     <Card
       onClick={() => navigate("/doctor-list", {state: spec })}
       sx={{ width: "100%" }}
     >
+
+    <Card onClick={()=>navigate("/doctor-list")} sx={{ width: "100%" }}>+
+
       <CardActionArea>
         <CardMedia
           component="img"

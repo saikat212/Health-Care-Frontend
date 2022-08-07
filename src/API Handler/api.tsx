@@ -1,6 +1,12 @@
 import { PlayForWork } from "@mui/icons-material";
 import axios from "axios";
-import { Doctor, Patient, _Rating, Speciality, Appointment } from "Classes/entity-class";
+import {
+  Doctor,
+  Patient,
+  _Rating,
+  Speciality,
+  Appointment,
+} from "Classes/entity-class";
 
 const HOST = "http://localhost:5052";
 
@@ -35,7 +41,8 @@ export const API = {
   patient: {
     addPatient: (patient: Patient) => post("/addPatient", patient),
     getPatientById: (id: number) => get("/patient-id/" + id),
-    updatePatientByHeightWeight: (height:number,weight:number) =>put("/updatePatient",{h:height,w:weight})
+    updatePatientByHeightWeight: (height: number, weight: number) =>
+      put("/updatePatient", { h: height, w: weight }),
   },
   doctor: {
     addDoctor: (doctor: Doctor) => post("/addDoctor", doctor),
@@ -57,7 +64,8 @@ export const API = {
   rating: {
     giveRating: (rating: _Rating) => post("/addRating", rating),
   },
-  appointment:{
-    saveAppointment: (appointment:Appointment) => post("/save-appointment",appointment)
-  }
+  appointment: {
+    saveAppointment: (appointment: Appointment) =>
+      post("/save-appointment", appointment),
+  },
 };
