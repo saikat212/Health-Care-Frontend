@@ -1,7 +1,8 @@
 import { Button, Grid, Typography } from "@mui/material";
 import Header_Front_Page from "./header-front-page";
 import { Link, useNavigate } from "react-router-dom";
-import { SpecialitiesUI } from "specialities";
+import React from "react";
+import BasicCard from "./card";
 
 
 

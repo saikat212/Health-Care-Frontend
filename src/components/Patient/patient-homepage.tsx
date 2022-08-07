@@ -1,9 +1,13 @@
 import { Button, Grid, Typography } from "@mui/material";
-import Basic_Structure from "./basic-navigation-bar";
 import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import Basic_Structure from "./basic-navigation-bar";
+import BasicCard from "components/card";
 
 
-export default function PatientHomepage(){
+
+
+export default function Patient_Home_Page(){
     const navigate = useNavigate();
     return(
         <>
@@ -35,11 +39,30 @@ export default function PatientHomepage(){
             </Grid>
             <Grid item>
                 <img
-                   src={require("./images/f.jpg")}
+                    src={require("./images/f.jpg")}
                     height="400px" />
-                   
             </Grid>
-        </Grid>
-        </>
+            <Grid item>
+            <Grid
+                    container
+                    direction="row"
+                    alignItems="center"
+                    justifyContent="space-between"
+                    sx={{ backgroundColor: "white", padding: "10px", height: "100%" }}
+                    spacing={2}
+                >
+                    <Grid item>
+                        <BasicCard text="Medical History"></BasicCard>
+                    </Grid>
+                    <Grid item>
+                    <BasicCard text="Lab Reports"></BasicCard>
+                    </Grid>
+                    <Grid item>
+                    <BasicCard text="Find a diagnostic Center"></BasicCard>
+                    </Grid>
+
+                    </Grid>
+            </Grid>
+        </Grid></>
     );
 }

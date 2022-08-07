@@ -14,10 +14,10 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import GenderRadioButton from "components/gender";
 import { useNavigate } from "react-router-dom";
-import { Doctor } from "Classes/patient-class";
+import { Doctor } from "Classes/entity-class";
 import { API } from "API Handler/api";
 import { DatePicker } from "@mui/x-date-pickers";
-import { Speciality } from "Classes/patient-class";
+import { Speciality } from "Classes/entity-class";
 import { useState } from "react";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
@@ -50,14 +50,6 @@ export default function SignUpDoctor() {
   const theme = createTheme();
   const navigate = useNavigate();
   const [doctor, setDoctor] = React.useState<Doctor>();
-  /* const [firstName, setFirstName] = React.useState("");
-    const [lastName, setLastName] = React.useState("");
-    const [email, setEmail] = React.useState("");
-    const [mobileNo, setMobileNo] = React.useState("");
-    const [password, setPassword] = React.useState("");
-    const [bmdcNo ,setBmdcNo] = React.useState("");
-    const [nid, setNid] = React.useState("");
-    const [chamber, setChamber] = React.useState(""); */
 
   const [specialities, setSpeciality] = useState<Speciality[]>([]);
 
@@ -87,10 +79,17 @@ export default function SignUpDoctor() {
 
   const handleClickSignUp = (e) => {
     e.preventDefault();
-    console.log(doctor);
     doctor &&
-      API.doctor.addDoctor(doctor).then((response) => {
+      API.doctor.addDoctor(
+        {
+          ...doctor,
+          person:{
+            ...doctor?.person, role:"doctor"
+          }
+        }
+      ).then((response) => {
         console.log(response);
+        navigate("/doctor-home-page")
       });
   };
 
@@ -121,7 +120,7 @@ export default function SignUpDoctor() {
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  autoComplete="given-name"
+                  autoComplete="name"
                   name="firstName"
                   required
                   fullWidth
@@ -146,7 +145,7 @@ export default function SignUpDoctor() {
                   id="lastName"
                   label="Last Name"
                   name="lastName"
-                  //autoComplete="family-name"
+                  autoComplete="name"
                   onChange={(event) => {
                     setDoctor({
                       ...doctor,

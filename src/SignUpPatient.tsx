@@ -14,7 +14,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import GenderRadioButton from "components/gender";
 import { useNavigate } from "react-router-dom";
-import { Patient } from "Classes/patient-class";
+import { Patient } from "Classes/entity-class";
 import { API } from "API Handler/api";
 import { DatePicker } from '@mui/x-date-pickers'
 
@@ -41,11 +41,7 @@ const theme = createTheme();
 export default function SignUpPatient() {
   const navigate = useNavigate();
   const [patient, setPatient] = React.useState<Patient>();
-  /*  const [firstName, setFirstName] = React.useState("");
-    const [lastName, setLastName] = React.useState("");
-    const [email, setEmail] = React.useState("");
-    const [mobileNo, setMobileNo] = React.useState("");
-    const [password, setPassword] = React.useState(""); */
+  
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -58,8 +54,16 @@ export default function SignUpPatient() {
     e.preventDefault();
     console.log(patient);
     patient &&
-      API.patient.addPatient(patient).then((response) => {
+      API.patient.addPatient(
+        {
+          ...patient,
+          person:{
+            ...patient?.person, role:"patient"
+          }
+        }
+      ).then((response) => {
         console.log(response);
+        navigate("/patient-home-page")
       });
   };
 

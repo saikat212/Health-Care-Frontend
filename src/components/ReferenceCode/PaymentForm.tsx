@@ -4,8 +4,10 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import { DatePicker } from '@mui/x-date-pickers';
 
 export default function PaymentForm() {
+  const [temp, setTemp] = React.useState();
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -33,14 +35,14 @@ export default function PaymentForm() {
           />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField
-            required
-            id="expDate"
-            label="Expiry date"
-            fullWidth
-            autoComplete="cc-exp"
-            variant="standard"
-          />
+        <DatePicker
+          value = {temp}
+          onChange = {(e)=> {
+            setTemp(e || undefined)
+          }}
+          label="Select expiry date of card"
+          renderInput={(params) => <TextField required fullWidth {...params} />}
+        />
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField
@@ -51,7 +53,7 @@ export default function PaymentForm() {
             fullWidth
             autoComplete="cc-csc"
             variant="standard"
-          />
+        />
         </Grid>
         <Grid item xs={12}>
           <FormControlLabel

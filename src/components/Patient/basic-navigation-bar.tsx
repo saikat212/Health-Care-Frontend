@@ -18,7 +18,7 @@ return(
             <Grid container direction="column">
               <Grid item>
                 <img
-                 // src={require("../images/heaa.jpg")}
+                  src={require("../../images/heaa.jpg")}
                   height="40px"
 
                 />
