@@ -11,8 +11,6 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import React from "react";
 import { DatePicker } from "@mui/x-date-pickers";
-import Basic_Structure from "components/Patient/basic-navigation-bar";
-import PatientLayout from "components/Patient/patient-layout";
 
 export function DoctorDetails_Get_Appointment({ doctor }: { doctor: Doctor }) {
   const navigate = useNavigate();
@@ -30,7 +28,6 @@ export function DoctorDetails_Get_Appointment({ doctor }: { doctor: Doctor }) {
   }, [doctor]);
 
   return (
-    <PatientLayout>
     <Grid
       container
       direction="row"
@@ -39,7 +36,6 @@ export function DoctorDetails_Get_Appointment({ doctor }: { doctor: Doctor }) {
       sx={{ padding: "10px", height: "100%" }}
       spacing={2}
     >
-  
       {/* Picture */}
       <Grid item>
         <img src={require("../../images/doctor.jpg")} height="150px" />
@@ -213,6 +209,5 @@ export function DoctorDetails_Get_Appointment({ doctor }: { doctor: Doctor }) {
         </Grid>
       </Grid>
     </Grid>
-    </PatientLayout>
   );
 }

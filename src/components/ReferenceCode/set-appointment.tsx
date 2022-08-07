@@ -20,7 +20,6 @@ import { useLocation } from "react-router-dom";
 import { Appointment } from "Classes/entity-class";
 import { valueToPercent } from "@mui/base";
 import { API } from "API Handler/api";
-import PatientLayout from "components/Patient/patient-layout";
 
 function Copyright() {
   return (
@@ -91,10 +90,24 @@ export default function SetAppointment() {
     }
   }
   return (
-    <PatientLayout>
     <ThemeProvider theme={theme}>
       <CssBaseline />
-    
+      {/* <AppBar
+        position="absolute"
+        color="default"
+        elevation={0}
+        sx={{
+          position: 'relative',
+          borderBottom: (t) => `1px solid ${t.palette.divider}`,
+        }}
+      >
+        <Toolbar>
+          <Typography variant="h6" color="inherit" noWrap>
+        
+          </Typography>
+        </Toolbar>
+      </AppBar> */}
+      <Basic_Structure />
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
         <Paper
           variant="outlined"
@@ -144,6 +157,5 @@ export default function SetAppointment() {
         {/*   <Copyright /> */}
       </Container>
     </ThemeProvider>
-    </PatientLayout>
   );
 }

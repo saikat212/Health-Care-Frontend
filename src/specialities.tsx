@@ -12,7 +12,6 @@ import {
 import { API } from "API Handler/api";
 import { Speciality } from "Classes/entity-class";
 import Header from "components/header";
-import PatientLayout from "components/Patient/patient-layout";
 import SearchBar from "components/search-bar";
 import SpecialityCard from "components/speciality-card";
 import React, { useEffect } from "react";
@@ -36,11 +35,12 @@ export function SpecialitiesUI() {
   }, [])
 
   
-
+ 
   return (
-    <PatientLayout>
     <Grid container spacing={2} sx={{ backgroundColor: "gray" }}>
-     
+      <Grid item>
+        <Header />
+      </Grid>
       <Grid item>
         <Grid container spacing={2}>
           {state?.map((speciality, idx) => (
@@ -55,6 +55,5 @@ export function SpecialitiesUI() {
       </Grid>
 
     </Grid>
-    </PatientLayout>
   );
 }
