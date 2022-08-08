@@ -32,6 +32,9 @@ import RequestedTestListUI from "components/DiagnosticCenter/TestRequestHandle/r
 import SetTestInfo from "components/DiagnosticCenter/TestRequestHandle/set-test-info";
 import SelectionTest from "components/DiagnosticCenter/TestRequestHandle/selection-test";
 import DCHomePage from "components/DiagnosticCenter/HompageConstruction/dc-home-page";
+import SelectionConfirmedTest from "components/DiagnosticCenter/ConfirmedRequestHandle/selection-confirmed-test";
+
+import ConfirmedTestListUI from "components/DiagnosticCenter/ConfirmedRequestHandle/confirmed-test-list";
 
 function App() {
   return (
@@ -64,6 +67,11 @@ function App() {
            <Route path="/set-test-info" element={<SetTestInfo/>}/> 
            <Route path="/selection-test" element={<SelectionTest/>}/> 
            <Route path="/dc-home-page" element={<DCHomePage/>}/> 
+
+           <Route path="/confirmed-test-list-ui" element={<ConfirmedTestListUI/>}/> 
+           <Route path="/selection-confirmed-test" element={<SelectionConfirmedTest/>}/> 
+
+
 
           </Routes>
 

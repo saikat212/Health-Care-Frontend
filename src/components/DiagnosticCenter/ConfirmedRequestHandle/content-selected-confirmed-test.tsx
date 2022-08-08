@@ -1,21 +1,20 @@
-import { Grid, Typography, Rating, Stack } from "@mui/material";
-import { API } from "API Handler/api";
-import { Doctor } from "Classes/entity-class";
-import { useEffect } from "react";
+import { Grid, Typography, Rating, Stack, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
-export function DoctorDetails({ doctor }: { doctor: Doctor }) {
+export default function ContentSelectedConfirmedTest() {
+  const navigate = useNavigate();
   return (
     <Grid
       container
       direction="row"
       alignItems="center"
       justifyContent="space-between"
-      sx={{ padding: "10px", height: "100%" }}
+      sx={{ padding: "80px", height: "100%" }}
       spacing={2}
     >
       {/* Picture */}
       <Grid item>
-        <img src={require("../../images/doctor.jpg")} height="150px" />
+        <img src={require("./images/me.PNG")} height="150px" />
       </Grid>
       {/* //1st Column */}
       <Grid item>
@@ -37,11 +36,11 @@ export function DoctorDetails({ doctor }: { doctor: Doctor }) {
           >
             <Grid item>
               <Typography sx={{ fontWeight: "bold" }}>
-                {doctor.person?.firstName + " " + doctor.person?.lastName}
+                Saikat Ghatak
               </Typography>
             </Grid>
             <Grid item>
-              <Typography>MBBS</Typography>
+              <Typography></Typography>
             </Grid>
           </Grid>
 
@@ -54,10 +53,10 @@ export function DoctorDetails({ doctor }: { doctor: Doctor }) {
             spacing={2}
           >
             <Grid item>
-              <Typography sx={{ fontWeight: "bold" }}>Specialities</Typography>
+              <Typography sx={{ fontWeight: "bold" }}>Test Name</Typography>
             </Grid>
             <Grid item>
-              <Typography>{doctor.speciality?.name}</Typography>
+              <Typography>Blood Test</Typography>
             </Grid>
           </Grid>
         </Grid>
@@ -81,10 +80,11 @@ export function DoctorDetails({ doctor }: { doctor: Doctor }) {
             spacing={2}
           >
             <Grid item>
-              <Typography sx={{ fontWeight: "bold" }}>Chamber</Typography>
+              <Typography sx={{ fontWeight: "bold" }}>Location : ABCD </Typography>
+              <Typography sx={{ fontWeight: "bold" }}>Time : 12/05/2021 </Typography>
             </Grid>
             <Grid item>
-              <Typography>{doctor.chamber}</Typography>
+              <Typography></Typography>
             </Grid>
           </Grid>
 
@@ -107,11 +107,11 @@ export function DoctorDetails({ doctor }: { doctor: Doctor }) {
               >
                 <Grid item>
                   <Typography sx={{ fontWeight: "bold" }}>
-                    Experience
+                   
                   </Typography>
                 </Grid>
                 <Grid item>
-                  <Typography>{doctor.experience} Years</Typography>
+                  <Typography></Typography>
                 </Grid>
               </Grid>
             </Grid>
@@ -126,17 +126,17 @@ export function DoctorDetails({ doctor }: { doctor: Doctor }) {
                 spacing={2}
               >
                 <Grid item>
-                  <Typography sx={{ fontWeight: "bold" }}>Rating</Typography>
+                  <Typography sx={{ fontWeight: "bold" }}></Typography>
                 </Grid>
                 <Grid item>
-                  <Stack spacing={1}>
+                  {/* <Stack spacing={1}>
                     <Rating
                       name="half-rating-read"
-                      defaultValue={2.5}
+                      defaultValue={2.5}  
                       precision={0.5}
                       readOnly
                     />
-                  </Stack>
+                  </Stack> */}
                 </Grid>
               </Grid>
             </Grid>
@@ -155,10 +155,24 @@ export function DoctorDetails({ doctor }: { doctor: Doctor }) {
           spacing={2}
         >
           <Grid item>
-            <Typography>Fee:</Typography>
+            <Grid
+              container
+              direction="column"
+              alignItems="center"
+              justifyContent="space-between"
+              sx={{ padding: "10px", height: "100%" }}
+              spacing={2}
+            >
+              {/* <Grid item>
+                <Typography>Fee:</Typography>
+              </Grid>
+              <Grid item>
+                <Typography>500</Typography>
+              </Grid> */}
+            </Grid>
           </Grid>
           <Grid item>
-            <Typography>{doctor.fee}</Typography>
+           
           </Grid>
         </Grid>
       </Grid>

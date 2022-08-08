@@ -122,7 +122,7 @@ const DCUserPageAppbar = () => {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               <Button  sx={{ my: 2, color: 'white', display: 'block' }} onClick={()=>navigate("/dc-home-page")} variant="contained">Home</Button>
               <Button sx={{ my: 2, color: 'white', display: 'block' }}  onClick={()=>navigate("/requested-test-list-ui")} variant="contained">Test-Request</Button>
-              <Button sx={{ my: 2, color: 'white', display: 'block' }}  onClick={()=>navigate("/approved-appointment-list")} variant="contained">Confirmed-Request</Button>
+              <Button sx={{ my: 2, color: 'white', display: 'block' }}  onClick={()=>navigate("/confirmed-test-list-ui")} variant="contained">Confirmed-Request</Button>
               <Button sx={{ my: 2, color: 'white', display: 'block' }}  onClick={()=>navigate("/specialities")} variant="contained">Overview</Button>
           </Box>
      
