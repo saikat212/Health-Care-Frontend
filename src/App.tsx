@@ -28,6 +28,11 @@ import SetPrescriptionInfo from "components/Doctor/MyPatientHandler/GeneratePres
 import { PrescriptionListUI } from "components/Doctor/MyPatientHandler/ViewPreviousPrescription/prescription-list";
 import { SelectionPrescription } from "components/Doctor/MyPatientHandler/ViewPreviousPrescription/selection-prescription";
 
+import RequestedTestListUI from "components/DiagnosticCenter/TestRequestHandle/requested-test-list";
+import SetTestInfo from "components/DiagnosticCenter/TestRequestHandle/set-test-info";
+import SelectionTest from "components/DiagnosticCenter/TestRequestHandle/selection-test";
+import DCHomePage from "components/DiagnosticCenter/HompageConstruction/dc-home-page";
+
 function App() {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -53,13 +58,14 @@ function App() {
           <Route path="/selection-prescription" element={<SelectionPrescription/>}/>  
            <Route path="/prescription-list-ui" element={<PrescriptionListUI/>}/>  
            <Route path="/prescription-page" element={<PrescriptionPage/>}/> 
-           <Route path="/set-prescription-info" element={<SetPrescriptionInfo/>}/>  
+           <Route path="/set-prescription-info" element={<SetPrescriptionInfo/>}/> 
 
-
+           <Route path="/requested-test-list-ui" element={<RequestedTestListUI/>}/> 
+           <Route path="/set-test-info" element={<SetTestInfo/>}/> 
+           <Route path="/selection-test" element={<SelectionTest/>}/> 
+           <Route path="/dc-home-page" element={<DCHomePage/>}/> 
 
           </Routes>
-
-   
 
 
         </BrowserRouter>
