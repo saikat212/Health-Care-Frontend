@@ -6,29 +6,50 @@ import BasicButton from "./basic-button";
 import DoctorLayout from "../doctor-layout";
 import { DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { Appointment } from "Classes/entity-class";
+import { Appointment, Person, _Notification } from "Classes/entity-class";
 import { useLocation } from "react-router-dom";
 import React, { useEffect } from "react";
 import { API } from "API Handler/api";
+
 export function SetAppointmentInfo() {
     const {state} = useLocation();
     const [appointment, setAppointment] = React.useState<Appointment>(new Appointment());
-    const [date, setDate] = React.useState<Date>(new Date());
-    const [comment, setComment] = React.useState<string>("");
+    const [notification,setNotification] = React.useState<_Notification>(new _Notification());
 
     useEffect(() => {   
         state && setAppointment(state as Appointment);
       }, [])
     
       const handleConfirm =(e)=>{
-        console.log(date,comment)
+        console.log(appointment)
          API.appointment.confirmAppointment(appointment).then((response)=>{
             console.log(response.data)
+         })
+         setNotification({
+            ...notification,
+            receiver:appointment?.patient?.person,
+            type: "appointment",
+            message: "Your appointment is approved",
+            status: "pending"
+         })
+         API.notification.saveNotification(notification).then(response =>{
+            console.log(response)
          })
       }
       const handleReject = (e) => {
         API.appointment.confirmAppointment(appointment).then((response)=>{
             console.log(response.data)
+         })
+
+         setNotification({
+            ...notification,
+            receiver:appointment?.patient?.person,
+            type: "appointment",
+            message: "Your appointment is rejected",
+            status: "pending"
+         })
+         API.notification.saveNotification(notification).then(response =>{
+            console.log(response)
          })
       }
       

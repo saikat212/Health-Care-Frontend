@@ -6,6 +6,7 @@ import {
   _Rating,
   Speciality,
   Appointment,
+  _Notification,
 } from "Classes/entity-class";
 
 const HOST = "http://localhost:5052";
@@ -73,4 +74,7 @@ export const API = {
       put("/appointment-confirmation",appointment),
   
   },
+  notification: {
+    saveNotification: (notify:_Notification) => post("/save-notification",notify)
+  }
 };

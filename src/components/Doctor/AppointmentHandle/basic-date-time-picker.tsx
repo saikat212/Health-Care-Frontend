@@ -14,7 +14,7 @@ export default function BasicDateTimePicker({
 }) {
   const [value, setValue] = React.useState<Date | null>(new Date());
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onChange((event.target as HTMLInputElement).value);
+    onChange(value);
   };
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>

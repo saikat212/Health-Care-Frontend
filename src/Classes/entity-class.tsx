@@ -89,3 +89,11 @@ export class MC_Prescription{
     dose?:number;
     duration?:number;
 }
+export class _Notification{
+    id?:number;
+    receiver?:Person;
+    type?:string;
+    message?:string;
+    status?:string;
+
+}
