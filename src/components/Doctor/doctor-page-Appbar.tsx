@@ -18,7 +18,7 @@ import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 
 const pages = ['Monitor', 'About', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
+export const headerHeight = 105;
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
@@ -123,7 +123,7 @@ const ResponsiveAppBar = () => {
               <Button  sx={{ my: 2, color: 'white', display: 'block' }} onClick={()=>navigate("/specialities")} variant="contained">Home</Button>
               <Button sx={{ my: 2, color: 'white', display: 'block' }}  onClick={()=>navigate("/requested-appointment-ui")} variant="contained">Pending-Appointment</Button>
               <Button sx={{ my: 2, color: 'white', display: 'block' }}  onClick={()=>navigate("/approved-appointment-list")} variant="contained">MyPatient</Button>
-              <Button sx={{ my: 2, color: 'white', display: 'block' }}  onClick={()=>navigate("/specialities")} variant="contained">Overview</Button>
+              <Button sx={{ my: 2, color: 'white', display: 'block' }}  onClick={()=>navigate("/specialities")} variant="contained">Set Visiting Time</Button>
           </Box>
      
 

@@ -53,6 +53,7 @@ export const API = {
       get("/get-doctor-by-first-name/" + lastName),
     getDoctorsBySpeciality: (id: number) =>
       get("/get-doctor-by-speciality/" + id),
+    
   },
   person: {
     getPersonById: (id: number) => get("/get-person-by-id/" + id),
@@ -67,5 +68,9 @@ export const API = {
   appointment: {
     saveAppointment: (appointment: Appointment) =>
       post("/save-appointment", appointment),
+    getAppointmentListById:(id:number) =>get("/get-patientList-by-id/"+id),
+    confirmAppointment:(appointment: Appointment) => 
+      put("/appointment-confirmation",appointment),
+  
   },
 };

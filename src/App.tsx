@@ -10,7 +10,6 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import PatientHomepage from "components/Patient/patient-homepage";
 import DoctorHomePage from "components/Doctor/doctor-home-page";
-import { SelectionAppointment } from "components/Doctor/AppointmentHandle/selection-appointment";
 import { RequestedAppointmentListUI } from "components/Doctor/AppointmentHandle/requested-appointment-list";
 import { SetAppointmentInfo } from "components/Doctor/AppointmentHandle/set-appointment-info";
 import ComboBox from "components/Doctor/AppointmentHandle/combo-box";
@@ -51,7 +50,6 @@ function App() {
             <Route path="/sign-up-doctor" element={<SignUpDoctor />} />
             <Route path="/" element={<SignIn />} />
             <Route path="/set-appointment-details" element={<SetAppointment />}/>
-          <Route path="/selection-appointment" element={<SelectionAppointment/>}/>
           <Route path="/requested-appointment-ui" element={<RequestedAppointmentListUI/>}/>
           <Route path="/set-appointment-info" element={<SetAppointmentInfo/>}/>
           <Route path="/approved-appointment-list" element={<ApprovedAppointmentList/>}/>

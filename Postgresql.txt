@@ -33,7 +33,9 @@ SET experience = 3,
     visiting_day='1110000'
 WHERE id = 2
 
-
+update appointment
+set status = 'pending'
+where id = 21
 
 
 

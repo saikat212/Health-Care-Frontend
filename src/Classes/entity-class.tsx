@@ -8,6 +8,8 @@ export class Person{
     password?:string;
     dateOfBirth?: Date | null;
     role?:string;
+    height?:string;
+    weight?:string;
 }
 
 export class Patient{
@@ -54,6 +56,9 @@ export class Appointment{
     date?:Date=new Date();
     payment?:Payment;
     problem?:string;
+    status?:string;
+    commentFromDoctor?:string;
+    dateGivenByDoctor?:Date;
 }
 export class Prescription{
     id?:number;

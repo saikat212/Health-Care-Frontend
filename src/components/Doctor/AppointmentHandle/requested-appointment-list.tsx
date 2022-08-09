@@ -3,13 +3,31 @@ import Header from "components/header";
 import { Link } from "react-router-dom";
 import AppointmentListCard from "./appointment-list-card";
 import ResponsiveAppBar from "../doctor-page-Appbar";
+import DoctorLayout from "../doctor-layout";
+import { useEffect } from "react";
+import { API } from "API Handler/api";
+import { Appointment, Doctor} from "Classes/entity-class";
+import React from "react";
 
 export function RequestedAppointmentListUI() {
-  return (
-    <>
-   
 
-   <ResponsiveAppBar/>
+  const [appointment,setAppointment] = React.useState<Appointment[]>();
+  
+  useEffect(() => {
+    const id = (JSON.parse(localStorage.getItem("Doctor")||"") as Doctor).id;
+    console.log("idd: ",id);
+
+    API.appointment.getAppointmentListById(id as number).then((response) => {
+        setAppointment(response.data)
+        console.log(response)
+    });
+  }, []);
+
+  return (
+    
+   <DoctorLayout>
+
+  
     <Grid
       container
       direction="column"
@@ -29,25 +47,11 @@ export function RequestedAppointmentListUI() {
           sx={{ backgroundColor: "blue", padding: "10px", height: "100%" }}
           spacing={5}
         >
-          {Array.from(Array(10).keys()).map((i, idx) => (
+          {appointment?.map((appt, idx) => (
             <Grid key={idx} item>
             
               <AppointmentListCard
-                title="Card Tittle"
-                description="Necessary description"
-                image={require("./images/doctor.jpg")}
-                /* info = {
-                    first_name1: "Dr. Faysal",
-                    last_name: "Rana",
-                    degree: "MBBS",
-                    specialities: "General physician",
-                    chamber:"lslls",
-                    experience: 3,
-                    rating : 4.8,
-                    total rating: 3250,
-                    fee : 250.50
-
-                } */
+              appointment = {appt}
               />
         
             </Grid>
@@ -55,10 +59,10 @@ export function RequestedAppointmentListUI() {
         </Grid>
       </Grid>
     </Grid>
+    </DoctorLayout>
+
+
    
-
-    </>
-
 
   );
 }
