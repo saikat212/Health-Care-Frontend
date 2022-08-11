@@ -4,8 +4,24 @@ import { Link } from "react-router-dom";
 import AppointmentListCard from "./test-list-card";
 import DCUserPageAppbar from "../HompageConstruction/dc-user-page-appbar";
 import TestListCard from "./test-list-card";
+import { DC_Test } from "Classes/entity-class";
+import React, { useEffect } from "react";
+import { API } from "API Handler/api";
 
 export default function RequestedTestListUI() {
+  
+  const [dc_test_list,setDCTestList] = React.useState<DC_Test[]>();
+
+  useEffect ( () => {
+  API.diagnosticCenter.getPendingRequest().then((response) =>{
+
+    setDCTestList(response.data)
+    console.log(response)
+  });
+
+  },[]);
+
+
   return (
     <>
    <DCUserPageAppbar/>
@@ -27,28 +43,29 @@ export default function RequestedTestListUI() {
           sx={{ backgroundColor: "blue", padding: "10px", height: "100%" }}
           spacing={5}
         >
-          {Array.from(Array(10).keys()).map((i, idx) => (
+          {/* {Array.from(Array(10).keys()).map((i, idx) => (
             <Grid key={idx} item>
             
               <TestListCard
                 title="Card Tittle"
                 description="Necessary description"
                 image={require("./images/doctor.jpg")}
-                /* info = {
-                    first_name1: "Dr. Faysal",
-                    last_name: "Rana",
-                    degree: "MBBS",
-                    specialities: "General physician",
-                    chamber:"lslls",
-                    experience: 3,
-                    rating : 4.8,
-                    total rating: 3250,
-                    fee : 250.50
-
-                } */
+      
               />
         
             </Grid>
+          ))}
+ */}
+
+          {dc_test_list?.map((dc_test,idx) => (
+            <Grid key = {idx} item>
+              <TestListCard
+              dc_test_info = {dc_test}
+              />
+
+            </Grid>
+
+
           ))}
         </Grid>
       </Grid>

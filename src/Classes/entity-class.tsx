@@ -113,3 +113,20 @@ export class Taker{
     person?:Person;
     
 }
+export class DiagnosticCenter
+{
+    id?:number;
+    name?:string;
+    location?:string;
+}
+
+export class DC_Test {
+    id?:number;
+    date?:Date=new Date();
+    status?:string;
+    dc?:DiagnosticCenter;
+    test?:Test;
+    patient?:Patient;
+    location?:string;
+
+}

@@ -97,7 +97,6 @@ export const API = {
     getAllTest : ()=> get("/get-all-test")
   },
 
-
   taker: {
     addTaker: (taker:Taker) => post("/addTaker",taker),
     getTakerById: (id:number) => get("/taker-id/"+id),
@@ -107,5 +106,10 @@ export const API = {
     getTakerSpeciality: () => get("/get-all-takerspecility/"),
   },
 
+  diagnosticCenter:
+  {
+    getAllRequest: () => get("/get-all-request"),
+    getPendingRequest: () => get("/get-pending-request"),
+  },
 
 };
