@@ -51,7 +51,7 @@ export function SetAppointmentInfo() {
       status: "rejected",
     });
     API.notification.saveNotification(notification).then((response) => {
-      console.log(response);
+      console.log("Reject: ",response);
     });
   };
 

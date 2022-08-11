@@ -19,15 +19,17 @@ export function AppointmentDetails({
       });
   }, []);
 
-  function getAge(strDate:string) {
-    var today = new Date();
-    var dob = new Date(strDate);
-    var age = today.getFullYear() - dob.getFullYear();
-    var m = today.getMonth() - dob.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
-      age--;
-    }
-    return age;
+  function getAge(dateString) 
+  {
+      var today = new Date();
+      var birthDate = new Date(dateString);
+      var age = today.getFullYear() - birthDate.getFullYear();
+      var m = today.getMonth() - birthDate.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
+      {
+          age--;
+      }
+      return age;
   }
   function get_Date(strDate:string) {
     var date = new Date(strDate);
@@ -38,7 +40,7 @@ export function AppointmentDetails({
     var str = day + "-" + month + "-" + year;
     return str;
   }
-  //{getAge((patient?.person?.dateOfBirth && patient?.person?.dateOfBirth).toString() as string) }
+  
 
   return (
     <Grid
@@ -77,7 +79,7 @@ export function AppointmentDetails({
               </Typography>
             </Grid>
             <Grid item>
-              <Typography>24 years old</Typography>
+              <Typography>{getAge(patient?.person?.dateOfBirth?.toString())}</Typography>
             </Grid>
           </Grid>
 
