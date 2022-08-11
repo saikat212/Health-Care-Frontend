@@ -13,7 +13,6 @@ import DoctorHomePage from "components/Doctor/doctor-home-page";
 import { RequestedAppointmentListUI } from "components/Doctor/AppointmentHandle/requested-appointment-list";
 import { SetAppointmentInfo } from "components/Doctor/AppointmentHandle/set-appointment-info";
 import ComboBox from "components/Doctor/AppointmentHandle/combo-box";
-import { SelectionApprovedAppointment } from "components/Doctor/MyPatientHandler/selection-approved-appointment";
 import { SetSeePatientInfo } from "components/Doctor/MyPatientHandler/set-see-patient-info";
 import ApprovedAppointmentList from "components/Doctor/MyPatientHandler/approved-appointment-list";
 import React from "react";
@@ -34,6 +33,8 @@ import DCHomePage from "components/DiagnosticCenter/HompageConstruction/dc-home-
 import SelectionConfirmedTest from "components/DiagnosticCenter/ConfirmedRequestHandle/selection-confirmed-test";
 
 import ConfirmedTestListUI from "components/DiagnosticCenter/ConfirmedRequestHandle/confirmed-test-list";
+import { ContentCopy } from "@mui/icons-material";
+import { ContentSelectedApprovedAppointment } from "components/Doctor/MyPatientHandler/content-selected-approved-appointment";
 
 function App() {
   return (
@@ -53,9 +54,8 @@ function App() {
           <Route path="/requested-appointment-ui" element={<RequestedAppointmentListUI/>}/>
           <Route path="/set-appointment-info" element={<SetAppointmentInfo/>}/>
           <Route path="/approved-appointment-list" element={<ApprovedAppointmentList/>}/>
-          <Route path="/selection-approved-appointment" element={<SelectionApprovedAppointment/>}/>
           <Route path="/set-see-patient-info" element={<SetSeePatientInfo/>}/>   
-
+          <Route path ="/selection-approved-appointment" element={<ContentSelectedApprovedAppointment/>}/>
           <Route path="/selection-prescription" element={<SelectionPrescription/>}/>  
            <Route path="/prescription-list-ui" element={<PrescriptionListUI/>}/>  
            <Route path="/prescription-page" element={<PrescriptionPage/>}/> 

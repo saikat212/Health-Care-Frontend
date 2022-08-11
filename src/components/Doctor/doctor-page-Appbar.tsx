@@ -40,12 +40,10 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    <>
-  
     <AppBar position="fixed">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+         {/*  <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
           <Typography
             variant="h6"
             noWrap
@@ -61,7 +59,7 @@ const ResponsiveAppBar = () => {
               textDecoration: 'none',
             }}
           >
-            MEDI
+           Health-Care
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -120,8 +118,7 @@ const ResponsiveAppBar = () => {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              <Button  sx={{ my: 2, color: 'white', display: 'block' }} onClick={()=>navigate("/specialities")} variant="contained">Home</Button>
-              <Button sx={{ my: 2, color: 'white', display: 'block' }}  onClick={()=>navigate("/requested-appointment-ui")} variant="contained">Pending-Appointment</Button>
+              <Button  sx={{ my: 2, color: 'white', display: 'block' }}  onClick={()=>navigate("/requested-appointment-ui")} variant="contained">Pending-Appointment</Button>
               <Button sx={{ my: 2, color: 'white', display: 'block' }}  onClick={()=>navigate("/approved-appointment-list")} variant="contained">MyPatient</Button>
               <Button sx={{ my: 2, color: 'white', display: 'block' }}  onClick={()=>navigate("/specialities")} variant="contained">Set Visiting Time</Button>
           </Box>
@@ -159,7 +156,6 @@ const ResponsiveAppBar = () => {
         </Toolbar>
       </Container>
     </AppBar>
-    </>
   );
 };
 export default ResponsiveAppBar;

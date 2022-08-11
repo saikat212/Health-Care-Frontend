@@ -3,12 +3,28 @@ import Header from "components/header";
 import { Link } from "react-router-dom";
 import ApprovedAppointmentListCard from "./approved-appointment-list-card";
 import ResponsiveAppBar from "../doctor-page-Appbar";
+import DoctorLayout from "../doctor-layout";
+import { Appointment, Doctor } from "Classes/entity-class";
+import React, { useEffect } from "react";
+import { API } from "API Handler/api";
+import { id } from "date-fns/locale";
 
 export default function ApprovedAppointmentListUI() {
+
+  const [appointment, setAppointment] = React.useState<Appointment[]>();
+  
+  useEffect(() => {
+    const id = (JSON.parse(localStorage.getItem("Doctor")||"") as Doctor).id;
+    console.log("idd: ",id);
+    
+    API.appointment.getAppointmentList((id as number).toString(),"approved").then((response) => {
+        setAppointment(response.data)
+        console.log(response)
+    });
+  }, []);
+
   return (
-    <>
-   
-   <ResponsiveAppBar/>
+    <DoctorLayout>
     <Grid
       container
       direction="column"
@@ -28,25 +44,11 @@ export default function ApprovedAppointmentListUI() {
           sx={{ backgroundColor: "blue", padding: "10px", height: "100%" }}
           spacing={5}
         >
-          {Array.from(Array(10).keys()).map((i, idx) => (
+          {appointment?.map((appt, idx) => (
             <Grid key={idx} item>
             
               <ApprovedAppointmentListCard
-                title="Card Tittle"
-                description="Necessary description"
-                image={require("./images/doctor.jpg")}
-                /* info = {
-                    first_name1: "Dr. Faysal",
-                    last_name: "Rana",
-                    degree: "MBBS",
-                    specialities: "General physician",
-                    chamber:"lslls",
-                    experience: 3,
-                    rating : 4.8,
-                    total rating: 3250,
-                    fee : 250.50
-
-                } */
+                  appointment = {appt}
               />
         
             </Grid>
@@ -54,9 +56,7 @@ export default function ApprovedAppointmentListUI() {
         </Grid>
       </Grid>
     </Grid>
-   
-
-    </>
+    </DoctorLayout>
 
 
   );

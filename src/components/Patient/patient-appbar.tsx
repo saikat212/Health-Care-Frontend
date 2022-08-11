@@ -1,9 +1,22 @@
-import { AppBar, Grid, Typography, Button } from "@mui/material";
+import {
+  AppBar,
+  Grid,
+  Typography,
+  Button,
+  Badge,
+  IconButton,
+} from "@mui/material";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 import { useNavigate } from "react-router-dom";
+import ShowNotification from "components/notification";
 // import SearchBar from "./search-bar";
 export const headerHeight = 105;
 
-export default function Basic_Structure() {
+export default function PatientAppbar() {
+   function handleLogOut(){
+    localStorage.clear()
+         navigate("/")
+  }
   const navigate = useNavigate();
   return (
     <AppBar position="fixed" sx={{ backgroundColor: "indigo" }}>
@@ -38,10 +51,12 @@ export default function Basic_Structure() {
               <Button>Profile</Button>
             </Grid>
             <Grid item>
-              <Button>Notification</Button>
+              <ShowNotification num = {3} />
             </Grid>
             <Grid item>
-              <Button onClick={() => navigate("/")} variant="contained">
+              <Button onClick={
+               handleLogOut
+                } variant="contained">
                 Log Out
               </Button>
             </Grid>

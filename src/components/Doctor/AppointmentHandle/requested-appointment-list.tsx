@@ -17,7 +17,7 @@ export function RequestedAppointmentListUI() {
     const id = (JSON.parse(localStorage.getItem("Doctor")||"") as Doctor).id;
     console.log("idd: ",id);
 
-    API.appointment.getAppointmentListById(id as number).then((response) => {
+    API.appointment.getAppointmentList((id as number).toString(),"pending").then((response) => {
         setAppointment(response.data)
         console.log(response)
     });

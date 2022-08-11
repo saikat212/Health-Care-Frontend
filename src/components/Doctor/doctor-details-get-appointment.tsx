@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import React from "react";
 import { DatePicker } from "@mui/x-date-pickers";
-import Basic_Structure from "components/Patient/basic-navigation-bar";
+import PatientAppbar from "components/Patient/patient-appbar";
 import PatientLayout from "components/Patient/patient-layout";
 
 export function DoctorDetails_Get_Appointment({ doctor }: { doctor: Doctor }) {
@@ -31,74 +31,20 @@ export function DoctorDetails_Get_Appointment({ doctor }: { doctor: Doctor }) {
 
   return (
     <PatientLayout>
-    <Grid
-      container
-      direction="row"
-      alignItems="center"
-      justifyContent="space-between"
-      sx={{ padding: "10px", height: "100%" }}
-      spacing={2}
-    >
-  
-      {/* Picture */}
-      <Grid item>
-        <img src={require("../../images/doctor.jpg")} height="150px" />
-      </Grid>
-      {/* //1st Column */}
-      <Grid item>
-        <Grid
-          container
-          direction="column"
-          alignItems="center"
-          justifyContent="space-between"
-          sx={{ padding: "10px", height: "100%" }}
-          spacing={2}
-        >
-          <Grid
-            container
-            direction="column"
-            alignItems="center"
-            justifyContent="space-between"
-            sx={{ padding: "10px", height: "100%" }}
-            spacing={2}
-          >
-            <Grid item>
-              <Typography sx={{ fontWeight: "bold" }}>
-                {doctor.person?.firstName + " " + doctor.person?.lastName}
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography>MBBS</Typography>
-            </Grid>
-          </Grid>
-
-          <Grid
-            container
-            direction="column"
-            alignItems="center"
-            justifyContent="space-between"
-            sx={{ padding: "10px", height: "100%" }}
-            spacing={2}
-          >
-            <Grid item>
-              <Typography sx={{ fontWeight: "bold" }}>Specialities</Typography>
-            </Grid>
-            <Grid item>
-              <Typography>{doctor.speciality?.name}</Typography>
-            </Grid>
-          </Grid>
+      <Grid
+        container
+        direction="row"
+        alignItems="center"
+        justifyContent="space-between"
+        sx={{ padding: "10px", height: "100%" }}
+        spacing={2}
+      >
+        {/* Picture */}
+        <Grid item>
+          <img src={require("../../images/doctor.jpg")} height="150px" />
         </Grid>
-      </Grid>
-      {/*  //2nd Column */}
-      <Grid item>
-        <Grid
-          container
-          direction="column"
-          alignItems="center"
-          justifyContent="space-between"
-          sx={{ padding: "10px", height: "100%" }}
-          spacing={2}
-        >
+        {/* //1st Column */}
+        <Grid item>
           <Grid
             container
             direction="column"
@@ -107,112 +53,167 @@ export function DoctorDetails_Get_Appointment({ doctor }: { doctor: Doctor }) {
             sx={{ padding: "10px", height: "100%" }}
             spacing={2}
           >
-            <Grid item>
-              <Typography sx={{ fontWeight: "bold" }}>Chamber</Typography>
-            </Grid>
-            <Grid item>
-              <Typography>{doctor.chamber}</Typography>
-            </Grid>
-          </Grid>
-
-          <Grid
-            container
-            direction="row"
-            alignItems="center"
-            justifyContent="space-between"
-            sx={{ padding: "10px", height: "100%" }}
-            spacing={2}
-          >
-            <Grid item>
-              <Grid
-                container
-                direction="column"
-                alignItems="center"
-                justifyContent="space-between"
-                sx={{ padding: "10px", height: "100%" }}
-                spacing={2}
-              >
-                <Grid item>
-                  <Typography sx={{ fontWeight: "bold" }}>
-                    Experience
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <Typography>{doctor.experience} Years</Typography>
-                </Grid>
-              </Grid>
-            </Grid>
-
-            <Grid item>
-              <Grid
-                container
-                direction="column"
-                alignItems="center"
-                justifyContent="space-between"
-                sx={{ padding: "10px", height: "100%" }}
-                spacing={2}
-              >
-                <Grid item>
-                  <Typography sx={{ fontWeight: "bold" }}>Rating</Typography>
-                </Grid>
-                <Grid item>
-                  <Stack spacing={1}>
-                    <Rating
-                      name="half-rating-read"
-                      defaultValue={2.5}
-                      precision={0.5}
-                      readOnly
-                    />
-                  </Stack>
-                </Grid>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
-
-      {/*    //3rd column */}
-      <Grid item>
-        <Grid
-          container
-          direction="column"
-          alignItems="center"
-          justifyContent="space-between"
-          sx={{ padding: "10px", height: "100%" }}
-          spacing={2}
-        >
-          <Grid item>
-            <Typography>Fee: {doctor.fee}</Typography>
-          </Grid>
-          <Grid item>
-            <DatePicker
-              label="Select an appointment date"
-              value={appointment?.date}
-              onChange={(newValue) => {
-                setAppointmet({
-                  ...appointment,
-                  date: newValue || undefined,
-                });
-              }}
-              renderInput={(params) => (
-                <TextField required fullWidth {...params} />
-              )}
-            />
-          </Grid>
-          <Grid item>
-            <Button
-              onClick={() =>
-                navigate("/set-appointment-details", { state: appointment })
-              }
-              variant="contained"
-              color="success"
+            <Grid
+              container
+              direction="column"
+              alignItems="center"
+              justifyContent="space-between"
+              sx={{ padding: "10px", height: "100%" }}
+              spacing={2}
             >
-              Get appointment
-            </Button>
+              <Grid item>
+                <Typography sx={{ fontWeight: "bold" }}>
+                  {doctor.person?.firstName + " " + doctor.person?.lastName}
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Typography>MBBS</Typography>
+              </Grid>
+            </Grid>
+
+            <Grid
+              container
+              direction="column"
+              alignItems="center"
+              justifyContent="space-between"
+              sx={{ padding: "10px", height: "100%" }}
+              spacing={2}
+            >
+              <Grid item>
+                <Typography sx={{ fontWeight: "bold" }}>
+                  Specialities
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Typography>{doctor.speciality?.name}</Typography>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+        {/*  //2nd Column */}
+        <Grid item>
+          <Grid
+            container
+            direction="column"
+            alignItems="center"
+            justifyContent="space-between"
+            sx={{ padding: "10px", height: "100%" }}
+            spacing={2}
+          >
+            <Grid
+              container
+              direction="column"
+              alignItems="center"
+              justifyContent="space-between"
+              sx={{ padding: "10px", height: "100%" }}
+              spacing={2}
+            >
+              <Grid item>
+                <Typography sx={{ fontWeight: "bold" }}>Chamber</Typography>
+              </Grid>
+              <Grid item>
+                <Typography>{doctor.chamber}</Typography>
+              </Grid>
+            </Grid>
+
+            <Grid
+              container
+              direction="row"
+              alignItems="center"
+              justifyContent="space-between"
+              sx={{ padding: "10px", height: "100%" }}
+              spacing={2}
+            >
+              <Grid item>
+                <Grid
+                  container
+                  direction="column"
+                  alignItems="center"
+                  justifyContent="space-between"
+                  sx={{ padding: "10px", height: "100%" }}
+                  spacing={2}
+                >
+                  <Grid item>
+                    <Typography sx={{ fontWeight: "bold" }}>
+                      Experience
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <Typography>{doctor.experience} Years</Typography>
+                  </Grid>
+                </Grid>
+              </Grid>
+
+              <Grid item>
+                <Grid
+                  container
+                  direction="column"
+                  alignItems="center"
+                  justifyContent="space-between"
+                  sx={{ padding: "10px", height: "100%" }}
+                  spacing={2}
+                >
+                  <Grid item>
+                    <Typography sx={{ fontWeight: "bold" }}>Rating</Typography>
+                  </Grid>
+                  <Grid item>
+                    <Stack spacing={1}>
+                      <Rating
+                        name="half-rating-read"
+                        defaultValue={2.5}
+                        precision={0.5}
+                        readOnly
+                      />
+                    </Stack>
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+
+        {/*    //3rd column */}
+        <Grid item>
+          <Grid
+            container
+            direction="column"
+            alignItems="center"
+            justifyContent="space-between"
+            sx={{ padding: "10px", height: "100%" }}
+            spacing={2}
+          >
+            <Grid item>
+              <Typography>Fee: {doctor.fee}</Typography>
+            </Grid>
+            <Grid item>
+              <DatePicker
+                label="Select an appointment date"
+                value={appointment?.date}
+                onChange={(newValue) => {
+                  setAppointmet({
+                    ...appointment,
+                    date: newValue || undefined,
+                  });
+                }}
+                renderInput={(params) => (
+                  <TextField required fullWidth {...params} />
+                )}
+              />
+            </Grid>
+            <Grid item>
+              <Button
+                onClick={() =>
+                  navigate("/set-appointment-details", { state: appointment })
+                }
+                variant="contained"
+                color="success"
+              >
+                Get appointment
+              </Button>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
-    </Grid>
     </PatientLayout>
   );
 }

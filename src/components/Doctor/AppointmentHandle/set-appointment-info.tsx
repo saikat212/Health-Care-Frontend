@@ -1,8 +1,6 @@
 import { ButtonGroup, Button, Grid, TextField } from "@mui/material";
 import ResponsiveAppBar from "../doctor-page-Appbar";
 import BasicDateTimePicker from "./basic-date-time-picker";
-import ComboBox from "./combo-box";
-import BasicButton from "./basic-button";
 import DoctorLayout from "../doctor-layout";
 import { DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
@@ -12,47 +10,50 @@ import React, { useEffect } from "react";
 import { API } from "API Handler/api";
 
 export function SetAppointmentInfo() {
-    const {state} = useLocation();
-    const [appointment, setAppointment] = React.useState<Appointment>(new Appointment());
-    const [notification,setNotification] = React.useState<_Notification>(new _Notification());
+  const { state } = useLocation();
+  const [appointment, setAppointment] = React.useState<Appointment>(
+    new Appointment()
+  );
+  const [notification, setNotification] = React.useState<_Notification>(
+    new _Notification()
+  );
+  const [value, setValue] = React.useState<Date | null>(new Date());
+  useEffect(() => {
+    state && setAppointment(state as Appointment);
+  }, []);
 
-    useEffect(() => {   
-        state && setAppointment(state as Appointment);
-      }, [])
-    
-      const handleConfirm =(e)=>{
-        console.log(appointment)
-         API.appointment.confirmAppointment(appointment).then((response)=>{
-            console.log(response.data)
-         })
-         setNotification({
-            ...notification,
-            receiver:appointment?.patient?.person,
-            type: "appointment",
-            message: "Your appointment is approved",
-            status: "pending"
-         })
-         API.notification.saveNotification(notification).then(response =>{
-            console.log(response)
-         })
-      }
-      const handleReject = (e) => {
-        API.appointment.confirmAppointment(appointment).then((response)=>{
-            console.log(response.data)
-         })
+  const handleConfirm = (e) => {
+    console.log(appointment);
+    API.appointment.confirmAppointment(appointment).then((response) => {
+      console.log(response.data);
+    });
+    setNotification({
+      ...notification,
+      receiver: appointment?.patient?.person,
+      type: "appointment",
+      message: "Your appointment is approved",
+      status: "approved",
+    });
+    API.notification.saveNotification(notification).then((response) => {
+      console.log(response);
+    });
+  };
+  const handleReject = (e) => {
+    API.appointment.confirmAppointment(appointment).then((response) => {
+      console.log(response.data);
+    });
 
-         setNotification({
-            ...notification,
-            receiver:appointment?.patient?.person,
-            type: "appointment",
-            message: "Your appointment is rejected",
-            status: "pending"
-         })
-         API.notification.saveNotification(notification).then(response =>{
-            console.log(response)
-         })
-      }
-      
+    setNotification({
+      ...notification,
+      receiver: appointment?.patient?.person,
+      type: "appointment",
+      message: "Your appointment is rejected",
+      status: "rejected",
+    });
+    API.notification.saveNotification(notification).then((response) => {
+      console.log(response);
+    });
+  };
 
   return (
     <DoctorLayout>
@@ -65,16 +66,20 @@ export function SetAppointmentInfo() {
         spacing={2}
       >
         <Grid item>
-         <BasicDateTimePicker 
-         text = "Set Appointment Time"
-         onChange ={(value)=>{
-           setAppointment({
-            ...appointment,
-            dateGivenByDoctor:value
-           })
-         }
-        }
-         />
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <DateTimePicker
+              renderInput={(props) => <TextField {...props} />}
+              label="Select appointment date"
+              value={value}
+              onChange={(newValue) => {
+                setValue(newValue);
+                setAppointment({
+                  ...appointment,
+                  dateGivenByDoctor: newValue,
+                });
+              }}
+            />
+          </LocalizationProvider>
         </Grid>
         <Grid item>
           <TextField
@@ -83,11 +88,11 @@ export function SetAppointmentInfo() {
             id="firstName"
             label="Comment if any"
             autoFocus
-            onChange={(e)=>{
-                setAppointment({
-                    ...appointment,
-                    commentFromDoctor: e.target.value
-                   })
+            onChange={(e) => {
+              setAppointment({
+                ...appointment,
+                commentFromDoctor: e.target.value,
+              });
             }}
           />
         </Grid>
@@ -101,7 +106,11 @@ export function SetAppointmentInfo() {
             spacing={2}
           >
             <Grid item>
-              <Button variant="contained" color="success" onClick={handleConfirm}>
+              <Button
+                variant="contained"
+                color="success"
+                onClick={handleConfirm}
+              >
                 Confirm
               </Button>
             </Grid>

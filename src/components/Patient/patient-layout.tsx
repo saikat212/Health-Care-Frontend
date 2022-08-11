@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import Basic_Structure, { headerHeight } from "./basic-navigation-bar";
+import PatientAppbar, { headerHeight } from "./patient-appbar";
 
 export default function PatientLayout({ children }) {
   return (
@@ -12,9 +12,9 @@ export default function PatientLayout({ children }) {
       spacing={2}
     >
       <Grid item>
-        <Basic_Structure />
+        <PatientAppbar />
       </Grid>
-      <Grid item container sx={{ top: headerHeight, position: 'absolute' }}>
+      <Grid item container sx={{ top: headerHeight, position: "absolute" }}>
         {children}
       </Grid>
     </Grid>

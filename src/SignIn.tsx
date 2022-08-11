@@ -57,6 +57,11 @@ export default function SignInSide() {
     }
     return true;
   }
+  function handleNotification(id : number){
+    API.notification.getNotification(id).then(response => {
+      console.log(response.data)
+    })
+  }
   function handleClickSignIn() {
     if (errorVerify()) {
       console.log("State: ",state)
@@ -65,9 +70,11 @@ export default function SignInSide() {
         .then((response) => {
           console.log(response);
           if (response.status == 200 && response.data.success) {
+            localStorage.clear()
             API.person.getPersonByMail(state.email).then((response) => {
               if (response.status == 200 && response.data) {
                 setPerson(response.data);
+                handleNotification(response.data.id)
                 console.log(response.data);
                 if (response.data.role == "patient") {
                   console.log("In patientttt")
@@ -76,7 +83,7 @@ export default function SignInSide() {
                     person: response.data,
                     id: response.data?.id,
                   });
-                  localStorage.clear()
+                
                   localStorage.setItem(
                     "Patient",
                     JSON.stringify({

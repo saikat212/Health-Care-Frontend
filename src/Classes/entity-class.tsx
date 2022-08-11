@@ -58,7 +58,7 @@ export class Appointment{
     problem?:string;
     status?:string;
     commentFromDoctor?:string;
-    dateGivenByDoctor?:Date;
+    dateGivenByDoctor?:Date | null;
 }
 export class Prescription{
     id?:number;

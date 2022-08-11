@@ -10,10 +10,11 @@ export default function BasicDateTimePicker({
   onChange,
 }: {
   text: string;
-  onChange: (value) => void;
+  onChange: (value: any) => void;
 }) {
   const [value, setValue] = React.useState<Date | null>(new Date());
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    
     onChange(value);
   };
   return (
@@ -26,6 +27,7 @@ export default function BasicDateTimePicker({
           setValue(newValue);
           {
             handleChange;
+            console.log("sssee: ",value)
           }
         }}
       />

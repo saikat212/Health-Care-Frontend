@@ -1,10 +1,22 @@
 import { Grid, Typography, Rating, Stack, Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Appointment } from "Classes/entity-class";
+import React from "react";
+import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import DoctorLayout from "../doctor-layout";
 
 export function ContentSelectedApprovedAppointment() {
+
+  const {state} = useLocation();
   const navigate = useNavigate();
+  
+  const [appointment, setAppointment] = React.useState<Appointment>(new Appointment());
+  useEffect(() => {
+    state && setAppointment(state as Appointment);
+  }, [state]);
+
   return (
-    <>
+    <DoctorLayout>
     <Grid
       container
       direction="row"
@@ -242,14 +254,14 @@ spacing={2}
       </Grid>
     </Grid>
     <Grid item>
-      <Button onClick={()=>navigate("/set-prescription-info")} variant="contained" color="success">
+      <Button onClick={()=>navigate("/set-prescription-info",{state:appointment})} variant="contained" color="success">
       Generate Prescription
       </Button>
     </Grid>
   </Grid>
 </Grid>
 </Grid>
-</>
+</DoctorLayout>
 
 
   );

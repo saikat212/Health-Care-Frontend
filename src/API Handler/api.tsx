@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import {
   Doctor,
@@ -7,6 +6,9 @@ import {
   Speciality,
   Appointment,
   _Notification,
+  Prescription,
+  MC_Prescription,
+  Test_Prescription,
 } from "Classes/entity-class";
 
 const HOST = "http://localhost:5052";
@@ -54,7 +56,6 @@ export const API = {
       get("/get-doctor-by-first-name/" + lastName),
     getDoctorsBySpeciality: (id: number) =>
       get("/get-doctor-by-speciality/" + id),
-    
   },
   person: {
     getPersonById: (id: number) => get("/get-person-by-id/" + id),
@@ -69,12 +70,30 @@ export const API = {
   appointment: {
     saveAppointment: (appointment: Appointment) =>
       post("/save-appointment", appointment),
-    getAppointmentListById:(id:number) =>get("/get-patientList-by-id/"+id),
-    confirmAppointment:(appointment: Appointment) => 
-      put("/appointment-confirmation",appointment),
-  
+    getAppointmentList: (id: string, status: string) =>
+      postBody("/get-AppointmentList", { id: id, status: status }),
+    confirmAppointment: (appointment: Appointment) =>
+      put("/appointment-confirmation", appointment),
   },
   notification: {
-    saveNotification: (notify:_Notification) => post("/save-notification",notify)
+    saveNotification: (notify: _Notification) =>
+      post("/save-notification", notify),
+    getNotification : (id : number) => get("/get-all-notification/"+id)
+  },
+  prescription:{
+    savePrescription: (pres: Prescription) => post("/save-prescription",pres)
+  },
+  medicinePres:{
+    saveMedicine: (med: MC_Prescription) => post("/save-medicine-pres",med)
+  },
+  testPres:{
+    saveTest: (test: Test_Prescription) => post ("/save-test-pres",test)
+  },
+  medicine:{
+    getAllMedicine: ()=> get("/get-all-medicine")
+  },
+  test:{
+    getAllTest : ()=> get("/get-all-test")
   }
+
 };
