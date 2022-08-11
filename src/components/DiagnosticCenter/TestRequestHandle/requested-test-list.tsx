@@ -14,13 +14,16 @@ export default function RequestedTestListUI() {
 
   useEffect ( () => {
   API.diagnosticCenter.getPendingRequest().then((response) =>{
-
+   if(response.data == null)
+   {
+    console.log("No item here .")
+   }
     setDCTestList(response.data)
     console.log(response)
+    
   });
 
   },[]);
-
 
   return (
     <>

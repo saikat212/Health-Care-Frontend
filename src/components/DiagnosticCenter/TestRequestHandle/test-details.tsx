@@ -1,10 +1,26 @@
 import { Grid, Typography, Rating, Stack } from "@mui/material";
 import { DC_Test } from "Classes/entity-class";
 import BasicButton from "./basic-button";
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import { API } from "API Handler/api";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export  function TestDetails({dc_test_info}:{dc_test_info:DC_Test}) {
+  const [dc_test,setDCTest] = React.useState<DC_Test>();
+  const navigate = useNavigate();
+
+  const handleConfirmButton = (e) =>{
+    e.preventDefault();
+    dc_test_info.status = "approved" ;
+    
   
-  
+    API.diagnosticCenter.addDCTest(dc_test_info).then((response) => {
+          console.log(response);
+          console.log("yes.");
+          navigate("/requested-test-list")
+        });
+  };
 return(
 
 
@@ -144,7 +160,9 @@ return(
             >
               <Grid item>
                 <Typography sx={{ fontWeight: "bold" }}></Typography>
-                <BasicButton/>
+                 <Button  onClick={handleConfirmButton}>
+                 Confirm
+                </Button>
               </Grid>
               <Grid item>
               <Grid item>

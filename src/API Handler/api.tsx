@@ -10,6 +10,7 @@ import {
   MC_Prescription,
   Test_Prescription,
   Taker,
+  DC_Test,
 } from "Classes/entity-class";
 
 const HOST = "http://localhost:5052";
@@ -108,6 +109,7 @@ export const API = {
 
   diagnosticCenter:
   {
+    addDCTest: (dc_test:DC_Test) => post("/addDCTest",dc_test),
     getAllRequest: () => get("/get-all-request"),
     getPendingRequest: () => get("/get-pending-request"),
   },
