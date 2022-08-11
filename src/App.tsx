@@ -34,6 +34,7 @@ import DCHomePage from "components/DiagnosticCenter/HompageConstruction/dc-home-
 import SelectionConfirmedTest from "components/DiagnosticCenter/ConfirmedRequestHandle/selection-confirmed-test";
 
 import ConfirmedTestListUI from "components/DiagnosticCenter/ConfirmedRequestHandle/confirmed-test-list";
+import SignUpTaker from "SignUpTaker";
 
 function App() {
   return (
@@ -68,8 +69,7 @@ function App() {
 
            <Route path="/confirmed-test-list-ui" element={<ConfirmedTestListUI/>}/> 
            <Route path="/selection-confirmed-test" element={<SelectionConfirmedTest/>}/> 
-
-
+           <Route path="/sign-up-taker" element={<SignUpTaker/>}/> 
 
           </Routes>
 

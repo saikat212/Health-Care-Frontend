@@ -7,6 +7,7 @@ import {
   Speciality,
   Appointment,
   _Notification,
+  Taker,
 } from "Classes/entity-class";
 
 const HOST = "http://localhost:5052";
@@ -76,5 +77,16 @@ export const API = {
   },
   notification: {
     saveNotification: (notify:_Notification) => post("/save-notification",notify)
-  }
+  },
+
+
+  taker: {
+    addTaker: (taker:Taker) => post("/addTaker",taker),
+    getTakerById: (id:number) => get("/taker-id/"+id),
+  },
+  
+  takerSpeciality: {
+    getTakerSpeciality: () => get("/get-all-takerspecility/"),
+  },
+
 };

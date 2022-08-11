@@ -97,3 +97,19 @@ export class _Notification{
     status?:string;
 
 }
+
+export class TakerSpeciality
+{
+    id?:number;
+    name?:string;
+    description?:string | null;
+}
+
+export class Taker{
+    id?:number;
+    pathology_registration_no?:string;
+    nid?:string;
+    takerSpeciality?:TakerSpeciality;
+    person?:Person;
+    
+}
