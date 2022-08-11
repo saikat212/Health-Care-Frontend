@@ -87,13 +87,22 @@ export default function SignUpPatient() {
           </Typography>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
-              <Typography>Are you Doctor?</Typography>
+              <Typography>SignUp as ?</Typography>
             </Grid>
             <Grid item xs={12} sm={6}>
               <Button onClick={() => navigate("/sign-up-doctor")}>
-                Join now
+                Doctor
+              </Button>
+              
+              <Button onClick={() => navigate("/sign-up-taker")}>
+                Taker
               </Button>
             </Grid>
+
+            <Grid >
+             
+            </Grid>
+
           </Grid>
           <Box
             component="form"

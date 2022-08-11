@@ -9,6 +9,7 @@ import {
   Prescription,
   MC_Prescription,
   Test_Prescription,
+  Taker,
 } from "Classes/entity-class";
 
 const HOST = "http://localhost:5052";
@@ -94,6 +95,17 @@ export const API = {
   },
   test:{
     getAllTest : ()=> get("/get-all-test")
-  }
+  },
+
+
+  taker: {
+    addTaker: (taker:Taker) => post("/addTaker",taker),
+    getTakerById: (id:number) => get("/taker-id/"+id),
+  },
+  
+  takerSpeciality: {
+    getTakerSpeciality: () => get("/get-all-takerspecility/"),
+  },
+
 
 };

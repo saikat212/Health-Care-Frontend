@@ -35,6 +35,7 @@ import SelectionConfirmedTest from "components/DiagnosticCenter/ConfirmedRequest
 import ConfirmedTestListUI from "components/DiagnosticCenter/ConfirmedRequestHandle/confirmed-test-list";
 import { ContentCopy } from "@mui/icons-material";
 import { ContentSelectedApprovedAppointment } from "components/Doctor/MyPatientHandler/content-selected-approved-appointment";
+import SignUpTaker from "SignUpTaker";
 
 function App() {
   return (
@@ -68,8 +69,7 @@ function App() {
 
            <Route path="/confirmed-test-list-ui" element={<ConfirmedTestListUI/>}/> 
            <Route path="/selection-confirmed-test" element={<SelectionConfirmedTest/>}/> 
-
-
+           <Route path="/sign-up-taker" element={<SignUpTaker/>}/> 
 
           </Routes>
 
