@@ -17,7 +17,7 @@ import PaymentForm from "./PaymentForm";
 import Review from "./Review";
 import PatientAppbar from "components/Patient/patient-appbar";
 import { useLocation } from "react-router-dom";
-import { Appointment } from "Classes/entity-class";
+import { Appointment, Patient } from "Classes/entity-class";
 import { valueToPercent } from "@mui/base";
 import { API } from "API Handler/api";
 import PatientLayout from "components/Patient/patient-layout";
@@ -55,15 +55,20 @@ export default function SetAppointment() {
   const handleNext = () => {
     setActiveStep(activeStep + 1);
     if (activeStep === steps.length - 1) {
-      console.log("appoint check");
-      console.log(_appointment);
-      API.appointment.saveAppointment(_appointment).then((response) => {
-        console.log("Response: ", response.data);
+      setAppointment({
+        ..._appointment,
+        status:"pending"
+      })
+      API.appointment.saveAppointment({
+        ..._appointment,
+        status:"pending"
+      }).then((response) => {
         setAppointment({
           ..._appointment,
           id: response.data.id,
         });
       });
+      API.patient.updatePatientByHeightWeight(_appointment.patient as Patient)
     }
   };
 

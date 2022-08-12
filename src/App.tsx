@@ -18,7 +18,7 @@ import ApprovedAppointmentList from "components/Doctor/MyPatientHandler/approved
 import React from "react";
 import Patient_Home_Page from "components/Patient/patient-homepage";
 import { SnackbarProvider } from "notistack";
-import SetAppointment from "components/ReferenceCode/set-appointment";
+import SetAppointment from "components/SeekAppointment/set-appointment";
 import { DoctorInfo } from "components/Doctor/doctor-info";
 import { DoctorListUI } from "components/Doctor/doctor-list";
 import PrescriptionPage from "components/Doctor/MyPatientHandler/GeneratePrescription/prescription-page";
@@ -70,10 +70,7 @@ function App() {
            <Route path="/confirmed-test-list-ui" element={<ConfirmedTestListUI/>}/> 
            <Route path="/selection-confirmed-test" element={<SelectionConfirmedTest/>}/> 
            <Route path="/sign-up-taker" element={<SignUpTaker/>}/> 
-
           </Routes>
-
-
         </BrowserRouter>
       </SnackbarProvider>
     </LocalizationProvider>

@@ -24,7 +24,14 @@ export function SetAppointmentInfo() {
 
   const handleConfirm = (e) => {
     console.log(appointment);
-    API.appointment.confirmAppointment(appointment).then((response) => {
+    setAppointment({
+      ...appointment,
+      status:"approved"
+    })
+    API.appointment.confirmAppointment({
+      ...appointment,
+      status:"approved"
+    }).then((response) => {
       console.log(response.data);
     });
     setNotification({
@@ -34,7 +41,13 @@ export function SetAppointmentInfo() {
       message: "Your appointment is approved",
       status: "approved",
     });
-    API.notification.saveNotification(notification).then((response) => {
+    API.notification.saveNotification({
+      ...notification,
+      receiver: appointment?.patient?.person,
+      type: "appointment",
+      message: "Your appointment is approved",
+      status: "approved",
+    }).then((response) => {
       console.log(response);
     });
   };
@@ -70,9 +83,9 @@ export function SetAppointmentInfo() {
             <DateTimePicker
               renderInput={(props) => <TextField {...props} />}
               label="Select appointment date"
-              value={value}
+              value={appointment.date}
               onChange={(newValue) => {
-                setValue(newValue);
+                setValue(newValue as Date);
                 setAppointment({
                   ...appointment,
                   dateGivenByDoctor: newValue,

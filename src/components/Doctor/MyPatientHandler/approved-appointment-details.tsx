@@ -147,7 +147,7 @@ export default function ApprovedAppointmentDetails ({
                   <Typography sx={{ fontWeight: "bold" }}>Height</Typography>
                 </Grid>
                 <Grid item>
-                  <Typography>{patient?.person?.height}</Typography>
+                  <Typography>{patient?.height}</Typography>
                 </Grid>
               </Grid>
             </Grid>
@@ -165,7 +165,7 @@ export default function ApprovedAppointmentDetails ({
                   <Typography sx={{ fontWeight: "bold" }}>Weight</Typography>
                 </Grid>
                 <Grid item>
-                  <Typography>{patient?.person?.height}</Typography>
+                  <Typography>{patient?.weight}</Typography>
                 </Grid>
               </Grid>
             </Grid>

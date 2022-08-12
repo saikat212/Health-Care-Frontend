@@ -79,7 +79,7 @@ export function AppointmentDetails({
               </Typography>
             </Grid>
             <Grid item>
-              <Typography>{getAge(patient?.person?.dateOfBirth?.toString())}</Typography>
+              <Typography>{getAge(patient?.person?.dateOfBirth?.toString())} Years old</Typography>
             </Grid>
           </Grid>
 
@@ -149,7 +149,7 @@ export function AppointmentDetails({
                   <Typography sx={{ fontWeight: "bold" }}>Height</Typography>
                 </Grid>
                 <Grid item>
-                  <Typography>{patient?.person?.height}</Typography>
+                  <Typography>{patient?.height}</Typography>
                 </Grid>
               </Grid>
             </Grid>
@@ -167,7 +167,7 @@ export function AppointmentDetails({
                   <Typography sx={{ fontWeight: "bold" }}>Weight</Typography>
                 </Grid>
                 <Grid item>
-                  <Typography>{patient?.person?.height}</Typography>
+                  <Typography>{patient?.weight}</Typography>
                 </Grid>
               </Grid>
             </Grid>
