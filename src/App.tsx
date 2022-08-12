@@ -1,6 +1,3 @@
-import { DoctorDetails } from "components/Doctor/doctor-details";
-import ResponsiveAppBar from "components/Doctor/doctor-page-Appbar";
-import Front_Page from "components/front-page";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SignIn from "SignIn";
 import SignUpDoctor from "SignUpDoctor";
@@ -19,8 +16,6 @@ import React from "react";
 import Patient_Home_Page from "components/Patient/patient-homepage";
 import { SnackbarProvider } from "notistack";
 import SetAppointment from "components/SeekAppointment/set-appointment";
-import { DoctorInfo } from "components/Doctor/doctor-info";
-import { DoctorListUI } from "components/Doctor/doctor-list";
 import PrescriptionPage from "components/Doctor/MyPatientHandler/GeneratePrescription/prescription-page";
 import SetPrescriptionInfo from "components/Doctor/MyPatientHandler/GeneratePrescription/set-prescription-info";
 import { PrescriptionListUI } from "components/Doctor/MyPatientHandler/ViewPreviousPrescription/prescription-list";
@@ -36,6 +31,9 @@ import ConfirmedTestListUI from "components/DiagnosticCenter/ConfirmedRequestHan
 import { ContentCopy } from "@mui/icons-material";
 import { ContentSelectedApprovedAppointment } from "components/Doctor/MyPatientHandler/content-selected-approved-appointment";
 import SignUpTaker from "SignUpTaker";
+import VisitingTime from "components/Doctor/visiting-time";
+import { DoctorInfo } from "components/Patient/SearchingDoctor/doctor-info";
+import { DoctorListUI } from "components/Patient/SearchingDoctor/doctor-list";
 
 function App() {
   return (
@@ -43,6 +41,7 @@ function App() {
       <SnackbarProvider>
         <BrowserRouter>
           <Routes>
+          <Route path="/" element={<SignIn />} />
             <Route path="/patient-home-page" element={<Patient_Home_Page />} />
             <Route path="/specialities" element={<SpecialitiesUI />} />
             <Route path="/doctor-list" element={<DoctorListUI />} />
@@ -50,10 +49,11 @@ function App() {
             <Route path="/doctor-home-page" element={<DoctorHomePage/>} />
             <Route path="/sign-up-patient" element={<SignUpPatient />} />
             <Route path="/sign-up-doctor" element={<SignUpDoctor />} />
-            <Route path="/" element={<SignIn />} />
+           
             <Route path="/set-appointment-details" element={<SetAppointment />}/>
           <Route path="/requested-appointment-ui" element={<RequestedAppointmentListUI/>}/>
           <Route path="/set-appointment-info" element={<SetAppointmentInfo/>}/>
+          <Route path="/set-visiting-time" element={<VisitingTime/>}/>
           <Route path="/approved-appointment-list" element={<ApprovedAppointmentList/>}/>
           <Route path="/set-see-patient-info" element={<SetSeePatientInfo/>}/>   
           <Route path ="/selection-approved-appointment" element={<ContentSelectedApprovedAppointment/>}/>

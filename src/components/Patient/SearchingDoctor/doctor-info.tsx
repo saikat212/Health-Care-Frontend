@@ -4,6 +4,7 @@ import BasicTabs from "components/basic-tab";
 import { DoctorDetails_Get_Appointment } from "./doctor-details-get-appointment";
 import { Doctor } from "Classes/entity-class";
 import { useLocation } from "react-router-dom";
+import PatientLayout from "components/Patient/patient-layout";
 
 
 export function DoctorInfo(){
@@ -15,11 +16,12 @@ export function DoctorInfo(){
       }, [])
   
     return (
-        <><DoctorDetails_Get_Appointment
+        <PatientLayout>
+        <DoctorDetails_Get_Appointment
         doctor = {doc} 
         />
-         <BasicTabs />
-        </>
+        </PatientLayout>
+       
     );
 }
 

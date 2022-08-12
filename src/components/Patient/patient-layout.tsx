@@ -8,7 +8,7 @@ export default function PatientLayout({ children }) {
       direction="column"
       alignItems="center"
       justifyContent="space-between"
-      sx={{ backgroundColor: "yellow", padding: "10px", height: "100%" }}
+      sx={{ backgroundColor: "white", padding: "10px", height: "100%" }}
       spacing={2}
     >
       <Grid item>

@@ -41,7 +41,7 @@ export function DoctorDetails_Get_Appointment({ doctor }: { doctor: Doctor }) {
       >
         {/* Picture */}
         <Grid item>
-          <img src={require("../../images/doctor.jpg")} height="150px" />
+          <img src={require("../../../images/doctor.jpg")} height="150px" />
         </Grid>
         {/* //1st Column */}
         <Grid item>
@@ -135,11 +135,11 @@ export function DoctorDetails_Get_Appointment({ doctor }: { doctor: Doctor }) {
                 >
                   <Grid item>
                     <Typography sx={{ fontWeight: "bold" }}>
-                      Experience
+                      Visiting Day
                     </Typography>
                   </Grid>
                   <Grid item>
-                    <Typography>{doctor.experience} Years</Typography>
+                    <Typography>Sat - Mon - Wed</Typography>
                   </Grid>
                 </Grid>
               </Grid>
@@ -154,17 +154,10 @@ export function DoctorDetails_Get_Appointment({ doctor }: { doctor: Doctor }) {
                   spacing={2}
                 >
                   <Grid item>
-                    <Typography sx={{ fontWeight: "bold" }}>Rating</Typography>
+                    <Typography sx={{ fontWeight: "bold" }}>Visiting Time</Typography>
                   </Grid>
                   <Grid item>
-                    <Stack spacing={1}>
-                      <Rating
-                        name="half-rating-read"
-                        defaultValue={2.5}
-                        precision={0.5}
-                        readOnly
-                      />
-                    </Stack>
+                   {doctor.visitingTime}
                   </Grid>
                 </Grid>
               </Grid>

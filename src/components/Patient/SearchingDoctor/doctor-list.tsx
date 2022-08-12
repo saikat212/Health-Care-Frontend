@@ -1,6 +1,6 @@
 import { Button, Grid, Typography } from "@mui/material";
 import React, { useEffect } from "react";
-import DoctorDetailsCard from "components/Doctor/doctor-details-card";
+import DoctorDetailsCard from "components/Patient/SearchingDoctor/doctor-details-card";
 import Header from "components/header";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Doctor, Speciality } from "Classes/entity-class";

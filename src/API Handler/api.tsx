@@ -58,6 +58,8 @@ export const API = {
       get("/get-doctor-by-first-name/" + lastName),
     getDoctorsBySpeciality: (id: number) =>
       get("/get-doctor-by-speciality/" + id),
+    updateVisitingTime:(doctor:Doctor) =>
+      put("/updateVisitingTime",doctor)
   },
   person: {
     getPersonById: (id: number) => get("/get-person-by-id/" + id),

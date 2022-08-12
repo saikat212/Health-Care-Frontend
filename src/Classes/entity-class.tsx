@@ -27,6 +27,8 @@ export class Doctor{
     experience?:number;
     fee?:number;
     degree?:number;
+    visitingDay?:string;
+    visitingTime?:string;
 
 }
 export class Speciality{

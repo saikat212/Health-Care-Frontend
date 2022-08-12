@@ -16,14 +16,16 @@ import FixedBottomNavigation from 'components/Doctor/doctor-homepage-container'
 import { useNavigate } from 'react-router-dom';
 import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 import ResponsiveAppBar from "components/Doctor/doctor-page-Appbar";
+import DoctorLayout from './doctor-layout';
 
 
 const DoctorHomePage = () => {
   return (
-    <>
-    <ResponsiveAppBar/>
-    <FixedBottomNavigation/>
-    </>
+   <DoctorLayout>
+    <img
+                    src={require("../../images/f.jpg")}
+                    height="400px" />
+   </DoctorLayout>
   );
 };
 export default DoctorHomePage;

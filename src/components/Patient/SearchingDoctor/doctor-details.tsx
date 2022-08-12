@@ -15,7 +15,7 @@ export function DoctorDetails({ doctor }: { doctor: Doctor }) {
     >
       {/* Picture */}
       <Grid item>
-        <img src={require("../../images/doctor.jpg")} height="150px" />
+        <img src={require("../../../images/doctor.jpg")} height="150px" />
       </Grid>
       {/* //1st Column */}
       <Grid item>

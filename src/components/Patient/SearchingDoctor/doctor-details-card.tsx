@@ -9,9 +9,9 @@ import {
 } from "@mui/material";
 import { fontWeight } from "@mui/system";
 import React from "react";
-import { DoctorDetails } from "components/Doctor/doctor-details";
 import { useNavigate } from "react-router-dom";
 import { Doctor } from "Classes/entity-class";
+import { DoctorDetails } from "./doctor-details";
 
 export default function DoctorDetailsCard({ doctor } :{doctor:Doctor}) {
   const navigate = useNavigate();
