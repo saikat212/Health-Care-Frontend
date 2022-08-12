@@ -106,6 +106,9 @@ export default function SignUpPatient() {
               <Button onClick={() => navigate("/sign-up-taker")}>
                 Taker
               </Button>
+              <Button onClick={() => navigate("/sign-up-admin")}>
+                Admin
+              </Button>
             </Grid>
 
             <Grid >

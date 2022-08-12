@@ -14,10 +14,10 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import GenderRadioButton from "components/gender";
 import { useNavigate } from "react-router-dom";
-import { Doctor, Taker, TakerSpeciality } from "Classes/entity-class";
+
 import { API } from "API Handler/api";
 import { DatePicker } from "@mui/x-date-pickers";
-import { Speciality } from "Classes/entity-class";
+import { DCAdmin, DiagnosticCenter, Speciality } from "Classes/entity-class";
 import { useState } from "react";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
@@ -46,19 +46,19 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
   setTitle(event.target.value);
 }; */
 
-export default function SignUpTaker() {
+export default function SignUpAdmin() {
   const theme = createTheme();
   const navigate = useNavigate();
 
-  const [taker,setTaker] = React.useState<Taker>();
-  const [takerspecialities,setTakerSpeciality] = useState<TakerSpeciality[]>([]);
+  const [admin,setAdmin] = React.useState<DCAdmin>();
+  const [adminDClist,setAdminDCList] = useState<DiagnosticCenter[]>([]);
 
 
   useEffect(() => {
-    API.takerSpeciality.getTakerSpeciality().then((response) => {
-      setTakerSpeciality(response.data);
+    API.diagnosticCenter.getAllDC().then((response) => {
+      setAdminDCList(response.data);
       console.log(response.data);
-
+      
     });
 
   }, []);
@@ -72,27 +72,27 @@ export default function SignUpTaker() {
     });
   }
 
-  const handleSpeciality = (event) => {
-   
-    setTaker({ ...taker, takerSpeciality: takerspecialities.find(( item ) => item.id == event.target.value),});
+  const handleDCList = (event) => {
+
+    setAdmin({ ...admin, dc : adminDClist.find(( item ) => item.id == event.target.value),});
     console.log(event.target.value);
   };
 
   const handleClickSignUp = (e) => {
     e.preventDefault();
 
-      taker && 
-        API.taker.addTaker( 
+      admin && 
+        API.admin.addAdmin( 
           { 
-            ...taker,
+            ...admin,
              person: 
              {
-               ...taker?.person , role: "taker"
+               ...admin?.person , role: "admin"
              }
           }).then( (response) => { 
 
             console.log(response);
-            navigate("/dc-home-page")
+            navigate("/dc-admin-home-page")
            });
   };
 
@@ -112,7 +112,7 @@ export default function SignUpTaker() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            DCSampleTaker Registration
+            DCAdmin Registration
           </Typography>
           <Box
             component="form"
@@ -133,7 +133,7 @@ export default function SignUpTaker() {
                   onChange={(event) => {
               
 
-                    setTaker({...taker,person: {...taker?.person,firstName: event.target.value,}, });
+                    setAdmin({...admin,person: {...admin?.person,firstName: event.target.value,}, });
                   }}
                 />
               </Grid>
@@ -147,18 +147,18 @@ export default function SignUpTaker() {
                   autoComplete="name"
                   onChange={(event) => {
                  
-                    setTaker({...taker,person: {...taker?.person,lastName: event.target.value,}, });
+                    setAdmin({...admin,person: {...admin?.person,lastName: event.target.value,}, });
                   }}
                 />
               </Grid>
               <Grid item xs={12}>
                 <DatePicker
                   label="Date of birth"
-                  value={taker?.person?.dateOfBirth}
+                  value={admin?.person?.dateOfBirth}
                   onChange={(newValue) => {
 
 
-                    setTaker({ ...taker , person: { ...taker?.person, dateOfBirth: newValue },});
+                    setAdmin({ ...admin , person: { ...admin?.person, dateOfBirth: newValue },});
                   }}
                   renderInput={(params) => (
                     <TextField required fullWidth {...params} />
@@ -176,7 +176,7 @@ export default function SignUpTaker() {
                   onChange={(event) => {
             
 
-                    setTaker({ ...taker, person: { ...taker?.person, email: event.target.value }, });
+                    setAdmin({ ...admin, person: { ...admin?.person, email: event.target.value }, });
                   }}
                 />
               </Grid>
@@ -191,7 +191,7 @@ export default function SignUpTaker() {
                   onChange={(event) => {
                
 
-                    setTaker({ ...taker, person: {...taker?.person, mobileNo: event.target.value,}, });
+                    setAdmin({ ...admin, person: {...admin?.person, mobileNo: event.target.value,}, });
 
                   }}
                 />
@@ -205,7 +205,7 @@ export default function SignUpTaker() {
                   name="nid"
                   onChange={(event) => {
                   
-                    setTaker({ ...taker, nid: event.target.value });
+                    setAdmin({ ...admin, nid: event.target.value });
                   }}
                 />
               </Grid>
@@ -215,29 +215,29 @@ export default function SignUpTaker() {
                   required
                   fullWidth
                   id="pathology_resgistration_no"
-                  label="pathology_resgistration_no"
+                  label="DC_code"
                   onChange={(event) => {
                     
-                    setTaker({ ...taker, dc_code: event.target.value });
+                    setAdmin({ ...admin, dc_code: event.target.value });
                   }}
                 />
               </Grid>
               <Grid item xs={12}>
                 <FormControl fullWidth>
                   <InputLabel id="demo-simple-select-label">
-                    Select your speciality
+                    Select your DC
                   </InputLabel>
                   <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     //@ts-ignore
-                    value={taker?.takerSpeciality?.id || null}
-                    label="Select your speciality"
-                    onChange={handleSpeciality}
+                    value={admin?.dc?.id || null}  //check
+                    label="Select your DC"
+                    onChange={handleDCList}
                   >
-                    {takerspecialities?.map((takerSpeciality, idx) => (
-                      <MenuItem key={idx} value={takerSpeciality.id}>
-                        {takerSpeciality.name}
+                    {adminDClist?.map((dc, idx) => (
+                      <MenuItem key={idx} value={dc.id}>
+                        {dc.name}
                       </MenuItem>
                     ))}
                   </Select>
@@ -257,7 +257,7 @@ export default function SignUpTaker() {
                   onChange={(event) => {
               
 
-                    setTaker ({ ...taker, person: { ...taker?.person, password: event.target.value,}, });
+                    setAdmin ({ ...admin, person: { ...admin?.person, password: event.target.value,}, });
                   }}
                 />
               </Grid>
@@ -266,7 +266,7 @@ export default function SignUpTaker() {
                   onChange={(value) => {
             
 
-                  setTaker ({ ...taker, person: { ...taker?.person, gender: value }, });
+                  setAdmin ({ ...admin, person: { ...admin?.person, gender: value }, });
 
                   }}
                 />

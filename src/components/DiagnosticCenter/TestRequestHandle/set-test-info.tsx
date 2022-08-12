@@ -22,8 +22,6 @@ export default function SetTestInfo(){
         alignItems="center"
         >
         </Grid>
-
-        
         <Grid
         container
         direction="column"

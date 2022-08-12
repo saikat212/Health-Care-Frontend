@@ -107,7 +107,7 @@ export class TakerSpeciality
 
 export class Taker{
     id?:number;
-    pathology_registration_no?:string;
+    dc_code?:string;
     nid?:string;
     takerSpeciality?:TakerSpeciality;
     person?:Person;
@@ -121,6 +121,7 @@ export class DiagnosticCenter
 }
 
 export class DC_Test {
+    [x: string]: any;
     id?:number;
     date?:Date=new Date();
     status?:string;
@@ -128,5 +129,18 @@ export class DC_Test {
     test?:Test;
     patient?:Patient;
     location?:string;
+    report?:string;
+    taker?:Taker;
+
+}
+
+export class DCAdmin {
+
+    id?:number;
+    dc_code?:string;
+    nid?:string;
+    person?:Person;
+    dc?:DiagnosticCenter;
+
 
 }
