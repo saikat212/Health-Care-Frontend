@@ -1,7 +1,29 @@
 import { Grid, Typography, Rating, Stack } from "@mui/material";
+import { DC_Test } from "Classes/entity-class";
+import BasicButton from "./basic-button";
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import { API } from "API Handler/api";
+import { Navigate, useNavigate } from "react-router-dom";
 
-export  function TestDetails() {
-    return(
+export  function TestDetails({dc_test_info}:{dc_test_info:DC_Test}) {
+  const [dc_test,setDCTest] = React.useState<DC_Test>();
+  const navigate = useNavigate();
+
+  const handleConfirmButton = (e) =>{
+    e.preventDefault();
+    dc_test_info.status = "approved" ;
+    
+  
+    API.diagnosticCenter.addDCTest(dc_test_info).then((response) => {
+          console.log(response);
+          console.log("yes.");
+          navigate("/requested-test-list")
+        });
+  };
+return(
+
+
   <Grid
     container
     direction="row"
@@ -33,7 +55,10 @@ export  function TestDetails() {
           spacing={2}
         >
           <Grid item>
-            <Typography sx={{ fontWeight: "bold" }}>Saikat Ghatak</Typography>
+
+            <Typography sx={{ fontWeight: "bold" }}>
+              Patient Name: {dc_test_info.patient?.person?.firstName +" "+ dc_test_info.patient?.person?.lastName} 
+            </Typography>
           </Grid>
           <Grid item>
             <Typography></Typography>
@@ -49,10 +74,21 @@ export  function TestDetails() {
           spacing={2}
         >
           <Grid item>
-            <Typography sx={{ fontWeight: "bold" }}>Test Name</Typography>
+            <Typography sx={{ fontWeight: "bold" }}>
+             Test Name: {dc_test_info.test?.name}
+            </Typography>
+
+            <Typography sx={{ fontWeight: "bold" }}>
+             DC Name: {dc_test_info.dc?.name}
+            </Typography>
+            <Typography sx={{ fontWeight: "bold" }}>
+             DC Location: {dc_test_info.dc?.location}
+            </Typography>
+
+   
           </Grid>
           <Grid item>
-            <Typography>Blood Test</Typography>
+            <Typography></Typography>
           </Grid>
         </Grid>
       </Grid>
@@ -76,8 +112,10 @@ export  function TestDetails() {
           spacing={2}
         >
           <Grid item>
-            <Typography sx={{ fontWeight: "bold" }}>Location : #R34,Azimpur </Typography>
-            <Typography sx={{ fontWeight: "bold" }}>Date : 12/05/2021 </Typography>
+            <Typography sx={{ fontWeight: "bold" }}>Patient's Location :{dc_test_info.location} </Typography>
+            <Typography sx={{ fontWeight: "bold" }}> 
+             Date: {String(dc_test_info.date)}
+            </Typography>
           </Grid>
        
           <Grid item>
@@ -122,6 +160,9 @@ export  function TestDetails() {
             >
               <Grid item>
                 <Typography sx={{ fontWeight: "bold" }}></Typography>
+                 <Button  onClick={handleConfirmButton}>
+                 Confirm
+                </Button>
               </Grid>
               <Grid item>
               <Grid item>
@@ -159,3 +200,5 @@ export  function TestDetails() {
   </Grid>
     );
 }
+
+

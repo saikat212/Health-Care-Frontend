@@ -55,8 +55,6 @@ export default function SignUpTaker() {
 
 
   useEffect(() => {
-
-
     API.takerSpeciality.getTakerSpeciality().then((response) => {
       setTakerSpeciality(response.data);
       console.log(response.data);
