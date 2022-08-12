@@ -1,26 +1,36 @@
 import { Grid, Typography, Rating, Stack } from "@mui/material";
-import { DC_Test } from "Classes/entity-class";
+import { DC_Test, Doctor, Taker } from "Classes/entity-class";
 import BasicButton from "./basic-button";
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import { API } from "API Handler/api";
 import { Navigate, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import id from "date-fns/esm/locale/id/index.js";
+
+
 
 export  function TestDetails({dc_test_info}:{dc_test_info:DC_Test}) {
   const [dc_test,setDCTest] = React.useState<DC_Test>();
+  
   const navigate = useNavigate();
 
-  const handleConfirmButton = (e) =>{
+  const handleConfirm = (e) => {
     e.preventDefault();
-    dc_test_info.status = "approved" ;
-    
-  
+
+    dc_test_info.status = "approved"
+
+    // dc_test_info.taker = new Taker()
+    // dc_test_info.taker.id = (JSON.parse(localStorage.getItem("Taker")||"") as Taker).id || undefined;
+
     API.diagnosticCenter.addDCTest(dc_test_info).then((response) => {
-          console.log(response);
-          console.log("yes.");
-          navigate("/requested-test-list")
-        });
-  };
+      console.log(response);
+      console.log("yes1.");
+      navigate("/requested-test-list-ui")
+    });
+
+   }; 
+
 return(
 
 
@@ -160,7 +170,7 @@ return(
             >
               <Grid item>
                 <Typography sx={{ fontWeight: "bold" }}></Typography>
-                 <Button  onClick={handleConfirmButton}>
+                 <Button  onClick={handleConfirm}  variant="contained" >
                  Confirm
                 </Button>
               </Grid>

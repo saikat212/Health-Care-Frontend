@@ -1,11 +1,31 @@
 import { Button, Grid, Typography } from "@mui/material";
 import Header from "components/header";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import AppointmentListCard from "./confirmed-test-list-card";
 import DCUserPageAppbar from "../HompageConstruction/dc-user-page-appbar";
 import ConfirmedTestListCard from "./confirmed-test-list-card";
+import { DC_Test } from "Classes/entity-class";
+import { useEffect } from "react";
+import React from "react";
+import { API } from "API Handler/api";
 
 export default function ConfirmedTestListUI() {
+
+  const [dc_test_list,setDCTestList] = React.useState<DC_Test[]>();
+
+  useEffect ( () => {
+  API.diagnosticCenter.getConfirmedRequest().then((response) =>{
+   if(response.data == null)
+   {
+    console.log("No item here .")
+   }
+    setDCTestList(response.data)
+    console.log(response)
+    
+  });
+
+  },[]);
+
   return (
     <>
    <DCUserPageAppbar/>
@@ -27,27 +47,12 @@ export default function ConfirmedTestListUI() {
           sx={{ backgroundColor: "blue", padding: "10px", height: "100%" }}
           spacing={5}
         >
-          {Array.from(Array(10).keys()).map((i, idx) => (
-            <Grid key={idx} item>
-            
+         {dc_test_list?.map((dc_test,idx) => (
+            <Grid key = {idx} item>
               <ConfirmedTestListCard
-                title="Card Tittle"
-                description="Necessary description"
-                image={require("./images/doctor.jpg")}
-                /* info = {
-                    first_name1: "Dr. Faysal",
-                    last_name: "Rana",
-                    degree: "MBBS",
-                    specialities: "General physician",
-                    chamber:"lslls",
-                    experience: 3,
-                    rating : 4.8,
-                    total rating: 3250,
-                    fee : 250.50
-
-                } */
+              dc_test_info = {dc_test}
               />
-        
+
             </Grid>
           ))}
         </Grid>
