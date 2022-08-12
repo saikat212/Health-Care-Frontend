@@ -47,8 +47,8 @@ export const API = {
   patient: {
     addPatient: (patient: Patient) => post("/addPatient", patient),
     getPatientById: (id: number) => get("/patient-id/" + id),
-    updatePatientByHeightWeight: (height: number, weight: number) =>
-      put("/updatePatient", { h: height, w: weight }),
+    updatePatientByHeightWeight: (patient:Patient) =>
+      put("/updatePatientByHeightWeight", patient),
   },
   doctor: {
     addDoctor: (doctor: Doctor) => post("/addDoctor", doctor),

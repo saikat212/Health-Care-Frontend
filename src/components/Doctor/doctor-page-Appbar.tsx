@@ -36,8 +36,16 @@ const ResponsiveAppBar = () => {
   };
 
   const handleCloseUserMenu = () => {
+   
     setAnchorElUser(null);
   };
+  function handleProfile(){
+
+  }
+  function handleLogOut(){
+    localStorage.clear()
+    navigate("/")
+  }
 
   return (
     <AppBar position="fixed">
@@ -146,11 +154,14 @@ const ResponsiveAppBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+            
+                <MenuItem key={settings[0]} onClick={handleProfile}>
+                  <Typography textAlign="center">{settings[0]}</Typography>
                 </MenuItem>
-              ))}
+                <MenuItem key={settings[3]} onClick={handleLogOut}>
+                  <Typography textAlign="center">{settings[3]}</Typography>
+                </MenuItem>
+         
             </Menu>
           </Box>
         </Toolbar>

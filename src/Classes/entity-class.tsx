@@ -8,8 +8,6 @@ export class Person{
     password?:string;
     dateOfBirth?: Date | null;
     role?:string;
-    height?:string;
-    weight?:string;
 }
 
 export class Patient{

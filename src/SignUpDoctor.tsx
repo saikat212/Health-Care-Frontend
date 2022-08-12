@@ -78,6 +78,7 @@ export default function SignUpDoctor() {
   };
 
   const handleClickSignUp = (e) => {
+    localStorage.clear();
     e.preventDefault();
     doctor &&
       API.doctor.addDoctor(
@@ -89,6 +90,12 @@ export default function SignUpDoctor() {
         }
       ).then((response) => {
         console.log(response);
+        localStorage.setItem(
+          "Doctor",
+          JSON.stringify({
+           doctor
+          })
+        );
         navigate("/doctor-home-page")
       });
   };

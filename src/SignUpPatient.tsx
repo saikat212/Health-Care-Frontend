@@ -63,6 +63,15 @@ export default function SignUpPatient() {
         }
       ).then((response) => {
         console.log(response);
+        localStorage.setItem(
+          "Patient",
+          JSON.stringify({
+            ...patient,
+            person:{
+              ...patient?.person, role:"patient"
+            }
+          })
+        );
         navigate("/patient-home-page")
       });
   };
