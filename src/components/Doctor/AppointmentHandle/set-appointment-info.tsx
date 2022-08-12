@@ -17,9 +17,11 @@ export function SetAppointmentInfo() {
   const [notification, setNotification] = React.useState<_Notification>(
     new _Notification()
   );
-  const [value, setValue] = React.useState<Date | null>(new Date());
+  const [value, setValue] = React.useState<Date | null>(appointment.date as Date);
+  
   useEffect(() => {
     state && setAppointment(state as Appointment);
+    
   }, []);
 
   const handleConfirm = (e) => {
@@ -52,7 +54,14 @@ export function SetAppointmentInfo() {
     });
   };
   const handleReject = (e) => {
-    API.appointment.confirmAppointment(appointment).then((response) => {
+    setAppointment({
+      ...appointment,
+      status:"rejected"
+    })
+    API.appointment.confirmAppointment({
+      ...appointment,
+      status:"rejected"
+    }).then((response) => {
       console.log(response.data);
     });
 
@@ -63,7 +72,13 @@ export function SetAppointmentInfo() {
       message: "Your appointment is rejected",
       status: "rejected",
     });
-    API.notification.saveNotification(notification).then((response) => {
+    API.notification.saveNotification({
+      ...notification,
+      receiver: appointment?.patient?.person,
+      type: "appointment",
+      message: "Your appointment is rejected",
+      status: "rejected",
+    }).then((response) => {
       console.log("Reject: ",response);
     });
   };
@@ -83,10 +98,10 @@ export function SetAppointmentInfo() {
             <DateTimePicker
               renderInput={(props) => <TextField {...props} />}
               label="Select appointment date"
-              value={appointment.date}
+              value={value}  
               onChange={(newValue) => {
-                setValue(newValue as Date);
-                setAppointment({
+                setValue(newValue as Date);        
+                 setAppointment({
                   ...appointment,
                   dateGivenByDoctor: newValue,
                 });
