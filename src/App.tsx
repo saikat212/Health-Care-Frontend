@@ -37,7 +37,7 @@ import VisitingTime from "components/Doctor/visiting-time";
 import { DoctorInfo } from "components/Patient/SearchingDoctor/doctor-info";
 import { DoctorListUI } from "components/Patient/SearchingDoctor/doctor-list";
 import SubmittedTestListUI from "components/DiagnosticCenter/Admin/SubmittedTest/submitted-test-list";
-
+import OffsiteRequestedTestListUI from "components/DiagnosticCenter/Admin/OffsitePendingTest/TestRequestHandle/offsite-requested-test-list";
 function App() {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -76,7 +76,8 @@ function App() {
 
            <Route path="/sign-up-admin" element={<SignUpAdmin/>}/> 
            <Route path="/dc-admin-home-page" element={<DCAdminHomePage/>}/> 
-           <Route path="/submitted-test-list-ui" element={<SubmittedTestListUI/>}/> 
+           <Route path="/submitted-test-list-ui" element={<SubmittedTestListUI/>}/>
+           <Route path="/offsite-requested-test-list-ui" element={<OffsiteRequestedTestListUI/>}/>  
 
 
           </Routes>

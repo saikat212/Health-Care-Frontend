@@ -15,7 +15,7 @@ export  function SubmittedTestDetails({dc_test_info}:{dc_test_info:DC_Test}) {
     API.diagnosticCenter.addDCTest(dc_test_info).then((response) => {
       console.log(response);
       console.log("yes.");
-      navigate("/confirmed-test-list-ui")
+      navigate("/submitted-test-list-ui")
     });
    };
    

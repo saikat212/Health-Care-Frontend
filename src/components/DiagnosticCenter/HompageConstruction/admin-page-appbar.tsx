@@ -122,7 +122,7 @@ const DCAdminPageAppbar = () => {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               <Button  sx={{ my: 2, color: 'white', display: 'block' }} onClick={()=>navigate("/dc-admin-home-page")} variant="contained">Home</Button>
               <Button sx={{ my: 2, color: 'white', display: 'block' }}  onClick={()=>navigate("/submitted-test-list-ui")} variant="contained">Submitted-Test</Button>
-              <Button sx={{ my: 2, color: 'white', display: 'block' }}  onClick={()=>navigate("/offsite-test-list-ui")} variant="contained"> Offsite-pending-test </Button>
+              <Button sx={{ my: 2, color: 'white', display: 'block' }}  onClick={()=>navigate("/offsite-requested-test-list-ui")} variant="contained"> Offsite-pending-test </Button>
               <Button sx={{ my: 2, color: 'white', display: 'block' }}  onClick={()=>navigate("/specialities")} variant="contained">Overview</Button>
           </Box>
      
