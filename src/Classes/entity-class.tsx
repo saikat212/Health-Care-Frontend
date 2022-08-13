@@ -118,6 +118,9 @@ export class DiagnosticCenter
     id?:number;
     name?:string;
     location?:string;
+    isOfferOnsiteTest?:string;
+    registrationNum?:string;
+
 }
 
 export class DC_Test {
@@ -140,7 +143,5 @@ export class DCAdmin {
     dc_code?:string;
     nid?:string;
     person?:Person;
-    dc?:DiagnosticCenter;
-
-
+    // dc?:DiagnosticCenter;
 }

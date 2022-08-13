@@ -49,19 +49,11 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 export default function SignUpAdmin() {
   const theme = createTheme();
   const navigate = useNavigate();
+  const choiceList = ['yes','no'];
 
   const [admin,setAdmin] = React.useState<DCAdmin>();
-  const [adminDClist,setAdminDCList] = useState<DiagnosticCenter[]>([]);
+  const [dcTable,setDCTable] = React.useState<DiagnosticCenter>();
 
-
-  useEffect(() => {
-    API.diagnosticCenter.getAllDC().then((response) => {
-      setAdminDCList(response.data);
-      console.log(response.data);
-      
-    });
-
-  }, []);
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -73,13 +65,23 @@ export default function SignUpAdmin() {
   }
 
   const handleDCList = (event) => {
-
-    setAdmin({ ...admin, dc : adminDClist.find(( item ) => item.id == event.target.value),});
+    // setAdmin({ ...admin, dc: {...admin?.dc, isOfferOnsiteTest : event.target.value,},});
+    // setAdmin({ ...admin, dc. : choiceList.find(( item ) => item == event.target.value),});
+    // setDCTable({ ...dcTable, isOfferOnsiteTest : choiceList.find(( item ) => item == event.target.value),});
     console.log(event.target.value);
   };
 
   const handleClickSignUp = (e) => {
     e.preventDefault();
+
+    // dcTable && 
+    // API.diagnosticCenter.addDC(dcTable)
+    // .then( (response) => { 
+
+    //     console.log(response);
+    //     console.log("new DC added");
+       
+    //    });
 
       admin && 
         API.admin.addAdmin( 
@@ -92,8 +94,10 @@ export default function SignUpAdmin() {
           }).then( (response) => { 
 
             console.log(response);
+            console.log("person added")
             navigate("/dc-admin-home-page")
            });
+
   };
 
   return (
@@ -223,28 +227,70 @@ export default function SignUpAdmin() {
                 />
               </Grid>
               <Grid item xs={12}>
+                <TextField
+                  name="pathology_resgistration_no"
+                  required
+                  fullWidth
+                  id="pathology_resgistration_no"
+                  label="DC Name"
+                  onChange={(event) => {
+                    
+                    // setDCTable({ ...dcTable, name: event.target.value });
+                    // setAdmin({ ...admin, dc: {...admin?.dc, name : event.target.value,}, });
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  name="pathology_resgistration_no"
+                  required
+                  fullWidth
+                  id="pathology_resgistration_no"
+                  label="DC Location"
+                  onChange={(event) => {
+                    
+                    // setDCTable({ ...dcTable, location: event.target.value });
+                    // setAdmin({ ...admin, dc: {...admin?.dc, location : event.target.value,}, });
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  name="pathology_resgistration_no"
+                  required
+                  fullWidth
+                  id="pathology_resgistration_no"
+                  label="Registration No. "
+                  onChange={(event) => {
+                    
+                    // setAdmin({ ...admin, dc: {...admin?.dc, registrationNum : event.target.value,}, });
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12}>
                 <FormControl fullWidth>
                   <InputLabel id="demo-simple-select-label">
-                    Select your DC
+                   Is-Offer-Onsite-Test
                   </InputLabel>
                   <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     //@ts-ignore
-                    value={admin?.dc?.id || null}  //check
-                    label="Select your DC"
+                    // value={admin?.dc?.id || null}  //check
+                    // value={dcTable?.isOfferOnsiteTest || null} 
+                    value={admin?.dc?.isOfferOnsiteTest || null}
+                    label=" Is-Offer-Onsite-Test"
                     onChange={handleDCList}
                   >
-                    {adminDClist?.map((dc, idx) => (
-                      <MenuItem key={idx} value={dc.id}>
-                        {dc.name}
+                    {choiceList?.map((option, idx) => (
+                      <MenuItem key={idx} value={option}>
+                        {option}
                       </MenuItem>
                     ))}
                   </Select>
                 </FormControl>
               </Grid>
-      
-
+  
               <Grid item xs={12}>
                 <TextField
                   required

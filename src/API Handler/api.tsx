@@ -12,6 +12,7 @@ import {
   Taker,
   DC_Test,
   DCAdmin,
+  DiagnosticCenter,
 } from "Classes/entity-class";
 
 const HOST = "http://localhost:5052";
@@ -119,6 +120,7 @@ export const API = {
     getConfirmedRequest: () => get("/get-confirmed-request"),
     getSubmittedRequest: () => get("/get-submitted-request"),
     getAllDC: () => get ("/get-all-dc-list"),
+    addDC: (dcObject :DiagnosticCenter) => post("/addDC",dcObject),
 
   },
 
