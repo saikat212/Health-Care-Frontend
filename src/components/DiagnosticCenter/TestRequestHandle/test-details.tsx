@@ -15,6 +15,7 @@ export  function TestDetails({dc_test_info}:{dc_test_info:DC_Test}) {
   
   const navigate = useNavigate();
 
+
   const handleConfirm = (e) => {
     e.preventDefault();
 
@@ -23,7 +24,19 @@ export  function TestDetails({dc_test_info}:{dc_test_info:DC_Test}) {
     // dc_test_info.taker = new Taker()
     // dc_test_info.taker.id = (JSON.parse(localStorage.getItem("Taker")||"") as Taker).id || undefined;
 
-    API.diagnosticCenter.addDCTest(dc_test_info).then((response) => {
+    API.diagnosticCenter.addDCTest( dc_test_info
+
+      // {
+       
+      //   taker :
+      //   {
+      //     ...dc_test_info?.taker, id:(JSON.parse(localStorage.getItem("Taker")||"") as Taker).id || undefined
+          
+      //   }
+        
+      // }
+      
+      ).then((response) => {
       console.log(response);
       console.log("yes1.");
       navigate("/requested-test-list-ui")

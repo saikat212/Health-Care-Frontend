@@ -36,6 +36,7 @@ import DCAdminHomePage from "components/DiagnosticCenter/HompageConstruction/adm
 import VisitingTime from "components/Doctor/visiting-time";
 import { DoctorInfo } from "components/Patient/SearchingDoctor/doctor-info";
 import { DoctorListUI } from "components/Patient/SearchingDoctor/doctor-list";
+import SubmittedTestListUI from "components/DiagnosticCenter/Admin/SubmittedTest/submitted-test-list";
 
 function App() {
   return (
@@ -75,6 +76,8 @@ function App() {
 
            <Route path="/sign-up-admin" element={<SignUpAdmin/>}/> 
            <Route path="/dc-admin-home-page" element={<DCAdminHomePage/>}/> 
+           <Route path="/submitted-test-list-ui" element={<SubmittedTestListUI/>}/> 
+
 
           </Routes>
         </BrowserRouter>

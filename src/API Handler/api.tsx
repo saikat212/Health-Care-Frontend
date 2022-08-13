@@ -117,12 +117,14 @@ export const API = {
     getAllRequest: () => get("/get-all-request"),
     getPendingRequest: () => get("/get-pending-request"),
     getConfirmedRequest: () => get("/get-confirmed-request"),
+    getSubmittedRequest: () => get("/get-submitted-request"),
     getAllDC: () => get ("/get-all-dc-list"),
 
   },
 
   admin: {
     addAdmin: (admin:DCAdmin) => post("/addDCAdmin",admin),
+
   },
 
 
