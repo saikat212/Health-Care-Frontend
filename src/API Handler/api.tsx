@@ -11,7 +11,7 @@ import {
   Test_Prescription,
   Taker,
   DC_Test,
-  DCAdmin,
+  DiagnosticCenter,
 } from "Classes/entity-class";
 
 const HOST = "http://localhost:5052";
@@ -117,13 +117,16 @@ export const API = {
     getAllRequest: () => get("/get-all-request"),
     getPendingRequest: () => get("/get-pending-request"),
     getConfirmedRequest: () => get("/get-confirmed-request"),
+    getSubmittedRequest: () => get("/get-submitted-request"),
     getAllDC: () => get ("/get-all-dc-list"),
+    addDC: (dcObject :DiagnosticCenter) => post("/addDC",dcObject),
 
   },
 
-  admin: {
-    addAdmin: (admin:DCAdmin) => post("/addDCAdmin",admin),
-  },
+  // admin: {
+  //   addAdmin: (admin:DCAdmin) => post("/addDCAdmin",admin),
+
+  // },
 
 
 };

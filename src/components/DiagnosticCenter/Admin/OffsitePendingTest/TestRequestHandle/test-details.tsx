@@ -1,6 +1,6 @@
 import { Grid, Typography, Rating, Stack } from "@mui/material";
 import { DC_Test, Doctor, Taker } from "Classes/entity-class";
-import BasicButton from "./basic-button";
+
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import { API } from "API Handler/api";
@@ -12,14 +12,14 @@ import id from "date-fns/esm/locale/id/index.js";
 
 export  function TestDetails({dc_test_info}:{dc_test_info:DC_Test}) {
   const [dc_test,setDCTest] = React.useState<DC_Test>();
-    
+  
   const navigate = useNavigate();
 
 
   const handleConfirm = (e) => {
     e.preventDefault();
 
-    dc_test_info.status = "approved"
+    dc_test_info.status = "completed"
 
     // dc_test_info.taker = new Taker()
     // dc_test_info.taker.id = (JSON.parse(localStorage.getItem("Taker")||"") as Taker).id || undefined;
@@ -39,7 +39,7 @@ export  function TestDetails({dc_test_info}:{dc_test_info:DC_Test}) {
       ).then((response) => {
       console.log(response);
       console.log("yes1.");
-      navigate("/requested-test-list-ui")
+      navigate("/offsite-requested-test-list-ui")
     });
 
    }; 

@@ -218,7 +218,7 @@ export default function SignUpTaker() {
                   label="pathology_resgistration_no"
                   onChange={(event) => {
                     
-                    setTaker({ ...taker, dc_code: event.target.value });
+                    setTaker({ ...taker, pathology_registration_no : event.target.value });
                   }}
                 />
               </Grid>
@@ -291,7 +291,7 @@ export default function SignUpTaker() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="http://localhost:3000/sign-in" variant="body2">
+                <Link href="http://localhost:3000" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>

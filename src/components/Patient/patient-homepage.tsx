@@ -4,6 +4,7 @@ import React from "react";
 import PatientAppbar from "./patient-appbar";
 import BasicCard from "components/card";
 import PatientLayout from "./patient-layout";
+import FindDCCard from "./FindDC/FindDCCard";
 
 export default function Patient_Home_Page() {
   const navigate = useNavigate();
@@ -60,7 +61,7 @@ export default function Patient_Home_Page() {
               <BasicCard text="Lab Reports"></BasicCard>
             </Grid>
             <Grid item>
-              <BasicCard text="Find a diagnostic Center"></BasicCard>
+              <FindDCCard text="Find a diagnostic Center"></FindDCCard>
             </Grid>
           </Grid>
         </Grid>

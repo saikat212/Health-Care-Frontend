@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom";
 
 import { API } from "API Handler/api";
 import { DatePicker } from "@mui/x-date-pickers";
-import { DCAdmin, DiagnosticCenter, Speciality } from "Classes/entity-class";
+import {  DiagnosticCenter, Speciality } from "Classes/entity-class";
 import { useState } from "react";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
@@ -49,19 +49,10 @@ const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 export default function SignUpAdmin() {
   const theme = createTheme();
   const navigate = useNavigate();
+  const choiceList = ['yes','no'];
 
-  const [admin,setAdmin] = React.useState<DCAdmin>();
-  const [adminDClist,setAdminDCList] = useState<DiagnosticCenter[]>([]);
+  const [dcAdmin,setDcAdmin] = React.useState<DiagnosticCenter>();
 
-
-  useEffect(() => {
-    API.diagnosticCenter.getAllDC().then((response) => {
-      setAdminDCList(response.data);
-      console.log(response.data);
-      
-    });
-
-  }, []);
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -73,27 +64,30 @@ export default function SignUpAdmin() {
   }
 
   const handleDCList = (event) => {
-
-    setAdmin({ ...admin, dc : adminDClist.find(( item ) => item.id == event.target.value),});
+    setDcAdmin({ ...dcAdmin, isOfferOnsiteTest : event.target.value});
+   
     console.log(event.target.value);
   };
 
   const handleClickSignUp = (e) => {
     e.preventDefault();
 
-      admin && 
-        API.admin.addAdmin( 
+
+      dcAdmin && 
+        API.diagnosticCenter.addDC( 
           { 
-            ...admin,
+            ...dcAdmin,
              person: 
              {
-               ...admin?.person , role: "admin"
+               ...dcAdmin?.person , role: "admin"
              }
           }).then( (response) => { 
 
             console.log(response);
+            console.log("person added")
             navigate("/dc-admin-home-page")
            });
+
   };
 
   return (
@@ -133,7 +127,7 @@ export default function SignUpAdmin() {
                   onChange={(event) => {
               
 
-                    setAdmin({...admin,person: {...admin?.person,firstName: event.target.value,}, });
+                    setDcAdmin({...dcAdmin,person: {...dcAdmin?.person,firstName: event.target.value,}, });
                   }}
                 />
               </Grid>
@@ -147,18 +141,18 @@ export default function SignUpAdmin() {
                   autoComplete="name"
                   onChange={(event) => {
                  
-                    setAdmin({...admin,person: {...admin?.person,lastName: event.target.value,}, });
+                    setDcAdmin({...dcAdmin,person: {...dcAdmin?.person,lastName: event.target.value,}, });
                   }}
                 />
               </Grid>
               <Grid item xs={12}>
                 <DatePicker
                   label="Date of birth"
-                  value={admin?.person?.dateOfBirth}
+                  value={dcAdmin?.person?.dateOfBirth}
                   onChange={(newValue) => {
 
 
-                    setAdmin({ ...admin , person: { ...admin?.person, dateOfBirth: newValue },});
+                    setDcAdmin({ ...dcAdmin , person: { ...dcAdmin?.person, dateOfBirth: newValue },});
                   }}
                   renderInput={(params) => (
                     <TextField required fullWidth {...params} />
@@ -176,7 +170,7 @@ export default function SignUpAdmin() {
                   onChange={(event) => {
             
 
-                    setAdmin({ ...admin, person: { ...admin?.person, email: event.target.value }, });
+                    setDcAdmin({ ...dcAdmin, person: { ...dcAdmin?.person, email: event.target.value }, });
                   }}
                 />
               </Grid>
@@ -191,21 +185,24 @@ export default function SignUpAdmin() {
                   onChange={(event) => {
                
 
-                    setAdmin({ ...admin, person: {...admin?.person, mobileNo: event.target.value,}, });
+                    setDcAdmin({ ...dcAdmin, person: {...dcAdmin?.person, mobileNo: event.target.value,}, });
 
                   }}
                 />
               </Grid>
+             
+    
               <Grid item xs={12}>
                 <TextField
+                  name="pathology_resgistration_no"
                   required
                   fullWidth
-                  id="nid"
-                  label="National ID"
-                  name="nid"
+                  id="pathology_resgistration_no"
+                  label="DC Name"
                   onChange={(event) => {
-                  
-                    setAdmin({ ...admin, nid: event.target.value });
+                    
+               
+                     setDcAdmin({ ...dcAdmin, name : event.target.value });
                   }}
                 />
               </Grid>
@@ -215,36 +212,50 @@ export default function SignUpAdmin() {
                   required
                   fullWidth
                   id="pathology_resgistration_no"
-                  label="DC_code"
+                  label="DC Location"
                   onChange={(event) => {
                     
-                    setAdmin({ ...admin, dc_code: event.target.value });
+               
+                    setDcAdmin({ ...dcAdmin, location : event.target.value });
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  name="pathology_resgistration_no"
+                  required
+                  fullWidth
+                  id="pathology_resgistration_no"
+                  label="Registration No. "
+                  onChange={(event) => {
+                    
+                     setDcAdmin({ ...dcAdmin, registrationNum : event.target.value });
                   }}
                 />
               </Grid>
               <Grid item xs={12}>
                 <FormControl fullWidth>
                   <InputLabel id="demo-simple-select-label">
-                    Select your DC
+                   Is-Offer-Onsite-Test
                   </InputLabel>
                   <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     //@ts-ignore
-                    value={admin?.dc?.id || null}  //check
-                    label="Select your DC"
+                   
+                    value={dcAdmin?.isOfferOnsiteTest || null}
+                    label=" Is-Offer-Onsite-Test"
                     onChange={handleDCList}
                   >
-                    {adminDClist?.map((dc, idx) => (
-                      <MenuItem key={idx} value={dc.id}>
-                        {dc.name}
+                    {choiceList?.map((option, idx) => (
+                      <MenuItem key={idx} value={option}>
+                        {option}
                       </MenuItem>
                     ))}
                   </Select>
                 </FormControl>
               </Grid>
-      
-
+  
               <Grid item xs={12}>
                 <TextField
                   required
@@ -257,7 +268,7 @@ export default function SignUpAdmin() {
                   onChange={(event) => {
               
 
-                    setAdmin ({ ...admin, person: { ...admin?.person, password: event.target.value,}, });
+                    setDcAdmin ({ ...dcAdmin, person: { ...dcAdmin?.person, password: event.target.value,}, });
                   }}
                 />
               </Grid>
@@ -266,7 +277,7 @@ export default function SignUpAdmin() {
                   onChange={(value) => {
             
 
-                  setAdmin ({ ...admin, person: { ...admin?.person, gender: value }, });
+                  setDcAdmin ({ ...dcAdmin, person: { ...dcAdmin?.person, gender: value }, });
 
                   }}
                 />
@@ -291,7 +302,7 @@ export default function SignUpAdmin() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="http://localhost:3000/sign-in" variant="body2">
+                <Link href="http://localhost:3000" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>
