@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom";
 
 import { API } from "API Handler/api";
 import { DatePicker } from "@mui/x-date-pickers";
-import { DCAdmin, DiagnosticCenter, Speciality } from "Classes/entity-class";
+import {  DiagnosticCenter, Speciality } from "Classes/entity-class";
 import { useState } from "react";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
@@ -302,7 +302,7 @@ export default function SignUpAdmin() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="http://localhost:3000/sign-in" variant="body2">
+                <Link href="http://localhost:3000" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>

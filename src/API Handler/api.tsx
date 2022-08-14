@@ -11,7 +11,6 @@ import {
   Test_Prescription,
   Taker,
   DC_Test,
-  DCAdmin,
   DiagnosticCenter,
 } from "Classes/entity-class";
 
@@ -124,10 +123,10 @@ export const API = {
 
   },
 
-  admin: {
-    addAdmin: (admin:DCAdmin) => post("/addDCAdmin",admin),
+  // admin: {
+  //   addAdmin: (admin:DCAdmin) => post("/addDCAdmin",admin),
 
-  },
+  // },
 
 
 };

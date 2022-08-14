@@ -14,7 +14,7 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import { API } from "API Handler/api";
-import { DCAdmin, Doctor, Patient, Person, Taker } from "./Classes/entity-class";
+import {  DiagnosticCenter, Doctor, Patient, Person, Taker } from "./Classes/entity-class";
 import { showSnackbar } from "Classes/helper-class";
 import { useSnackbar } from "notistack";
 
@@ -49,7 +49,7 @@ export default function SignInSide() {
   const [pat, setPatient] = React.useState<Patient>();
   const [p, setPerson] = React.useState<Person>();
   const [t,setTaker] =  React.useState<Taker>();
-  const [a,setAdmin] =  React.useState<DCAdmin>();
+  const [a,setDCAdmin] =  React.useState<DiagnosticCenter>();
 
   function errorVerify() {
     if (!state.email || !state.password) {
@@ -132,7 +132,7 @@ export default function SignInSide() {
                 }
                 else if (response.data.role == "admin") {
                   console.log("It's in admin");
-                  setAdmin({
+                  setDCAdmin({
                     ...a,
                     person: response.data,
                     id: response.data?.id,

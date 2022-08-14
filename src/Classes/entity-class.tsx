@@ -111,7 +111,7 @@ export class Taker{
     nid?:string;
     takerSpeciality?:TakerSpeciality;
     person?:Person;
-    
+    pathology_registration_no?:string;
 }
 export class DiagnosticCenter
 {

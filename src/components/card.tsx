@@ -12,8 +12,8 @@ export default function BasicCard({text} : {text:string}) {
     const navigate = useNavigate();
   return (
     <Card
-   /*  onClick={() => navigate("/doctor-list", {state: spec })}
-    sx={{ width: "100%" }} */
+  onClick={() => navigate("/doctor-list")}
+    sx={{ width: "100%" }} 
   >
     <CardActionArea>
       <CardMedia
