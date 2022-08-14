@@ -51,8 +51,7 @@ export default function SignUpAdmin() {
   const navigate = useNavigate();
   const choiceList = ['yes','no'];
 
-  const [admin,setAdmin] = React.useState<DCAdmin>();
-  const [dcTable,setDCTable] = React.useState<DiagnosticCenter>();
+  const [dcAdmin,setDcAdmin] = React.useState<DiagnosticCenter>();
 
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -65,31 +64,22 @@ export default function SignUpAdmin() {
   }
 
   const handleDCList = (event) => {
-    // setAdmin({ ...admin, dc: {...admin?.dc, isOfferOnsiteTest : event.target.value,},});
-    // setAdmin({ ...admin, dc. : choiceList.find(( item ) => item == event.target.value),});
-    // setDCTable({ ...dcTable, isOfferOnsiteTest : choiceList.find(( item ) => item == event.target.value),});
+    setDcAdmin({ ...dcAdmin, isOfferOnsiteTest : event.target.value});
+   
     console.log(event.target.value);
   };
 
   const handleClickSignUp = (e) => {
     e.preventDefault();
 
-    // dcTable && 
-    // API.diagnosticCenter.addDC(dcTable)
-    // .then( (response) => { 
 
-    //     console.log(response);
-    //     console.log("new DC added");
-       
-    //    });
-
-      admin && 
-        API.admin.addAdmin( 
+      dcAdmin && 
+        API.diagnosticCenter.addDC( 
           { 
-            ...admin,
+            ...dcAdmin,
              person: 
              {
-               ...admin?.person , role: "admin"
+               ...dcAdmin?.person , role: "admin"
              }
           }).then( (response) => { 
 
@@ -137,7 +127,7 @@ export default function SignUpAdmin() {
                   onChange={(event) => {
               
 
-                    setAdmin({...admin,person: {...admin?.person,firstName: event.target.value,}, });
+                    setDcAdmin({...dcAdmin,person: {...dcAdmin?.person,firstName: event.target.value,}, });
                   }}
                 />
               </Grid>
@@ -151,18 +141,18 @@ export default function SignUpAdmin() {
                   autoComplete="name"
                   onChange={(event) => {
                  
-                    setAdmin({...admin,person: {...admin?.person,lastName: event.target.value,}, });
+                    setDcAdmin({...dcAdmin,person: {...dcAdmin?.person,lastName: event.target.value,}, });
                   }}
                 />
               </Grid>
               <Grid item xs={12}>
                 <DatePicker
                   label="Date of birth"
-                  value={admin?.person?.dateOfBirth}
+                  value={dcAdmin?.person?.dateOfBirth}
                   onChange={(newValue) => {
 
 
-                    setAdmin({ ...admin , person: { ...admin?.person, dateOfBirth: newValue },});
+                    setDcAdmin({ ...dcAdmin , person: { ...dcAdmin?.person, dateOfBirth: newValue },});
                   }}
                   renderInput={(params) => (
                     <TextField required fullWidth {...params} />
@@ -180,7 +170,7 @@ export default function SignUpAdmin() {
                   onChange={(event) => {
             
 
-                    setAdmin({ ...admin, person: { ...admin?.person, email: event.target.value }, });
+                    setDcAdmin({ ...dcAdmin, person: { ...dcAdmin?.person, email: event.target.value }, });
                   }}
                 />
               </Grid>
@@ -195,37 +185,13 @@ export default function SignUpAdmin() {
                   onChange={(event) => {
                
 
-                    setAdmin({ ...admin, person: {...admin?.person, mobileNo: event.target.value,}, });
+                    setDcAdmin({ ...dcAdmin, person: {...dcAdmin?.person, mobileNo: event.target.value,}, });
 
                   }}
                 />
               </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="nid"
-                  label="National ID"
-                  name="nid"
-                  onChange={(event) => {
-                  
-                    setAdmin({ ...admin, nid: event.target.value });
-                  }}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  name="pathology_resgistration_no"
-                  required
-                  fullWidth
-                  id="pathology_resgistration_no"
-                  label="DC_code"
-                  onChange={(event) => {
-                    
-                    setAdmin({ ...admin, dc_code: event.target.value });
-                  }}
-                />
-              </Grid>
+             
+    
               <Grid item xs={12}>
                 <TextField
                   name="pathology_resgistration_no"
@@ -235,8 +201,8 @@ export default function SignUpAdmin() {
                   label="DC Name"
                   onChange={(event) => {
                     
-                    // setDCTable({ ...dcTable, name: event.target.value });
-                    // setAdmin({ ...admin, dc: {...admin?.dc, name : event.target.value,}, });
+               
+                     setDcAdmin({ ...dcAdmin, name : event.target.value });
                   }}
                 />
               </Grid>
@@ -249,8 +215,8 @@ export default function SignUpAdmin() {
                   label="DC Location"
                   onChange={(event) => {
                     
-                    // setDCTable({ ...dcTable, location: event.target.value });
-                    // setAdmin({ ...admin, dc: {...admin?.dc, location : event.target.value,}, });
+               
+                    setDcAdmin({ ...dcAdmin, location : event.target.value });
                   }}
                 />
               </Grid>
@@ -263,7 +229,7 @@ export default function SignUpAdmin() {
                   label="Registration No. "
                   onChange={(event) => {
                     
-                    // setAdmin({ ...admin, dc: {...admin?.dc, registrationNum : event.target.value,}, });
+                     setDcAdmin({ ...dcAdmin, registrationNum : event.target.value });
                   }}
                 />
               </Grid>
@@ -276,9 +242,8 @@ export default function SignUpAdmin() {
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     //@ts-ignore
-                    // value={admin?.dc?.id || null}  //check
-                    // value={dcTable?.isOfferOnsiteTest || null} 
-                    value={admin?.dc?.isOfferOnsiteTest || null}
+                   
+                    value={dcAdmin?.isOfferOnsiteTest || null}
                     label=" Is-Offer-Onsite-Test"
                     onChange={handleDCList}
                   >
@@ -303,7 +268,7 @@ export default function SignUpAdmin() {
                   onChange={(event) => {
               
 
-                    setAdmin ({ ...admin, person: { ...admin?.person, password: event.target.value,}, });
+                    setDcAdmin ({ ...dcAdmin, person: { ...dcAdmin?.person, password: event.target.value,}, });
                   }}
                 />
               </Grid>
@@ -312,7 +277,7 @@ export default function SignUpAdmin() {
                   onChange={(value) => {
             
 
-                  setAdmin ({ ...admin, person: { ...admin?.person, gender: value }, });
+                  setDcAdmin ({ ...dcAdmin, person: { ...dcAdmin?.person, gender: value }, });
 
                   }}
                 />
