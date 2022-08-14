@@ -3,7 +3,7 @@ import { API } from "API Handler/api";
 import { Appointment, Patient } from "Classes/entity-class";
 import React, { useEffect } from "react";
 
-export default function ApprovedAppointmentDetails ({
+export default function ApprovedAppointmentDetailsTwo({
   appointment,
 }: {
   appointment: Appointment;
@@ -15,6 +15,7 @@ export default function ApprovedAppointmentDetails ({
       .getPatientById(appointment?.patient?.id as number)
       .then((response) => {
         setPatient(response.data);
+        localStorage.setItem("Patient",JSON.stringify(response.data))
         console.log(response.data);
       });
   }, []);
@@ -120,11 +121,11 @@ export default function ApprovedAppointmentDetails ({
           >
             <Grid item>
               <Typography sx={{ fontWeight: "bold" }}>
-                Appointment Date
+                Gender
               </Typography>
             </Grid>
             <Grid item>
-              <Typography>{get_Date(appointment?.date?.toString() as string)}</Typography>
+              <Typography>{patient?.person?.gender}</Typography>
             </Grid>
           </Grid>
 

@@ -1,5 +1,14 @@
-import { ButtonGroup, Button, Grid, Typography } from "@mui/material";
-import ResponsiveAppBar from "components/Doctor/doctor-page-Appbar";
+import {
+  ButtonGroup,
+  Button,
+  Grid,
+  Typography,
+  TextField,
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
+} from "@mui/material";
 import ChooseMedicine from "./choose-medicine";
 import ChooseDose from "./choose-dose";
 import ChooseDCTest from "./choose-dc-test";
@@ -12,6 +21,7 @@ import {
   Test_Prescription,
 } from "Classes/entity-class";
 import React, { useState, useEffect } from "react";
+import ChooseDuration from "./choose-duration";
 import { API } from "API Handler/api";
 //import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 //import ReactPDF from "@react-pdf/renderer";
@@ -19,12 +29,13 @@ import { API } from "API Handler/api";
 export default function SetPrescriptionInfo() {
   const navigate = useNavigate();
   const { state } = useLocation();
-  const [appointment, setAppointment] = React.useState<Appointment>(
-    new Appointment()
-  );
+  const [appointment, setAppointment] = React.useState<Appointment>();
   const [prescription, setPrescription] = React.useState<Prescription>();
   const [med_pres, setMedPres] = React.useState<MC_Prescription>();
   const [test_pres, setTestPres] = React.useState<Test_Prescription>();
+
+  const [medPresArray, setMedPresArray] = React.useState<MC_Prescription[]>([]);
+  const [testPresArray, setTestPresArray] = React.useState<Test_Prescription[]>([]);
 
   /* const styles = StyleSheet.create({
     page: {
@@ -53,38 +64,53 @@ export default function SetPrescriptionInfo() {
   );
  */
   function handleAddMedicine() {
-    /*  API.medicinePres.saveMedicine(med_pres as MC_Prescription).then(response=>{
+    /* API.medicinePres.saveMedicine(med_pres as MC_Prescription).then(response=>{
         console.log(response.data);
-      }) 
-      localStorage.setItem("MC_Prescription",JSON.stringify(med_pres)) */
+      }) */
+    //@ts-ignore
+    setMedPresArray([...medPresArray,med_pres])
+    //localStorage.setItem("MC_Prescription",JSON.stringify(med_pres))
   }
   function handleAddTest() {
-    /*   API.testPres.saveTest(test_pres as Test_Prescription).then(response =>{
+    /*    API.testPres.saveTest(test_pres as Test_Prescription).then(response =>{
       console.log(response.data)
     }) 
-    localStorage.setItem("Test_Prescription",JSON.stringify(test_pres)) */
+    localStorage.setItem("Test_Prescription",JSON.stringify(test_pres))  */
+    //@ts-ignore
+    setTestPresArray([...testPresArray,test_pres])
   }
-  /* function handleUploadPrescription(){
-    console.log("Hittt")
-    ReactPDF.renderToStream(<MyDocument />);
+   function handleUpload(){
+    console.log(medPresArray)
+    console.log(testPresArray)
+    localStorage.setItem("MedicineInPrescription",JSON.stringify(medPresArray))
+    localStorage.setItem("TestInPrescription",JSON.stringify(testPresArray))
+    //ReactPDF.renderToStream(<MyDocument />);
 
-  } */
+  } 
 
   useEffect(() => {
     state && setAppointment(state as Appointment);
+    console.log("Appt: ", state as Appointment);
     setPrescription({
       ...prescription,
-      problem: appointment.problem,
-      appointment: appointment,
+      problem: (state as Appointment).problem,
+      appointment: state as Appointment,
     });
-    localStorage.setItem(
+     /*   API.prescription.savePrescription({
+      ...prescription,
+      problem: (state as Appointment).problem,
+      appointment: (state as Appointment),
+    }).then(response=>{
+      console.log("Pres: "+response.data)
+    })   */ 
+    /*  localStorage.setItem(
       "Prescription",
       JSON.stringify({
         ...prescription,
         problem: appointment.problem,
         appointment: appointment,
       })
-    );
+    ); */
   }, [state]);
 
   return (
@@ -93,8 +119,8 @@ export default function SetPrescriptionInfo() {
         container
         direction="row"
         alignItems="center"
-        sx={{ padding: "100px", height: "100%" }}
-        spacing={2}
+        sx={{ padding: "40px", height: "100%" }}
+        spacing={3}
       >
         <Grid item>
           <Grid //Left column
@@ -102,90 +128,99 @@ export default function SetPrescriptionInfo() {
             direction="column"
             alignItems="center"
             justifyContent="space-between"
-            sx={{ padding: "100px", height: "100%" }}
+            sx={{ padding: "40px", height: "100%" }}
             spacing={2}
           >
             <Grid item>
-              <Grid //Handle Medicine
-                container
-                direction="column"
-                alignItems="center"
-                justifyContent="space-between"
-                sx={{ padding: "100px", height: "100%" }}
-                spacing={2}
-              >
-                <Grid item>
-                  <ChooseMedicine
-                    onChange={(value) => {
-                      /*  setMedPres({
-                        ...med_pres,
-                        medicine:value
-                      })  */
-                      console.log(value);
-                    }}
-                  />
-                </Grid>
-                <Grid item>
-                  <ChooseDose
-                    onChange={(value) => {
-                      /* setMedPres({
-                        ...med_pres,
-                        dose:value
-                      })  */
-                      console.log(value);
-                    }}
-                  />
-                </Grid>
-                <Button variant="contained" onClick={handleAddMedicine}>
-                  Add Medicine
-                </Button>
-              </Grid>
+              <ChooseMedicine
+                onChange={(value) => {
+                  setMedPres({
+                    ...med_pres,
+                    medicine: value,
+                  });
+                  console.log("val: ", value);
+                  console.log("med: ", med_pres);
+                }}
+              />
             </Grid>
-
             <Grid item>
-              <Grid //Handle Test
-                container
-                direction="column"
-                alignItems="center"
-                justifyContent="space-between"
-                sx={{ padding: "100px", height: "100%" }}
-                spacing={2}
-              >
-                <Grid item>
-                  <ChooseDCTest
-                    onChange={(value) => {
-                      /*    setTestPres({
-                        ...test_pres,
-                        test:value
-                      })  */
-                      console.log(value);
-                    }}
-                  />
-                </Grid>
-                <Button variant="contained" onClick={handleAddTest}>
-                  Add Test
-                </Button>
-              </Grid>
+              <ChooseDose
+                onChange={(value) => {
+                  setMedPres({
+                    ...med_pres,
+                    dose: value,
+                  });
+                  console.log("dose: ", med_pres);
+                  console.log("val: ", value);
+                }}
+              />
+            </Grid>
+            <Grid item>
+              <ChooseDuration
+                onChange={(value) => {
+                  setMedPres({
+                    ...med_pres,
+                    duration: value,
+                  });
+                }}
+              />
+            </Grid>
+            <Grid item>
+              <Button variant="contained" onClick={handleAddMedicine}>
+                Add Medicine
+              </Button>
+            </Grid>
+            <Grid item>
+              <ChooseDCTest
+                onChange={(value) => {
+                  setTestPres({
+                    ...test_pres,
+                    test: value,
+                  });
+                  console.log("test: ", test_pres);
+                  console.log("val: ", value);
+                }}
+              />
+            </Grid>
+            <Grid item>
+              <Button variant="contained" onClick={handleAddTest}>
+                Add Test
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button variant="contained" onClick={handleUpload}>Upload Prescription</Button>
             </Grid>
           </Grid>
         </Grid>
-
         <Grid item>
           <Grid //Right column
             container
             direction="column"
             alignItems="center"
             justifyContent="space-between"
-            sx={{ padding: "100px", height: "100%" }}
+            sx={{ padding: "40px", height: "100%" }}
             spacing={2}
           >
             <Grid item>
-              <Typography>Hiii</Typography>
+              <Typography>Prescription</Typography>
             </Grid>
             <Grid item>
-              <Button variant="contained">
-                Upload Prescription
-              </Button>
+             {/*   <List
+                sx={{
+                  width: "100%",
+                  maxWidth: 360,
+                  bgcolor: "background.paper",
+                }}
+              >
+                {medPresArray.map((value) => (
+                  <ListItem
+                    key={value.medicine?.name}
+                    disableGutters
+                  >
+                    <ListItemText primary={`${value.medicine?.name}`} />
+                  </ListItem>
+                ))}
+              </List>  */}
             </Grid>
           </Grid>
         </Grid>

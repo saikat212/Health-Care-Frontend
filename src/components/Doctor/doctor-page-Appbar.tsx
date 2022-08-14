@@ -18,7 +18,7 @@ import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 
 const pages = ['Monitor', 'About', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-export const headerHeight = 105;
+export const headerHeight = 70;
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);

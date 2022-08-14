@@ -7,21 +7,22 @@ export default function ChooseDose({
 }: {
   onChange: (value) => void;
 }) {
-  const [temp, setTemp] = React.useState<string>();
-  const [value, setValue] = React.useState<string | null>();
-  const [inputValue, setInputValue] = React.useState("");
-  onChange(value === null ? inputValue:value)
+  
+ // const [value, setValue] = React.useState<string | null>();
+ // const [inputValue, setInputValue] = React.useState("");
+  
   return (
     <Autocomplete
       id="dose"
       options={dose}
       onChange={(event: any, newValue: string | null) => {
-        setValue(newValue);
+        //setValue(newValue);
+        onChange(newValue)
       }}
-      inputValue={inputValue}
+     /*  inputValue={inputValue}
       onInputChange={(event, newInputValue) => {
         setInputValue(newInputValue);
-      }}
+      }} */
       style={{ width: 500 }}
       renderInput={(params) => (
         <TextField {...params} label="Choose Dose" placeholder="Dose" />

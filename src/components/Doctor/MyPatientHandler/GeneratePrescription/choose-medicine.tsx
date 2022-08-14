@@ -14,9 +14,9 @@ export default function ChooseMedicine({
 }) {
  
   const [medicine, setMedicine] = React.useState<Medicine>();
-  const [inputMed, setInputMed] = React.useState('');
+  const [inputMed, setInputMed] = React.useState<Medicine>();
   const [medicines, setMedicines] = React.useState<Medicine[]>();
-  onChange(medicine === null ? inputMed:medicine)
+
    React.useEffect(
     ()=>{
         API.medicine.getAllMedicine().then(response=>{
@@ -30,14 +30,27 @@ export default function ChooseMedicine({
     <Autocomplete
       id="medicine"
       options={medicines as Medicine[]}
+      clearOnBlur={false}
+      //inputValue={inputVal}
       getOptionLabel={(option)=>option.name as string}
       onChange={(event: any, newValue:Medicine| null) => {
         setMedicine(newValue as Medicine)
         console.log(medicine)
+        onChange(newValue)
       }}
-      inputValue={inputMed}
-      onInputChange={(event, newInputValue) => {
-        setInputMed(newInputValue);
+      
+      onInputChange={(event, newInputValue, reason) => {
+     
+        setInputMed({
+          ...inputMed,
+          name:newInputValue,
+          id: 0   //Input from doctor
+        });
+        onChange({
+          ...inputMed,
+          name:newInputValue,
+          id: 0
+        })
       }}
       style={{ width: 500 }}
       renderInput={(params) => (

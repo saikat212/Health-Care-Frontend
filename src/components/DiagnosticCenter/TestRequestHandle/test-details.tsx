@@ -12,7 +12,7 @@ import id from "date-fns/esm/locale/id/index.js";
 
 export  function TestDetails({dc_test_info}:{dc_test_info:DC_Test}) {
   const [dc_test,setDCTest] = React.useState<DC_Test>();
-  
+    
   const navigate = useNavigate();
 
   const handleConfirm = (e) => {
