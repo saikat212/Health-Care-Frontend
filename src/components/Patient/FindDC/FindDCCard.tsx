@@ -12,7 +12,7 @@ export default function FindDCCard({text} : {text:string}) {
     const navigate = useNavigate();
   return (
     <Card
-  onClick={() => navigate("/doctor-list")}
+  onClick={() => navigate("/all-dc-list-ui")}
     sx={{ width: "100%" }} 
   >
     <CardActionArea>

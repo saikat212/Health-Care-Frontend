@@ -12,6 +12,7 @@ import {
   Taker,
   DC_Test,
   DiagnosticCenter,
+  DCTestList,
 } from "Classes/entity-class";
 
 const HOST = "http://localhost:5052";
@@ -122,6 +123,15 @@ export const API = {
     addDC: (dcObject :DiagnosticCenter) => post("/addDC",dcObject),
 
   },
+
+  dcTestList:
+  {
+    addDCTestList: (dcTestList:DCTestList) => post("/addDCTestList",dcTestList),
+    getAllTest: () => get ("/get-all-dc-test-list"),
+   
+  },
+
+
 
   // admin: {
   //   addAdmin: (admin:DCAdmin) => post("/addDCAdmin",admin),
