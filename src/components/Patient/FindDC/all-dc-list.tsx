@@ -47,10 +47,10 @@ export default function AllDCListUI() {
           sx={{ backgroundColor: "blue", padding: "10px", height: "100%" }}
           spacing={5}
         >
-         {dc_list?.map((dc_test,idx) => (
+         {dc_list?.map((dc_info,idx) => (
             <Grid key = {idx} item>
               <DCListCard
-              dc_info = {dc_test}
+              dc_info = {dc_info}
               />
             </Grid>
           ))}

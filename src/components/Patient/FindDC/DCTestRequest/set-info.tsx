@@ -14,37 +14,46 @@ import {
   import PatientAppbar from "components/Patient/patient-appbar";
   import PatientLayout from "components/Patient/patient-layout";
   
-  export function DoctorDetails_Get_Appointment({ doctor }: { doctor: Doctor }) {
+  export default function SetInfo({ dc_test_list }: { dc_test_list: DCTestList }) {
     const navigate = useNavigate();
-    const {state} = useLocation();  // dc_test_list class object
+    // const {state} = useLocation();
+    // const [dc_test_list,setDCTestList] = React.useState<DCTestList>(new DCTestList());
+    const [dc_test,setDCTest] = React.useState<DC_Test>();
+
+   // dc_test_list class object = one row
+    console.log("SetInfo: passed : dc_test_list : ")
+    console.log(dc_test_list)
     //dc_test == appointment data
     // dc_test_list , dc_test er ekta column
-    const [dc_test_list,setDCTestList] = React.useState<DCTestList>(new DCTestList());
-    const [dc_test,setDCTest] = React.useState<DC_Test>(new DC_Test());
   
+
+
     useEffect(() => {
       //Data will be loaded first time only
-    //   setAppointmet({
-    //     ...appointment,
-    //     doctor: doctor,
-    //     patient: JSON.parse(localStorage.getItem("Patient") || "") as Patient,
-    //   });
-
     
-      state && setDCTestList(state as DCTestList);
+    // confusion : set call duibar
+    //  console.log("in useeffect call")    
+    // state && setDCTestList(state as DCTestList);
+    // console.log("dcTestList : after1 setDCTestList set ")
+    // console.log(dc_test_list)
 
+
+    console.log("SetInfo: useeffect")
+    console.log("SetInfo:Before dcTestList: dc_test_list =? ")
+    console.log(dc_test_list)
       setDCTest({
         ...dc_test,
         patient: JSON.parse(localStorage.getItem("Patient") || "") as Patient,
-        // set dctestlist
+        // Problematic part
+        dcTestList: dc_test_list,
 
       });
-
+      
 
     }, []);
   
     return (
-      <PatientLayout>
+     
         <Grid
           container
           direction="row"
@@ -55,7 +64,7 @@ import {
         >
           {/* Picture */}
           <Grid item>
-            <img src={require("../../../images/doctor.jpg")} height="150px" />
+            {/* <img src={require("../../../images/doctor.jpg")} height="150px" /> */}
           </Grid>
           {/* //1st Column */}
           <Grid item>
@@ -81,7 +90,7 @@ import {
                    DC Name : {dc_test_list.dc?.name}
                   </Typography>
                   <Typography sx={{ fontWeight: "bold" }}>
-                   DC Name : {dc_test_list.test?.name}
+                   Test Name : {dc_test_list.test?.name}
                   </Typography>
                 </Grid>
                 <Grid item>
@@ -194,7 +203,7 @@ import {
               spacing={2}
             >
               <Grid item>
-                <Typography>Fee: {doctor.fee}</Typography>
+                <Typography></Typography>
               </Grid>
               <Grid item>
                 <DatePicker
@@ -207,7 +216,7 @@ import {
                 //     });
                 //   }}
 
-                label="Select an appointment date"
+                label="Testing date"
                 value={dc_test?.date}
                 onChange={(newValue) => {
                   setDCTest({
@@ -225,18 +234,18 @@ import {
               <Grid item>
                 <Button
                   onClick={() =>
-                    navigate("/set-appointment-details", { state: dc_test })
+                    navigate("/set-dc-appointment", { state: dc_test })
                   }
                   variant="contained"
                   color="success"
                 >
-                  Get appointment
+                  DC Request
                 </Button>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
-      </PatientLayout>
+     
     );
   }
   

@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import React from "react";
 import { Appointment, DC_Test, Patient } from "Classes/entity-class";
 
-export default function SetAppointmentDetails({dc_test,onChange}:{dc_test:DC_Test; onChange:(value)=>void}) {
+export default function SetDCAppointmentDetails({dc_test,onChange}:{dc_test:DC_Test; onChange:(value)=>void}) {
   //console.log(JSON.parse(localStorage.getItem("Patient")||"") )
 
   return (
@@ -146,3 +146,5 @@ export default function SetAppointmentDetails({dc_test,onChange}:{dc_test:DC_Tes
     </React.Fragment>
   );
 }
+
+

@@ -138,12 +138,13 @@ export class DCTestList {
 }
 
 export class DC_Test {
-    [x: string]: any;
+    // [x: string]: any;
     id?:number;
     date?:Date=new Date();
     status?:string;
-    dc?:DiagnosticCenter;
-    test?:Test;
+    // dc?:DiagnosticCenter;
+    // test?:Test;
+    dcTestList?:DCTestList;
     patient?:Patient;
     location?:string;
     report?:string;

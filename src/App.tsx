@@ -41,6 +41,11 @@ import OffsiteRequestedTestListUI from "components/DiagnosticCenter/Admin/Offsit
 
 import AllDCListUI from "components/Patient/FindDC/all-dc-list";
 import TestListUI from "components/Patient/FindDC/test-list";
+
+//Find DC
+import SetInfo from "components/Patient/FindDC/DCTestRequest/set-info";
+import SetDCAppointment from "components/Patient/FindDC/DCTestRequest/set-dc-appointment";
+import PreviousPageSetInfo from "components/Patient/FindDC/DCTestRequest/previous-page-set-info";
 function App() {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -82,7 +87,13 @@ function App() {
            <Route path="/submitted-test-list-ui" element={<SubmittedTestListUI/>}/>
            <Route path="/offsite-requested-test-list-ui" element={<OffsiteRequestedTestListUI/>}/>
            <Route path="/all-dc-list-ui" element={<AllDCListUI/>}/> 
-           <Route path="/test-list-ui" element={<TestListUI/>}/> 
+           <Route path="/test-list-ui" element={<TestListUI/>}/>
+
+           //Find DC 
+           {/* <Route path="/set-info" element={<SetInfo/>}/>  */}
+           <Route path="/set-dc-appointment" element={<SetDCAppointment/>}/> 
+           <Route path="/previous-page-set-info" element={<PreviousPageSetInfo/>}/> 
+
             
           
 

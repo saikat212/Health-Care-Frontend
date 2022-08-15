@@ -15,7 +15,7 @@ import {
   DCTestList,
 } from "Classes/entity-class";
 
-const HOST = "http://localhost:5052";
+const HOST = "http://localhost:5051";
 
 function post(url, body = {}, param = {}) {
   return axios.post(HOST + url, body);
@@ -127,7 +127,7 @@ export const API = {
   dcTestList:
   {
     addDCTestList: (dcTestList:DCTestList) => post("/addDCTestList",dcTestList),
-    getAllTest: () => get ("/get-all-dc-test-list"),
+    getAllDCTestList: () => get ("/get-all-dc-test-list"),
    
   },
 

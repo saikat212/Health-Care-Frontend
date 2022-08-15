@@ -98,14 +98,14 @@ return(
         >
           <Grid item>
             <Typography sx={{ fontWeight: "bold" }}>
-             Test Name: {dc_test_info.test?.name}
+             Test Name: {dc_test_info.dcTestList?.test?.name}
             </Typography>
 
             <Typography sx={{ fontWeight: "bold" }}>
-             DC Name: {dc_test_info.dc?.name}
+             DC Name: {dc_test_info.dcTestList?.dc?.name}
             </Typography>
             <Typography sx={{ fontWeight: "bold" }}>
-             DC Location: {dc_test_info.dc?.location}
+             DC Location: {dc_test_info.dcTestList?.dc?.location}
             </Typography>
 
    

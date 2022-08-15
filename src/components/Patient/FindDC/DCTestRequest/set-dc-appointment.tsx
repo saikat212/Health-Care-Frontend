@@ -12,7 +12,7 @@ import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import SetAppointmentDetails from "./set-appointment-details";
+import SetAppointmentDetails from "./set-dc-appointment-details";
 import PaymentForm from "./PaymentForm";
 import Review from "./Review";
 import PatientAppbar from "components/Patient/patient-appbar";
@@ -21,6 +21,7 @@ import { Appointment, DC_Test, Patient } from "Classes/entity-class";
 import { valueToPercent } from "@mui/base";
 import { API } from "API Handler/api";
 import PatientLayout from "components/Patient/patient-layout";
+import SetDCAppointmentDetails from "./set-dc-appointment-details";
 
 function Copyright() {
   return (
@@ -40,15 +41,18 @@ const steps = ["Patient info", "Payment details"];
 
 const theme = createTheme();
 
-export default function SetAppointment() {
+export default function SetDCAppointment() {
   const { state } = useLocation();
-  const [_appointment, setAppointment] = React.useState<Appointment>(
-    new Appointment()
-  );
+  console.log("SetDCAppointment: state : dc_test er object")
+  console.log(state)
+  // const [_appointment, setAppointment] = React.useState<Appointment>(
+  //   new Appointment()
+  // );
 
-  const [dc_test,setDCTest] = React.useState<DC_Test>(new DC_Test());
-
-
+  const [dc_test,setDCTest] = React.useState<DC_Test>(state as DC_Test);
+  console.log("SetDCAppointment: dc_test : after set")
+  console.log(dc_test)
+  
   useEffect(() => {
     //Data will be loaded first time only
     // state && setAppointment(state as Appointment);
@@ -69,7 +73,8 @@ export default function SetAppointment() {
         ...dc_test,
         status:"pending"
       })
-      API.appointment.saveAppointment({  // change pending
+      // API.appointment.saveAppointment
+      API.diagnosticCenter.addDCTest({  // changed
         ...dc_test,
         status:"pending"
       }).then((response) => {
@@ -94,7 +99,7 @@ export default function SetAppointment() {
     switch (step) {
       case 0:
         return (
-          <SetAppointmentDetails  // pc
+          <SetDCAppointmentDetails  // pc
             // appointment={_appointment}
             // onChange={(value) => {
             //   setAppointment(value);
@@ -126,7 +131,7 @@ export default function SetAppointment() {
             sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
           >
             <Typography component="h1" variant="h4" align="center">
-              Provide Appointment Details
+              Provide DC Appointment Details
             </Typography>
             <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
               {steps.map((label) => (
@@ -139,10 +144,10 @@ export default function SetAppointment() {
               {activeStep === steps.length ? (
                 <React.Fragment>
                   <Typography variant="h5" gutterBottom>
-                    Thank you for your appointment.
+                    Thank you for your DC appointment.
                   </Typography>
                   <Typography variant="subtitle1">
-                    Your appointment number is {_appointment.id}.
+                    Your DC appointment number is {dc_test.id}.
                   </Typography>
                 </React.Fragment>
               ) : (

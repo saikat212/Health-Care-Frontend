@@ -15,9 +15,11 @@ import {
   
   export default function TestListCard({dc_test_list_info}:{dc_test_list_info:DCTestList}) {
     const navigate = useNavigate();
+    console.log("TestListCard : dc_test_list er per row pass hocce");
+    console.log(dc_test_list_info)
     return (
     <Card  
-      onClick={()=>navigate("/selection-confirmed-test",{state:dc_test_list_info})} sx={{ width: "100%"}}
+      onClick={()=>navigate("/previous-page-set-info",{state:dc_test_list_info})} sx={{ width: "100%"}}
       >
         <CardActionArea>
           <CardContent>
