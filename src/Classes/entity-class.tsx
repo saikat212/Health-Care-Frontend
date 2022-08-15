@@ -88,8 +88,8 @@ export class MC_Prescription{
     id?:number;
     prescription?:Prescription;
     medicine?:Medicine;
-    dose?:number;
-    duration?:number;
+    dose?:string;
+    duration?:string;
 }
 export class _Notification{
     id?:number;

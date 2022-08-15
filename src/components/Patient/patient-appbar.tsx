@@ -10,7 +10,7 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import { useNavigate } from "react-router-dom";
 import ShowNotification from "components/notification";
 // import SearchBar from "./search-bar";
-export const headerHeight = 105;
+export const headerHeight = 90;
 
 export default function PatientAppbar() {
    function handleLogOut(){

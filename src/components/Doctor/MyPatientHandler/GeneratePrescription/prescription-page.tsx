@@ -3,13 +3,12 @@ import { useNavigate } from "react-router-dom";
 import ResponsiveAppBar from "components/Doctor/doctor-page-Appbar";
 import DCTestList from "./dc-test-list";
 import MedicineList from "./medicine-list";
+import DoctorLayout from "components/Doctor/doctor-layout";
 export default function PrescriptionPage() {
   const navigate = useNavigate();
   return (
 
-    <>
-
-    <ResponsiveAppBar/>
+   <DoctorLayout>
     <Grid
       container
       direction="row"
@@ -242,9 +241,6 @@ export default function PrescriptionPage() {
       </Button>
     </Grid>
 
-
- 
-
-    </>
+    </DoctorLayout>
   );
 }

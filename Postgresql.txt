@@ -37,6 +37,9 @@ update appointment
 set status = 'pending'
 where id = 21
 
+insert into taker_speciality
+values(2,'covid-test','assee')
+
 
 
 

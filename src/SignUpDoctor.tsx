@@ -39,12 +39,7 @@ function Copyright(props: any) {
   );
 }
 
-/* const doctor_title = ["Dr.", "Prof Dr.", "Assoc Prof Dr.", "Assit Prof Dr."];
-const  setTitle = React.useState('Dr.');
 
-const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  setTitle(event.target.value);
-}; */
 
 export default function SignUpDoctor() {
   const theme = createTheme();
