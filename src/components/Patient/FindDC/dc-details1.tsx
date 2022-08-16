@@ -1,11 +1,11 @@
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import { Grid, Typography, Rating, Stack, Button, IconButton } from "@mui/material";
 import { API } from "API Handler/api";
-import { DC_Test, DiagnosticCenter, Taker } from "Classes/entity-class";
+import { DCTestList, DC_Test, DiagnosticCenter, Taker } from "Classes/entity-class";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export  function DCDetails({dc_info}:{dc_info:DiagnosticCenter}) {
+export  function DCDetails1({dc_test_list_info}:{dc_test_list_info:DCTestList}) {
    const navigate = useNavigate();
 
   //  const handleComplete = (e) => {
@@ -58,10 +58,27 @@ export  function DCDetails({dc_info}:{dc_info:DiagnosticCenter}) {
             spacing={2}
           >
             <Grid item>
-  
-              <Typography sx={{ fontWeight: "bold" }}>
-                DC Name: {dc_info.name} 
+            <Typography sx={{ fontWeight: "bold" }}>
+                Test Info###  
               </Typography>
+            <Typography sx={{ fontWeight: "bold" }}>
+                Name: {dc_test_list_info.test?.name} 
+              </Typography>
+              <Typography sx={{ fontWeight: "bold" }}>
+                Price : {dc_test_list_info.price} 
+              </Typography>
+              <Typography sx={{ fontWeight: "bold" }}>
+                is_online_test_available : {dc_test_list_info.isOnlineTestAvailable} 
+              </Typography>
+
+              <Typography sx={{ fontWeight: "bold" }}>
+                DC Info###  
+              </Typography>
+
+              <Typography sx={{ fontWeight: "bold" }}>
+                Name: {dc_test_list_info.dc?.name} 
+              </Typography>  
+            
             </Grid>
             <Grid item>
               <Typography></Typography>
@@ -78,14 +95,14 @@ export  function DCDetails({dc_info}:{dc_info:DiagnosticCenter}) {
           >
             <Grid item>
               <Typography sx={{ fontWeight: "bold" }}>
-              DC Regi-No.: {dc_info.registrationNum}
+               Regi-No.: {dc_test_list_info.dc?.registrationNum}
               </Typography>
   
               <Typography sx={{ fontWeight: "bold" }}>
-              DC Location: {dc_info.location}
+              Location: {dc_test_list_info.dc?.location}
               </Typography>
               <Typography sx={{ fontWeight: "bold" }}>
-               Is-Offer-Onsite-Test: {dc_info.isOfferOnsiteTest}
+               Rating: 4.4
               </Typography>
             </Grid>
             <Grid item>

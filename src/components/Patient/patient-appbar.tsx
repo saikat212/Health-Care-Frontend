@@ -5,19 +5,42 @@ import {
   Button,
   Badge,
   IconButton,
+  FormControl,
+  InputLabel,
+  Select,
 } from "@mui/material";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { useNavigate } from "react-router-dom";
 import ShowNotification from "components/notification";
+import Search from "@mui/icons-material/Search";
+import { styled, alpha } from '@mui/material/styles';
+
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+
+import InputBase from '@mui/material/InputBase';
+
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import MailIcon from '@mui/icons-material/Mail';
+import MoreIcon from '@mui/icons-material/MoreVert';
+import { useState } from "react";
+
 // import SearchBar from "./search-bar";
 export const headerHeight = 90;
 
+
 export default function PatientAppbar() {
-   function handleLogOut(){
-    localStorage.clear()
-         navigate("/")
-  }
-  const navigate = useNavigate();
+ const navigate = useNavigate();
+ 
+ function handleLogOut(){
+  localStorage.clear()
+       navigate("/")
+}
+
   return (
     <AppBar position="fixed" sx={{ backgroundColor: "indigo" }}>
       <Grid
@@ -40,6 +63,7 @@ export default function PatientAppbar() {
             </Grid>
           </Grid>
         </Grid>
+
         <Grid item>
           <Grid
             container
@@ -47,6 +71,7 @@ export default function PatientAppbar() {
             justifyContent="space-between"
             spacing={2}
           >
+          
             <Grid item>
               <Button>Profile</Button>
             </Grid>
@@ -66,3 +91,4 @@ export default function PatientAppbar() {
     </AppBar>
   );
 }
+

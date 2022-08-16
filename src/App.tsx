@@ -46,6 +46,8 @@ import TestListUI from "components/Patient/FindDC/test-list";
 import SetInfo from "components/Patient/FindDC/DCTestRequest/set-info";
 import SetDCAppointment from "components/Patient/FindDC/DCTestRequest/set-dc-appointment";
 import PreviousPageSetInfo from "components/Patient/FindDC/DCTestRequest/previous-page-set-info";
+import DCListByTestname from "components/Patient/FindDC/dc-list-by-testname";
+import DCSearchPage from "components/Patient/FindDC/dc-search-page";
 function App() {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -93,10 +95,9 @@ function App() {
            {/* <Route path="/set-info" element={<SetInfo/>}/>  */}
            <Route path="/set-dc-appointment" element={<SetDCAppointment/>}/> 
            <Route path="/previous-page-set-info" element={<PreviousPageSetInfo/>}/> 
-
-            
-          
-
+           <Route path="/dc-list-by-testname" element={<DCListByTestname/>}/>
+           <Route path="/dc-search-page" element={<DCSearchPage/>}/>        
+           
           </Routes>
         </BrowserRouter>
       </SnackbarProvider>

@@ -11,6 +11,7 @@ import { API } from "API Handler/api";
 import PatientLayout  from "../patient-layout";
 import TestListCard from "./test-list-card";
 export default function TestListUI() {
+  
   const {state} = useLocation(); // selected dc
   console.log("selected dc assign in state using use location")
   console.log(state);

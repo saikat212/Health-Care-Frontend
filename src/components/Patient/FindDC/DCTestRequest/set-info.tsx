@@ -85,12 +85,35 @@ import {
                 spacing={2}
               >
                 <Grid item>
-                  <Typography sx={{ fontWeight: "bold" }}>
-    
-                   DC Name : {dc_test_list.dc?.name}
+                <Typography sx={{ fontWeight: "bold" }}>
+                   ########## DC Info ##########: 
                   </Typography>
                   <Typography sx={{ fontWeight: "bold" }}>
-                   Test Name : {dc_test_list.test?.name}
+                   Name : {dc_test_list.dc?.name}
+                  </Typography>
+                  <Typography sx={{ fontWeight: "bold" }}>
+                   Location : {dc_test_list.dc?.location}
+                  </Typography>
+                  <Typography sx={{ fontWeight: "bold" }}>
+                   Rating : 4.4
+                  </Typography>
+
+                  <Typography sx={{ fontWeight: "bold" }}>
+                    ####################
+                  </Typography>
+
+                  <Typography sx={{ fontWeight: "bold" }}>
+                   ########## Test Info ##########: 
+                  </Typography>
+              
+                  <Typography sx={{ fontWeight: "bold" }}>
+                    Name : {dc_test_list.test?.name}
+                  </Typography>
+                  <Typography sx={{ fontWeight: "bold" }}>
+                    Is_Online_Test : {dc_test_list.isOnlineTestAvailable}
+                  </Typography>
+                  <Typography sx={{ fontWeight: "bold" }}>
+                    Price : {dc_test_list.price}
                   </Typography>
                 </Grid>
                 <Grid item>
@@ -108,7 +131,7 @@ import {
               >
                 <Grid item>
                   <Typography sx={{ fontWeight: "bold" }}>
-                    Specialities
+                    {/* Specialities */}
                   </Typography>
                 </Grid>
                 <Grid item>
@@ -136,7 +159,7 @@ import {
                 spacing={2}
               >
                 <Grid item>
-                  <Typography sx={{ fontWeight: "bold" }}>Chamber</Typography>
+                  {/* <Typography sx={{ fontWeight: "bold" }}> Chamber</Typography> */}
                 </Grid>
                 <Grid item>
                   {/* <Typography>{doctor.chamber}</Typography> */}
@@ -162,11 +185,11 @@ import {
                   >
                     <Grid item>
                       <Typography sx={{ fontWeight: "bold" }}>
-                        Visiting Day
+                        {/* Visiting Day */}
                       </Typography>
                     </Grid>
                     <Grid item>
-                      <Typography>Sat - Mon - Wed</Typography>
+                      {/* <Typography>Sat - Mon - Wed</Typography> */}
                     </Grid>
                   </Grid>
                 </Grid>
@@ -181,7 +204,7 @@ import {
                     spacing={2}
                   >
                     <Grid item>
-                      <Typography sx={{ fontWeight: "bold" }}>Visiting Time</Typography>
+                      {/* <Typography sx={{ fontWeight: "bold" }}>Visiting Time</Typography> */}
                     </Grid>
                     <Grid item>
                      {/* {doctor.visitingTime} */}

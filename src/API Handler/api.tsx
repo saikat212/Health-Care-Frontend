@@ -79,7 +79,7 @@ export const API = {
     getAppointmentList: (id: string, status: string) =>
       postBody("/get-AppointmentList", { id: id, status: status }),
     confirmAppointment: (appointment: Appointment) =>
-      put("/appointment-confirmation", appointment),
+      put("/appointment-confirmation", appointment), // ask to sakib
   },
   notification: {
     saveNotification: (notify: _Notification) =>
@@ -128,6 +128,8 @@ export const API = {
   {
     addDCTestList: (dcTestList:DCTestList) => post("/addDCTestList",dcTestList),
     getAllDCTestList: () => get ("/get-all-dc-test-list"),
+    getDCByTestName : (testname:string) => get ("/get-dc-by-testname/"+testname),
+    
    
   },
 

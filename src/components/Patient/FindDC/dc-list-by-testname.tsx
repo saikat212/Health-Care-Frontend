@@ -2,7 +2,7 @@ import { Button, Grid, Typography } from "@mui/material";
 import Header from "components/header";
 import { Link, useLocation } from "react-router-dom";
 import DCAdminPageAppbar from "components/DiagnosticCenter/HompageConstruction/admin-page-appbar";
-import { DC_Test, DiagnosticCenter } from "Classes/entity-class";
+import { DCTestList, DC_Test, DiagnosticCenter } from "Classes/entity-class";
 import { useEffect } from "react";
 import React from "react";
 import { API } from "API Handler/api";
@@ -10,21 +10,21 @@ import DCListCard from "./dc-list-card";
 
 import PatientLayout  from "../patient-layout";
 import FindDCPageLayout from "./FindDCPageLayout";
-export default function AllDCListUI() {
+import DCListCard1 from "./dc-list-card1";
 
-  const [dc_list,setDCList] = React.useState<DiagnosticCenter[]>();
+export default function DCListByTestname() {
+const {state} = useLocation();
+console.log("ByTestname: uselocation diya receive korsi")
+console.log(state);
+  
+ const [dc_test_list,setDCTestList] = React.useState<DCTestList[]>(state as DCTestList[]);
 
   useEffect ( () => {
-  API.diagnosticCenter.getAllDC().then((response) =>{
-   if(response.data == null)
-   {
-    console.log("No item here .")
-   }
-    setDCList(response.data)
-    console.log(response)
+    state &&
+    setDCTestList(state as DCTestList[]);  
     
-  });
-
+    console.log("ByTestname: useeffect :")
+    console.log(dc_test_list);
   },[]);
 
   return (
@@ -48,10 +48,10 @@ export default function AllDCListUI() {
           sx={{ backgroundColor: "blue", padding: "10px", height: "100%" }}
           spacing={5}
         >
-         {dc_list?.map((dc_info,idx) => (
+         {dc_test_list?.map((dc_test_list_info,idx) => (
             <Grid key = {idx} item>
-              <DCListCard
-              dc_info = {dc_info}
+              <DCListCard1
+              dc_test_list_info = {dc_test_list_info} 
               />
             </Grid>
           ))}
