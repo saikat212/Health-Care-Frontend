@@ -110,6 +110,8 @@ export default function SignInSide() {
                       ...doc,
                       person: response.data,
                       id: response.data?.id,
+                      experience: response.data?.experience,
+                      degree: response.data?.degree
                     })
                   );
                   navigate("/doctor-home-page");

@@ -89,10 +89,10 @@ export const API = {
     savePrescription: (pres: Prescription) => post("/save-prescription",pres)
   },
   medicinePres:{
-    saveMedicine: (med: MC_Prescription) => post("/save-medicine-pres",med)
+    saveMedicine: (med: MC_Prescription[]) => post("/save-medicine-pres",med)
   },
   testPres:{
-    saveTest: (test: Test_Prescription) => post ("/save-test-pres",test)
+    saveTest: (test: Test_Prescription[]) => post ("/save-test-pres",test)
   },
   medicine:{
     getAllMedicine: ()=> get("/get-all-medicine")

@@ -16,13 +16,16 @@ import { useLocation, useNavigate } from "react-router-dom";
 import DoctorLayout from "components/Doctor/doctor-layout";
 import {
   Appointment,
+  Doctor,
   MC_Prescription,
+  Patient,
   Prescription,
   Test_Prescription,
 } from "Classes/entity-class";
 import React, { useState, useEffect } from "react";
 import ChooseDuration from "./choose-duration";
 import { API } from "API Handler/api";
+import { GeneratePrescription, showSnackbar } from "Classes/helper-class";
 //import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 //import ReactPDF from "@react-pdf/renderer";
 
@@ -64,27 +67,64 @@ export default function SetPrescriptionInfo() {
   );
  */
   function handleAddMedicine() {
-    /* API.medicinePres.saveMedicine(med_pres as MC_Prescription).then(response=>{
+    console.log("mehedi")
+    /* API.medicinePres.saveMedic
+    ine(med_pres as MC_Prescription).then(response=>{
         console.log(response.data);
       }) */
+    //showSnackbar(enqueueSnackbar, "Medicine successfully added to prescription", () => {})
     //@ts-ignore
-    setMedPresArray([...medPresArray,med_pres])
+    setMedPres({...med_pres,
+      prescription:prescription
+    })
+    //@ts-ignore
+    setMedPresArray([...medPresArray,{...med_pres,
+      prescription:prescription
+    }])
     //localStorage.setItem("MC_Prescription",JSON.stringify(med_pres))
   }
   function handleAddTest() {
     /*    API.testPres.saveTest(test_pres as Test_Prescription).then(response =>{
       console.log(response.data)
     }) 
+    
     localStorage.setItem("Test_Prescription",JSON.stringify(test_pres))  */
+    //showSnackbar(enqueueSnackbar, "Test successfully added to prescription", () => {})
+    setTestPres({
+      ...test_pres,
+      prescription:prescription
+    })
     //@ts-ignore
-    setTestPresArray([...testPresArray,test_pres])
+    setTestPresArray([...testPresArray,{
+      ...test_pres,
+      prescription:prescription
+    }])
   }
    function handleUpload(){
-    console.log(medPresArray)
-    console.log(testPresArray)
+    
+    console.log("Med-array",medPresArray)
+    console.log("test-array",testPresArray)
+
     localStorage.setItem("MedicineInPrescription",JSON.stringify(medPresArray))
     localStorage.setItem("TestInPrescription",JSON.stringify(testPresArray))
-    //ReactPDF.renderToStream(<MyDocument />);
+
+    API.medicinePres.saveMedicine(medPresArray).then(response=>{
+
+    });
+    API.testPres.saveTest(testPresArray).then(response=>{
+      
+    });
+    console.log("test0")
+    let generatePrescription : GeneratePrescription = new GeneratePrescription()
+    console.log("test")
+    generatePrescription.patient = (JSON.parse(localStorage.getItem("Patient") || "") as Patient)
+    generatePrescription.doctor = (JSON.parse(localStorage.getItem("Doctor") || "") as Doctor)
+    generatePrescription.medPresArray = medPresArray
+    generatePrescription.testPresArray = testPresArray
+    
+    console.log("gp: ",generatePrescription)
+    
+    navigate("/prescription-page",{state:generatePrescription})
 
   } 
 
@@ -96,13 +136,17 @@ export default function SetPrescriptionInfo() {
       problem: (state as Appointment).problem,
       appointment: state as Appointment,
     });
-     /*   API.prescription.savePrescription({
+        API.prescription.savePrescription({
       ...prescription,
       problem: (state as Appointment).problem,
       appointment: (state as Appointment),
     }).then(response=>{
       console.log("Pres: "+response.data)
-    })   */ 
+      setPrescription({
+        ...prescription,
+        id:response.data.id
+      })
+    })   
     /*  localStorage.setItem(
       "Prescription",
       JSON.stringify({
@@ -228,3 +272,7 @@ export default function SetPrescriptionInfo() {
     </DoctorLayout>
   );
 }
+function enqueueSnackbar(enqueueSnackbar: any, arg1: string, arg2: () => void) {
+  throw new Error("Function not implemented.");
+}
+
