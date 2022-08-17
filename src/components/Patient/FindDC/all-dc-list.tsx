@@ -2,24 +2,25 @@ import { Button, Grid, Typography } from "@mui/material";
 import Header from "components/header";
 import { Link, useLocation } from "react-router-dom";
 import DCAdminPageAppbar from "components/DiagnosticCenter/HompageConstruction/admin-page-appbar";
-import { DC_Test } from "Classes/entity-class";
+import { DC_Test, DiagnosticCenter } from "Classes/entity-class";
 import { useEffect } from "react";
 import React from "react";
 import { API } from "API Handler/api";
-import SubmittedTestListCard from "./submitted-test-list-card";
+import DCListCard from "./dc-list-card";
 
+import PatientLayout  from "../patient-layout";
+import FindDCPageLayout from "./FindDCPageLayout";
+export default function AllDCListUI() {
 
-export default function SubmittedTestListUI() {
-
-  const [dc_test_list,setDCTestList] = React.useState<DC_Test[]>();
+  const [dc_list,setDCList] = React.useState<DiagnosticCenter[]>();
 
   useEffect ( () => {
-  API.diagnosticCenter.getSubmittedRequest().then((response) =>{
+  API.diagnosticCenter.getAllDC().then((response) =>{
    if(response.data == null)
    {
     console.log("No item here .")
    }
-    setDCTestList(response.data)
+    setDCList(response.data)
     console.log(response)
     
   });
@@ -28,7 +29,7 @@ export default function SubmittedTestListUI() {
 
   return (
     <>
-   <DCAdminPageAppbar/>
+   <FindDCPageLayout/>
     <Grid
       container
       direction="column"
@@ -47,12 +48,11 @@ export default function SubmittedTestListUI() {
           sx={{ backgroundColor: "blue", padding: "10px", height: "100%" }}
           spacing={5}
         >
-         {dc_test_list?.map((dc_test,idx) => (
+         {dc_list?.map((dc_info,idx) => (
             <Grid key = {idx} item>
-              <SubmittedTestListCard
-              dc_test_info = {dc_test}
+              <DCListCard
+              dc_info = {dc_info}
               />
-
             </Grid>
           ))}
         </Grid>

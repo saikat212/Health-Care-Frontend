@@ -12,9 +12,10 @@ import {
   Taker,
   DC_Test,
   DiagnosticCenter,
+  DCTestList,
 } from "Classes/entity-class";
 
-const HOST = "http://localhost:5052";
+const HOST = "http://localhost:5051";
 
 function post(url, body = {}, param = {}) {
   return axios.post(HOST + url, body);
@@ -78,7 +79,7 @@ export const API = {
     getAppointmentList: (id: string, status: string) =>
       postBody("/get-AppointmentList", { id: id, status: status }),
     confirmAppointment: (appointment: Appointment) =>
-      put("/appointment-confirmation", appointment),
+      put("/appointment-confirmation", appointment), // ask to sakib
   },
   notification: {
     saveNotification: (notify: _Notification) =>
@@ -122,6 +123,17 @@ export const API = {
     addDC: (dcObject :DiagnosticCenter) => post("/addDC",dcObject),
 
   },
+
+  dcTestList:
+  {
+    addDCTestList: (dcTestList:DCTestList) => post("/addDCTestList",dcTestList),
+    getAllDCTestList: () => get ("/get-all-dc-test-list"),
+    getDCByTestName : (testname:string) => get ("/get-dc-by-testname/"+testname),
+    
+   
+  },
+
+
 
   // admin: {
   //   addAdmin: (admin:DCAdmin) => post("/addDCAdmin",admin),

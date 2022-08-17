@@ -75,6 +75,8 @@ export class Medicine{
 export class Test{
     id?:number;
     name?:string;
+    prerequisite?:string;
+    description?:string;
 }
 export class Test_Prescription{
     id?:number;
@@ -122,18 +124,27 @@ export class DiagnosticCenter
     registrationNum?:string;
     person?:Person;
  
+}
 
 
 
+export class DCTestList {
+    id?:number;
+    dc?:DiagnosticCenter;
+    test?:Test;
+    isOnlineTestAvailable?:string;
+    price?:number;
+   
 }
 
 export class DC_Test {
-    [x: string]: any;
+    // [x: string]: any;
     id?:number;
     date?:Date=new Date();
     status?:string;
-    dc?:DiagnosticCenter;
-    test?:Test;
+    // dc?:DiagnosticCenter;
+    // test?:Test;
+    dcTestList?:DCTestList;
     patient?:Patient;
     location?:string;
     report?:string;

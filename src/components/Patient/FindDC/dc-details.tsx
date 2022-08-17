@@ -1,27 +1,23 @@
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import { Grid, Typography, Rating, Stack, Button, IconButton } from "@mui/material";
 import { API } from "API Handler/api";
-import { DC_Test, Taker } from "Classes/entity-class";
+import { DC_Test, DiagnosticCenter, Taker } from "Classes/entity-class";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export  function ConfirmedTestDetails({dc_test_info}:{dc_test_info:DC_Test}) {
+export  function DCDetails({dc_info}:{dc_info:DiagnosticCenter}) {
    const navigate = useNavigate();
-   useEffect(() => {
-    const id = (JSON.parse(localStorage.getItem("Taker")||"") as Taker).id;
-    console.log("idd: ",id);
-  }, []);
 
-   const handleComplete = (e) => {
-    e.preventDefault();
-    // dc_test_info.report = "report.pdf"
-    dc_test_info.status = "completed"
-    API.diagnosticCenter.addDCTest(dc_test_info).then((response) => {
-      console.log(response);
-      console.log("yes.");
-      navigate("/confirmed-test-list-ui")
-    });
-   };
+  //  const handleComplete = (e) => {
+  //   e.preventDefault();
+  //   dc_test_info.report = "report.pdf"
+  //   dc_test_info.status = "reported"
+  //   API.diagnosticCenter.addDCTest(dc_test_info).then((response) => {
+  //     console.log(response);
+  //     console.log("yes.");
+  //     navigate("/submitted-test-list-ui")
+  //   });
+  //  };
    
 
    const handleSubmit = (e) => {
@@ -29,10 +25,6 @@ export  function ConfirmedTestDetails({dc_test_info}:{dc_test_info:DC_Test}) {
 
    };
 
-  
-  
-  
-  
   return(
   
       <Grid
@@ -45,7 +37,7 @@ export  function ConfirmedTestDetails({dc_test_info}:{dc_test_info:DC_Test}) {
     >
       {/* Picture */}
       <Grid item>
-        <img src={require("./images/me.PNG")} height="150px" />
+        {/* <img src={require("./images/me.PNG")} height="150px" /> */}
       </Grid>
       {/* //1st Column */}
       <Grid item>
@@ -68,7 +60,7 @@ export  function ConfirmedTestDetails({dc_test_info}:{dc_test_info:DC_Test}) {
             <Grid item>
   
               <Typography sx={{ fontWeight: "bold" }}>
-                Patient Name: {dc_test_info.patient?.person?.firstName +" "+ dc_test_info.patient?.person?.lastName} 
+                DC Name: {dc_info.name} 
               </Typography>
             </Grid>
             <Grid item>
@@ -86,17 +78,15 @@ export  function ConfirmedTestDetails({dc_test_info}:{dc_test_info:DC_Test}) {
           >
             <Grid item>
               <Typography sx={{ fontWeight: "bold" }}>
-               Test Name: {dc_test_info.dcTestList?.test?.name}
+              DC Regi-No.: {dc_info.registrationNum}
               </Typography>
   
               <Typography sx={{ fontWeight: "bold" }}>
-               DC Name: {dc_test_info.dcTestList?.dc?.name}
+              DC Location: {dc_info.location}
               </Typography>
               <Typography sx={{ fontWeight: "bold" }}>
-               DC Location: {dc_test_info.dcTestList?.dc?.location}
+               Is-Offer-Onsite-Test: {dc_info.isOfferOnsiteTest}
               </Typography>
-  
-     
             </Grid>
             <Grid item>
               <Typography></Typography>
@@ -123,9 +113,9 @@ export  function ConfirmedTestDetails({dc_test_info}:{dc_test_info:DC_Test}) {
             spacing={2}
           >
             <Grid item>
-              <Typography sx={{ fontWeight: "bold" }}>Patient's Location :{dc_test_info.location} </Typography>
+              
               <Typography sx={{ fontWeight: "bold" }}> 
-               Date: {String(dc_test_info.date)}
+               
               </Typography>
             </Grid>
          
@@ -171,11 +161,22 @@ export  function ConfirmedTestDetails({dc_test_info}:{dc_test_info:DC_Test}) {
               >
                 <Grid item>
                   <Typography sx={{ fontWeight: "bold" }}></Typography>
-                  <Stack direction="row" alignItems="center" spacing={2}>
+                  {/* <Stack direction="row" alignItems="center" spacing={2}>
                     <Button  onClick={handleComplete} variant="contained" component="label">
-                      Collection Complete
+                     upload report
                     </Button>
-                  </Stack>
+                  </Stack> */}
+
+                  {/* <Stack direction="row" alignItems="center" spacing={2}>
+                    <Button onClick={handleComplete} variant="contained" component="label">
+                      Upload
+                      <input hidden accept="image/*" multiple type="file" />
+                    </Button>
+                    <IconButton color="primary" aria-label="upload picture" component="label">
+                      <input hidden accept="image/*" type="file" />
+                      <PhotoCamera />
+                    </IconButton>
+                  </Stack> */}
         
                 </Grid>
                 <Grid item>

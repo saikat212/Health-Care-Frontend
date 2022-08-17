@@ -38,6 +38,16 @@ import { DoctorInfo } from "components/Patient/SearchingDoctor/doctor-info";
 import { DoctorListUI } from "components/Patient/SearchingDoctor/doctor-list";
 import SubmittedTestListUI from "components/DiagnosticCenter/Admin/SubmittedTest/submitted-test-list";
 import OffsiteRequestedTestListUI from "components/DiagnosticCenter/Admin/OffsitePendingTest/TestRequestHandle/offsite-requested-test-list";
+
+import AllDCListUI from "components/Patient/FindDC/all-dc-list";
+import TestListUI from "components/Patient/FindDC/test-list";
+
+//Find DC
+import SetInfo from "components/Patient/FindDC/DCTestRequest/set-info";
+import SetDCAppointment from "components/Patient/FindDC/DCTestRequest/set-dc-appointment";
+import PreviousPageSetInfo from "components/Patient/FindDC/DCTestRequest/previous-page-set-info";
+import DCListByTestname from "components/Patient/FindDC/dc-list-by-testname";
+import DCSearchPage from "components/Patient/FindDC/dc-search-page";
 function App() {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -77,9 +87,17 @@ function App() {
            <Route path="/sign-up-admin" element={<SignUpAdmin/>}/> 
            <Route path="/dc-admin-home-page" element={<DCAdminHomePage/>}/> 
            <Route path="/submitted-test-list-ui" element={<SubmittedTestListUI/>}/>
-           <Route path="/offsite-requested-test-list-ui" element={<OffsiteRequestedTestListUI/>}/>  
+           <Route path="/offsite-requested-test-list-ui" element={<OffsiteRequestedTestListUI/>}/>
+           <Route path="/all-dc-list-ui" element={<AllDCListUI/>}/> 
+           <Route path="/test-list-ui" element={<TestListUI/>}/>
 
-
+           //Find DC 
+           {/* <Route path="/set-info" element={<SetInfo/>}/>  */}
+           <Route path="/set-dc-appointment" element={<SetDCAppointment/>}/> 
+           <Route path="/previous-page-set-info" element={<PreviousPageSetInfo/>}/> 
+           <Route path="/dc-list-by-testname" element={<DCListByTestname/>}/>
+           <Route path="/dc-search-page" element={<DCSearchPage/>}/>        
+           
           </Routes>
         </BrowserRouter>
       </SnackbarProvider>

@@ -8,22 +8,21 @@ import {
   Box,
 } from "@mui/material";
 import { fontWeight } from "@mui/system";
-import { DC_Test } from "Classes/entity-class";
+import { DC_Test, DiagnosticCenter } from "Classes/entity-class";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { SubmittedTestDetails } from "./submitted-test-details";
+import { DCDetails } from "./dc-details";
 
-export default function SubmittedTestListCard({dc_test_info}:{dc_test_info:DC_Test}) {
+export default function DCListCard({dc_info}:{dc_info:DiagnosticCenter}) {
   const navigate = useNavigate();
   return (
     <Card  
-    // onClick={()=>navigate("/selection-confirmed-test")} sx={{ width: "100%"}}
+    onClick={()=>navigate("/test-list-ui",{state:dc_info})} sx={{ width: "100%"}}
     >
-
       <CardActionArea>
         <CardContent>
-         <SubmittedTestDetails
-          dc_test_info = {dc_test_info}
+         <DCDetails
+          dc_info = {dc_info}
          />
         </CardContent>
       </CardActionArea>
