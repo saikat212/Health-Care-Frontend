@@ -52,6 +52,7 @@ export default function SignUpAdmin() {
   const choiceList = ['yes','no'];
 
   const [dcAdmin,setDcAdmin] = React.useState<DiagnosticCenter>();
+ 
 
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -83,8 +84,29 @@ export default function SignUpAdmin() {
              }
           }).then( (response) => { 
 
+
+            console.log("response")
             console.log(response);
-            console.log("person added")
+            
+            console.log("response.data")
+            console.log(response.data);
+            
+            console.log("response.data.id")
+            console.log(response.data.id);
+
+       
+            console.log("dcAdmin:value after set");
+            console.log(dcAdmin);
+
+          
+           // try-catch update
+           localStorage.setItem(
+            "DC",
+            JSON.stringify({
+              ...dcAdmin,
+              id : response.data.id,       
+            })
+          );
             navigate("/dc-admin-home-page")
            });
 

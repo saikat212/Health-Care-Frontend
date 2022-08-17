@@ -117,10 +117,11 @@ export const API = {
     addDCTest: (dc_test:DC_Test) => post("/addDCTest",dc_test),
     getAllRequest: () => get("/get-all-request"),
     getPendingRequest: () => get("/get-pending-request"),
-    getConfirmedRequest: () => get("/get-confirmed-request"),
-    getSubmittedRequest: () => get("/get-submitted-request"),
+    getConfirmedRequest: (id:number) => get("/get-confirmed-request/"+id),
+    getSubmittedRequest: (id:number) => get("/get-submitted-request/"+id),
     getAllDC: () => get ("/get-all-dc-list"),
     addDC: (dcObject :DiagnosticCenter) => post("/addDC",dcObject),
+    getDCByAdminId: (id:number) => get("/get-dc-by-admin-id/"+id),
 
   },
 
@@ -130,7 +131,6 @@ export const API = {
     getAllDCTestList: () => get ("/get-all-dc-test-list"),
     getDCByTestName : (testname:string) => get ("/get-dc-by-testname/"+testname),
     
-   
   },
 
 

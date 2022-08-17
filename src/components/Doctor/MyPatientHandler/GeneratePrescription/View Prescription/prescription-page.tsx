@@ -23,7 +23,7 @@ import PatientInPrescription from "./patient-in-prescription";
 import DoctorInPrescription from "./doctor-in-prescription";
 import MedicineInPrescription from "./medicine-in-prescription";
 import TestInPrescription from "./test-in-prescription";
-import jsPDF from "jspdf";
+// import jsPDF from "jspdf";
 
 export default function PrescriptionPage() {
   const { state } = useLocation();
@@ -33,13 +33,13 @@ export default function PrescriptionPage() {
   console.log("gp2: ", generatePrescription);
 
   function handleMakePdf() {
-    var doc = new jsPDF("p", "pt", "a4");
-    //@ts-ignore
-    doc.html(document.querySelector("#content"), {
-      callback: function (pdf) {
-        pdf.save("mypdf.pdf");
-      }
-    });
+    // var doc = new jsPDF("p", "pt", "a4");
+    // //@ts-ignore
+    // doc.html(document.querySelector("#content"), {
+    //   callback: function (pdf) {
+    //     pdf.save("mypdf.pdf");
+    //   }
+    // });
   }
 
   return (

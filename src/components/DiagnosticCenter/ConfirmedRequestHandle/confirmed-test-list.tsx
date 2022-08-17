@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import AppointmentListCard from "./confirmed-test-list-card";
 import DCUserPageAppbar from "../HompageConstruction/dc-user-page-appbar";
 import ConfirmedTestListCard from "./confirmed-test-list-card";
-import { DC_Test } from "Classes/entity-class";
+import { DC_Test, Taker } from "Classes/entity-class";
 import { useEffect } from "react";
 import React from "react";
 import { API } from "API Handler/api";
@@ -14,13 +14,19 @@ export default function ConfirmedTestListUI() {
   const [dc_test_list,setDCTestList] = React.useState<DC_Test[]>();
 
   useEffect ( () => {
-  API.diagnosticCenter.getConfirmedRequest().then((response) =>{
+  
+  const id = (JSON.parse(localStorage.getItem("Taker")||"") as Taker).id || undefined;  
+  console.log("taker id ")
+  console.log(id)
+
+  API.diagnosticCenter.getConfirmedRequest(id as number).then((response) =>{
    if(response.data == null)
    {
     console.log("No item here .")
    }
     setDCTestList(response.data)
-    console.log(response)
+    console.log("db theke asche")
+    console.log(response.data)
     
   });
 

@@ -18,11 +18,13 @@ export  function TestDetails({dc_test_info}:{dc_test_info:DC_Test}) {
 
   const handleConfirm = (e) => {
     e.preventDefault();
-
+    
     dc_test_info.status = "approved"
+    dc_test_info.taker = new Taker()
+    dc_test_info.taker.id = (JSON.parse(localStorage.getItem("Taker")||"") as Taker).id || undefined;
 
-    // dc_test_info.taker = new Taker()
-    // dc_test_info.taker.id = (JSON.parse(localStorage.getItem("Taker")||"") as Taker).id || undefined;
+    console.log("after value set and before api, DCTEST_info: ")
+    console.log(dc_test_info)
 
     API.diagnosticCenter.addDCTest( dc_test_info
 
@@ -37,8 +39,10 @@ export  function TestDetails({dc_test_info}:{dc_test_info:DC_Test}) {
       // }
       
       ).then((response) => {
-      console.log(response);
+      console.log("response data: ");
+      console.log(response)
       console.log("yes1.");
+      console.log("api te ki cilo dc_test_info: "+ dc_test_info)
       navigate("/requested-test-list-ui")
     });
 

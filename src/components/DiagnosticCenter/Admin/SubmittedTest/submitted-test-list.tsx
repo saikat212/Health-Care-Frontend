@@ -2,7 +2,7 @@ import { Button, Grid, Typography } from "@mui/material";
 import Header from "components/header";
 import { Link, useLocation } from "react-router-dom";
 import DCAdminPageAppbar from "components/DiagnosticCenter/HompageConstruction/admin-page-appbar";
-import { DC_Test } from "Classes/entity-class";
+import { DC_Test, DiagnosticCenter } from "Classes/entity-class";
 import { useEffect } from "react";
 import React from "react";
 import { API } from "API Handler/api";
@@ -14,12 +14,19 @@ export default function SubmittedTestListUI() {
   const [dc_test_list,setDCTestList] = React.useState<DC_Test[]>();
 
   useEffect ( () => {
-  API.diagnosticCenter.getSubmittedRequest().then((response) =>{
+  
+    
+  const id = (JSON.parse(localStorage.getItem("DC") || "") as DiagnosticCenter).id || undefined;
+  console.log("dc id")
+  console.log(id)
+
+  API.diagnosticCenter.getSubmittedRequest(id as number).then((response) =>{
    if(response.data == null)
    {
     console.log("No item here .")
    }
     setDCTestList(response.data)
+    console.log("db theke asche")
     console.log(response)
     
   });

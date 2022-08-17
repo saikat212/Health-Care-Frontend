@@ -92,6 +92,15 @@ export default function SignUpTaker() {
           }).then( (response) => { 
 
             console.log(response);
+           // Need to add all signup part
+            localStorage.setItem(
+              "Taker",
+              JSON.stringify({
+                ...taker,
+                person: response.data,
+                id: response.data?.id,
+              })
+            );
             navigate("/dc-home-page")
            });
   };

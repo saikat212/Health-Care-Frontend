@@ -50,6 +50,7 @@ export default function SignInSide() {
   const [p, setPerson] = React.useState<Person>();
   const [t,setTaker] =  React.useState<Taker>();
   const [a,setDCAdmin] =  React.useState<DiagnosticCenter>();
+  const [DC,setDC] = React.useState<DiagnosticCenter>();
 
   function errorVerify() {
     if (!state.email || !state.password) {
@@ -139,14 +140,31 @@ export default function SignInSide() {
                     person: response.data,
                     id: response.data?.id,
                   });
-                  localStorage.setItem(
-                    "Admin",
-                    JSON.stringify({
-                      ...a,
-                      person: response.data,
-                      id: response.data?.id,
-                    })
-                  );
+
+                  // API.diagnosticCenter.getDCByAdminId(response.data.id as number).then((response) => {
+                  //   setDC(response.data);
+                  //   console.log("DC: after set in sign in ")
+                  //   console.log(response.data)
+
+                  //   localStorage.setItem(
+                  //     "DC",
+                  //     JSON.stringify({
+                  //       DC
+                  //     })
+                  //   );
+
+                  // });
+
+
+                  // localStorage.setItem(
+                  //   "DC",
+                  //   JSON.stringify({
+                  //     ...a,
+                  //     // person: response.data,
+                  //     id: response.data?.id,
+                  //   })
+                  // );
+                 
                   navigate("/dc-admin-home-page");
                 }
   
