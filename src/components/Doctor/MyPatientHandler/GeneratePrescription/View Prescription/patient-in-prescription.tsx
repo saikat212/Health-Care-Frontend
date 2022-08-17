@@ -6,13 +6,15 @@ export default function PatientInPrescription({patient}:{patient:Patient}){
     return(
         <Grid 
         container
-        direction="row"
+        direction="column"
         alignItems="center"
+        justifyContent="space-between"
         sx={{ padding: "40px", height: "100%" }}
         spacing={3}
       >
         <Grid item>
-            <Typography>Patient Name: + {patient?.person?.firstName}+" "+{patient?.person?.lastName}</Typography>
+            <Typography> {`Patient Name: ${patient?.person?.firstName} ${patient?.person?.lastName}` }
+            </Typography>
         </Grid>
         <Grid item>
             <Typography>Age: {getAge(patient?.person?.dateOfBirth?.toString())} years old</Typography>

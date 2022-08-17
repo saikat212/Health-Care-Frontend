@@ -16,7 +16,7 @@ import React from "react";
 import Patient_Home_Page from "components/Patient/patient-homepage";
 import { SnackbarProvider } from "notistack";
 import SetAppointment from "components/SeekAppointment/set-appointment";
-import PrescriptionPage from "components/Doctor/MyPatientHandler/GeneratePrescription/prescription-page";
+import PrescriptionPage from "components/Doctor/MyPatientHandler/GeneratePrescription/View Prescription/prescription-page";
 import SetPrescriptionInfo from "components/Doctor/MyPatientHandler/GeneratePrescription/set-prescription-info";
 import { PrescriptionListUI } from "components/Doctor/MyPatientHandler/ViewPreviousPrescription/prescription-list";
 import { SelectionPrescription } from "components/Doctor/MyPatientHandler/ViewPreviousPrescription/selection-prescription";
