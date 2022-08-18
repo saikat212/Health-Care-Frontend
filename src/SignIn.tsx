@@ -141,19 +141,21 @@ export default function SignInSide() {
                     id: response.data?.id,
                   });
 
-                  // API.diagnosticCenter.getDCByAdminId(response.data.id as number).then((response) => {
-                  //   setDC(response.data);
-                  //   console.log("DC: after set in sign in ")
-                  //   console.log(response.data)
+                  API.diagnosticCenter.getDCByAdminId(response.data.id as number).then((response) => {
+                    setDC(response.data);
+                    console.log("DC: after set in sign in ")
+                    console.log(response.data)
 
-                  //   localStorage.setItem(
-                  //     "DC",
-                  //     JSON.stringify({
-                  //       DC
-                  //     })
-                  //   );
+                    localStorage.setItem(
+                      "DC",
+                      JSON.stringify({
+                        ...DC,
+                        id : response.data.id,
 
-                  // });
+                      })
+                    );
+
+                  });
 
 
                   // localStorage.setItem(

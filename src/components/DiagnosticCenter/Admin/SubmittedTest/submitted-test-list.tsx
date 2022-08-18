@@ -12,6 +12,7 @@ import SubmittedTestListCard from "./submitted-test-list-card";
 export default function SubmittedTestListUI() {
 
   const [dc_test_list,setDCTestList] = React.useState<DC_Test[]>();
+  const [val,setval] = React.useState<number>(92);
 
   useEffect ( () => {
   
@@ -19,6 +20,7 @@ export default function SubmittedTestListUI() {
   const id = (JSON.parse(localStorage.getItem("DC") || "") as DiagnosticCenter).id || undefined;
   console.log("dc id")
   console.log(id)
+  
 
   API.diagnosticCenter.getSubmittedRequest(id as number).then((response) =>{
    if(response.data == null)

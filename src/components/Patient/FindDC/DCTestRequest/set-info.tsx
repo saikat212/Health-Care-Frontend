@@ -64,7 +64,7 @@ import {
         >
           {/* Picture */}
           <Grid item>
-            {/* <img src={require("../../../images/doctor.jpg")} height="150px" /> */}
+            <img src={require("./images/DC.jpg")} height="150px" />
           </Grid>
           {/* //1st Column */}
           <Grid item>
@@ -85,34 +85,18 @@ import {
                 spacing={2}
               >
                 <Grid item>
-                <Typography sx={{ fontWeight: "bold" }}>
-                   ########## DC Info ##########: 
-                  </Typography>
-                  <Typography sx={{ fontWeight: "bold" }}>
-                   Name : {dc_test_list.dc?.name}
-                  </Typography>
-                  <Typography sx={{ fontWeight: "bold" }}>
-                   Location : {dc_test_list.dc?.location}
-                  </Typography>
-                  <Typography sx={{ fontWeight: "bold" }}>
-                   Rating : 4.4
-                  </Typography>
-
-                  <Typography sx={{ fontWeight: "bold" }}>
-                    ####################
-                  </Typography>
 
                   <Typography sx={{ fontWeight: "bold" }}>
                    ########## Test Info ##########: 
                   </Typography>
               
-                  <Typography sx={{ fontWeight: "bold" }}>
+                  <Typography >
                     Name : {dc_test_list.test?.name}
                   </Typography>
-                  <Typography sx={{ fontWeight: "bold" }}>
-                    Is_Online_Test : {dc_test_list.isOnlineTestAvailable}
+                  <Typography >
+                    OnlineTest: {dc_test_list.isOnlineTestAvailable}
                   </Typography>
-                  <Typography sx={{ fontWeight: "bold" }}>
+                  <Typography >
                     Price : {dc_test_list.price}
                   </Typography>
                 </Grid>
@@ -159,11 +143,20 @@ import {
                 spacing={2}
               >
                 <Grid item>
-                  {/* <Typography sx={{ fontWeight: "bold" }}> Chamber</Typography> */}
+                <Typography sx={{ fontWeight: "bold" }}>
+                   ########## DC Info ##########: 
+                  </Typography>
+                  <Typography >
+                   Name : {dc_test_list.dc?.name}
+                  </Typography>
+                  <Typography >
+                   Location : {dc_test_list.dc?.location}
+                  </Typography>
+                  <Typography >
+                   Rating : 4.4
+                  </Typography>
                 </Grid>
-                <Grid item>
-                  {/* <Typography>{doctor.chamber}</Typography> */}
-                </Grid>
+               
               </Grid>
   
               <Grid

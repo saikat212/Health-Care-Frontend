@@ -122,6 +122,7 @@ export const API = {
     getAllDC: () => get ("/get-all-dc-list"),
     addDC: (dcObject :DiagnosticCenter) => post("/addDC",dcObject),
     getDCByAdminId: (id:number) => get("/get-dc-by-admin-id/"+id),
+    getOffsitePending: () => get("/get-offsite-pending"),
 
   },
 

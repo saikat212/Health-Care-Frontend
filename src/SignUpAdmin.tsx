@@ -52,6 +52,7 @@ export default function SignUpAdmin() {
   const choiceList = ['yes','no'];
 
   const [dcAdmin,setDcAdmin] = React.useState<DiagnosticCenter>();
+  const[dc_id,setDCID] = React.useState<number>();
  
 
 
@@ -93,6 +94,9 @@ export default function SignUpAdmin() {
             
             console.log("response.data.id")
             console.log(response.data.id);
+            setDCID(response.data.id)
+            console.log("dc_id : set korsi")
+            console.log(dc_id);
 
        
             console.log("dcAdmin:value after set");
@@ -103,8 +107,8 @@ export default function SignUpAdmin() {
            localStorage.setItem(
             "DC",
             JSON.stringify({
-              ...dcAdmin,
-              id : response.data.id,       
+             ...dcAdmin,
+             id : response.data.id,
             })
           );
             navigate("/dc-admin-home-page")

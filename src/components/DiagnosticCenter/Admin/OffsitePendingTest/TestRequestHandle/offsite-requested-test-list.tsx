@@ -15,7 +15,7 @@ export default function OffsiteRequestedTestListUI() {
   
 
   useEffect ( () => {
-  API.diagnosticCenter.getPendingRequest().then((response) =>{
+  API.diagnosticCenter.getOffsitePending().then((response) =>{
    if(response.data == null)
    {
     console.log("No item here .")

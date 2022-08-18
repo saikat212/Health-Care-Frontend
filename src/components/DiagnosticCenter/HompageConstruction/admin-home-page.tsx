@@ -13,16 +13,18 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import FixedBottomNavigation from 'components/Doctor/doctor-homepage-container'
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 import DCUserPageAppbar from './dc-user-page-appbar';
 import DCAdminPageAppbar from './admin-page-appbar';
 
 
 const DCAdminHomePage = () => {
+
   return (
     <>
-    <DCAdminPageAppbar/>
+    <DCAdminPageAppbar
+    />
     <FixedBottomNavigation/>
     </>
   );

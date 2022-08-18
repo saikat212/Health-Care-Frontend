@@ -37,7 +37,7 @@ export  function DCDetails1({dc_test_list_info}:{dc_test_list_info:DCTestList}) 
     >
       {/* Picture */}
       <Grid item>
-        {/* <img src={require("./images/me.PNG")} height="150px" /> */}
+        <img src={require("./images/DC.jpg")} height="150px" />
       </Grid>
       {/* //1st Column */}
       <Grid item>
@@ -59,25 +59,25 @@ export  function DCDetails1({dc_test_list_info}:{dc_test_list_info:DCTestList}) 
           >
             <Grid item>
             <Typography sx={{ fontWeight: "bold" }}>
-                Test Info###  
+                Test Info  
               </Typography>
-            <Typography sx={{ fontWeight: "bold" }}>
+            <Typography >
                 Name: {dc_test_list_info.test?.name} 
               </Typography>
-              <Typography sx={{ fontWeight: "bold" }}>
+              <Typography >
                 Price : {dc_test_list_info.price} 
               </Typography>
-              <Typography sx={{ fontWeight: "bold" }}>
-                is_online_test_available : {dc_test_list_info.isOnlineTestAvailable} 
+              <Typography >
+               onlinetest : {dc_test_list_info.isOnlineTestAvailable} 
               </Typography>
-
+{/* 
               <Typography sx={{ fontWeight: "bold" }}>
-                DC Info###  
+                DC Info
               </Typography>
 
               <Typography sx={{ fontWeight: "bold" }}>
                 Name: {dc_test_list_info.dc?.name} 
-              </Typography>  
+              </Typography>   */}
             
             </Grid>
             <Grid item>
@@ -94,16 +94,7 @@ export  function DCDetails1({dc_test_list_info}:{dc_test_list_info:DCTestList}) 
             spacing={2}
           >
             <Grid item>
-              <Typography sx={{ fontWeight: "bold" }}>
-               Regi-No.: {dc_test_list_info.dc?.registrationNum}
-              </Typography>
-  
-              <Typography sx={{ fontWeight: "bold" }}>
-              Location: {dc_test_list_info.dc?.location}
-              </Typography>
-              <Typography sx={{ fontWeight: "bold" }}>
-               Rating: 4.4
-              </Typography>
+              
             </Grid>
             <Grid item>
               <Typography></Typography>
@@ -129,16 +120,27 @@ export  function DCDetails1({dc_test_list_info}:{dc_test_list_info:DCTestList}) 
             sx={{ padding: "10px", height: "100%" }}
             spacing={2}
           >
-            <Grid item>
-              
-              <Typography sx={{ fontWeight: "bold" }}> 
-               
+            
+            <Typography sx={{ fontWeight: "bold" }}>
+                DC Info
               </Typography>
-            </Grid>
-         
-            <Grid item>
-              <Typography></Typography>
-            </Grid>
+
+              <Typography >
+                Name: {dc_test_list_info.dc?.name} 
+              </Typography>  
+
+
+              <Typography >
+               Regi-No.: {dc_test_list_info.dc?.registrationNum}
+              </Typography>
+  
+              <Typography >
+              Location: {dc_test_list_info.dc?.location}
+              </Typography>
+              <Typography >
+               Rating: 4.4
+              </Typography>
+
           </Grid>
   
           <Grid
