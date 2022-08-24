@@ -48,19 +48,7 @@ export default function RequestedTestListUI() {
           sx={{ backgroundColor: "blue", padding: "10px", height: "100%" }}
           spacing={5}
         >
-          {/* {Array.from(Array(10).keys()).map((i, idx) => (
-            <Grid key={idx} item>
-            
-              <TestListCard
-                title="Card Tittle"
-                description="Necessary description"
-                image={require("./images/doctor.jpg")}
-      
-              />
-        
-            </Grid>
-          ))}
- */}
+         
 
           {dc_test_list?.map((dc_test,idx) => (
             <Grid key = {idx} item>
@@ -69,16 +57,10 @@ export default function RequestedTestListUI() {
               />
 
             </Grid>
-
-
           ))}
         </Grid>
       </Grid>
     </Grid>
-   
-
     </>
-
-
   );
 }

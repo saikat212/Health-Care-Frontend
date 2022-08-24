@@ -131,6 +131,7 @@ export const API = {
     addDCTestList: (dcTestList:DCTestList) => post("/addDCTestList",dcTestList),
     getAllDCTestList: () => get ("/get-all-dc-test-list"),
     getDCByTestName : (testname:string) => get ("/get-dc-by-testname/"+testname),
+    getTestListByDCId: (id:number) => get("/get-test-list-by-dc-id/"+id),
     
   },
 

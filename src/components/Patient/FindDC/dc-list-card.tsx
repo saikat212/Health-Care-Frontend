@@ -17,7 +17,7 @@ export default function DCListCard({dc_info}:{dc_info:DiagnosticCenter}) {
   const navigate = useNavigate();
   return (
     <Card  
-    onClick={()=>navigate("/test-list-ui",{state:dc_info})} sx={{ width: "100%"}}
+    onClick={()=>navigate("/test-list-ui",{state:dc_info})}
     >
       <CardActionArea>
         <CardContent>

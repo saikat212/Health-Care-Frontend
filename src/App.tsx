@@ -48,6 +48,7 @@ import SetDCAppointment from "components/Patient/FindDC/DCTestRequest/set-dc-app
 import PreviousPageSetInfo from "components/Patient/FindDC/DCTestRequest/previous-page-set-info";
 import DCListByTestname from "components/Patient/FindDC/dc-list-by-testname";
 import DCSearchPage from "components/Patient/FindDC/dc-search-page";
+import { UploadPage } from "components/DiagnosticCenter/Admin/SubmittedTest/upload-page";
 function App() {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -96,7 +97,8 @@ function App() {
            <Route path="/set-dc-appointment" element={<SetDCAppointment/>}/> 
            <Route path="/previous-page-set-info" element={<PreviousPageSetInfo/>}/> 
            <Route path="/dc-list-by-testname" element={<DCListByTestname/>}/>
-           <Route path="/dc-search-page" element={<DCSearchPage/>}/>        
+           <Route path="/dc-search-page" element={<DCSearchPage/>}/>
+           <Route path="/upload-page" element={<UploadPage/>}/>        
            
           </Routes>
         </BrowserRouter>

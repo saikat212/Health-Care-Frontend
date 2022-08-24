@@ -69,25 +69,83 @@ return(
         sx={{ padding: "10px", height: "100%" }}
         spacing={2}
       >
+        <Grid item>
         <Grid
           container
-          direction="column"
+          direction="row"
           alignItems="center"
           justifyContent="space-between"
           sx={{ padding: "10px", height: "100%" }}
           spacing={2}
         >
           <Grid item>
-
             <Typography sx={{ fontWeight: "bold" }}>
-              Patient Name: {dc_test_info.patient?.person?.firstName +" "+ dc_test_info.patient?.person?.lastName} 
+              Patient Name
+            </Typography>
+            <Typography>
+             {dc_test_info.patient?.person?.firstName +" "+ dc_test_info.patient?.person?.lastName} 
             </Typography>
           </Grid>
           <Grid item>
-            <Typography></Typography>
+            <Typography sx={{ fontWeight: "bold" }}>
+            Patient's Location 
+            </Typography>
+            <Typography>
+            {dc_test_info.location}
+            </Typography>
           </Grid>
+          <Grid item>
+            <Typography sx={{ fontWeight: "bold" }}>
+            Date
+            </Typography>
+            <Typography>
+            {String(dc_test_info.date)}
+            </Typography>
+          </Grid>
+
+
+         
         </Grid>
 
+        <Grid item >
+        <Grid
+          container
+          direction="row"
+          alignItems="center"
+          justifyContent="space-between"
+          sx={{ padding: "10px", height: "100%" }}
+          spacing={2}
+        >
+          <Grid item>
+            <Typography sx={{ fontWeight: "bold" }}>
+            Test Name
+            </Typography>
+            <Typography>
+             {dc_test_info.dcTestList?.test?.name}
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography sx={{ fontWeight: "bold" }}>
+            DC Name
+            </Typography>
+            <Typography>
+             {dc_test_info.dcTestList?.dc?.name}
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography sx={{ fontWeight: "bold" }}>
+            DC Location
+            </Typography>
+            <Typography>
+             {dc_test_info.dcTestList?.dc?.location}
+            </Typography>
+          </Grid>
+         
+        </Grid>
+        </Grid>
+        </Grid>
+  
+
         <Grid
           container
           direction="column"
@@ -96,23 +154,7 @@ return(
           sx={{ padding: "10px", height: "100%" }}
           spacing={2}
         >
-          <Grid item>
-            <Typography sx={{ fontWeight: "bold" }}>
-             Test Name: {dc_test_info.dcTestList?.test?.name}
-            </Typography>
-
-            <Typography sx={{ fontWeight: "bold" }}>
-             DC Name: {dc_test_info.dcTestList?.dc?.name}
-            </Typography>
-            <Typography sx={{ fontWeight: "bold" }}>
-             DC Location: {dc_test_info.dcTestList?.dc?.location}
-            </Typography>
-
-   
-          </Grid>
-          <Grid item>
-            <Typography></Typography>
-          </Grid>
+         
         </Grid>
       </Grid>
     </Grid>
@@ -134,16 +176,7 @@ return(
           sx={{ padding: "10px", height: "100%" }}
           spacing={2}
         >
-          <Grid item>
-            <Typography sx={{ fontWeight: "bold" }}>Patient's Location :{dc_test_info.location} </Typography>
-            <Typography sx={{ fontWeight: "bold" }}> 
-             Date: {String(dc_test_info.date)}
-            </Typography>
-          </Grid>
-       
-          <Grid item>
-            <Typography></Typography>
-          </Grid>
+         
         </Grid>
 
         <Grid
