@@ -9,7 +9,9 @@ export default function TestInPrescription({testPresArray}:{testPresArray:Test_P
       //alignItems="center"
       sx={{ padding: "40px", height: "100%" }}
       spacing={3}
-      justifyContent="space-between">
+      justifyContent="space-between"
+      color="#8b0000"
+      >
         <Grid item>
           <Typography>Test:</Typography>
         </Grid>
@@ -23,6 +25,7 @@ export default function TestInPrescription({testPresArray}:{testPresArray:Test_P
             sx={{ padding: "40px", height: "100%" }}
             spacing={3}
             justifyContent="space-between"
+            
           >
           <Grid item>  <Typography>{tip?.test?.name}</Typography> </Grid>
           <Grid item>  <Typography>{tip?.finding}</Typography> </Grid>

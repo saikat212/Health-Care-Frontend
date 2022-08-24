@@ -14,7 +14,9 @@ export default function MedicineInPrescription({
       //alignItems="center"
       sx={{ padding: "40px", height: "100%" }}
       spacing={3}
-      justifyContent="space-between">
+      justifyContent="space-between"
+      color="blue"
+      >
         <Grid item>
           <Typography>Medicine:</Typography>
         </Grid>
@@ -28,6 +30,7 @@ export default function MedicineInPrescription({
             sx={{ padding: "40px", height: "100%" }}
             spacing={3}
             justifyContent="space-between"
+          
           >
            <Grid item> <Typography>{mip?.medicine?.name}</Typography> </Grid>
            <Grid item> <Typography>{mip?.dose}</Typography> </Grid>

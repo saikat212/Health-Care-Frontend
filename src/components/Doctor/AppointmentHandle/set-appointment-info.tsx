@@ -17,7 +17,7 @@ export function SetAppointmentInfo() {
   const [notification, setNotification] = React.useState<_Notification>(
     new _Notification()
   );
-  const [value, setValue] = React.useState<Date | null>(appointment.date as Date);
+  const [value, setValue] = React.useState<Date | null>((state as Appointment).date as Date);
   
   useEffect(() => {
     state && setAppointment(state as Appointment);

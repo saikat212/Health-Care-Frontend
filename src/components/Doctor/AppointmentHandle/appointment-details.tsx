@@ -34,7 +34,7 @@ export function AppointmentDetails({
   function get_Date(strDate:string) {
     var date = new Date(strDate);
     var day = date.getDate();
-    var month = date.getMonth();
+    var month = date.getMonth()+1;
     var year = date.getFullYear();
 
     var str = day + "-" + month + "-" + year;

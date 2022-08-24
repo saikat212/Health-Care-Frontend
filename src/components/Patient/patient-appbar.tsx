@@ -28,6 +28,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { useState } from "react";
+import { Patient } from "Classes/entity-class";
 
 // import SearchBar from "./search-bar";
 export const headerHeight = 90;
@@ -35,7 +36,7 @@ export const headerHeight = 90;
 
 export default function PatientAppbar() {
  const navigate = useNavigate();
- 
+ const patient_id =  (JSON.parse(localStorage.getItem("Patient") || "") as Patient).id
  function handleLogOut(){
   localStorage.clear()
        navigate("/")
@@ -76,7 +77,7 @@ export default function PatientAppbar() {
               <Button>Profile</Button>
             </Grid>
             <Grid item>
-              <ShowNotification num = {3} />
+              <ShowNotification id = {patient_id as number} />
             </Grid>
             <Grid item>
               <Button onClick={

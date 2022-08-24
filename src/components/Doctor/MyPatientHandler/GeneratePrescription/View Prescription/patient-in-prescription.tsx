@@ -11,6 +11,7 @@ export default function PatientInPrescription({patient}:{patient:Patient}){
         justifyContent="space-between"
         sx={{ padding: "40px", height: "100%" }}
         spacing={3}
+        color="black"
       >
         <Grid item>
             <Typography> {`Patient Name: ${patient?.person?.firstName} ${patient?.person?.lastName}` }

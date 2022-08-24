@@ -38,7 +38,9 @@ export default function SetPrescriptionInfo() {
   const [test_pres, setTestPres] = React.useState<Test_Prescription>();
 
   const [medPresArray, setMedPresArray] = React.useState<MC_Prescription[]>([]);
-  const [testPresArray, setTestPresArray] = React.useState<Test_Prescription[]>([]);
+  const [testPresArray, setTestPresArray] = React.useState<Test_Prescription[]>(
+    []
+  );
 
   /* const styles = StyleSheet.create({
     page: {
@@ -67,66 +69,57 @@ export default function SetPrescriptionInfo() {
   );
  */
   function handleAddMedicine() {
-    console.log("mehedi")
-    /* API.medicinePres.saveMedic
-    ine(med_pres as MC_Prescription).then(response=>{
-        console.log(response.data);
-      }) */
-    //showSnackbar(enqueueSnackbar, "Medicine successfully added to prescription", () => {})
-    //@ts-ignore
-    setMedPres({...med_pres,
-      prescription:prescription
-    })
-    //@ts-ignore
-    setMedPresArray([...medPresArray,{...med_pres,
-      prescription:prescription
-    }])
-    //localStorage.setItem("MC_Prescription",JSON.stringify(med_pres))
+    console.log("mehedi");
+
+    setMedPres({ ...med_pres, prescription: prescription });
+
+    setMedPresArray([
+      ...medPresArray,
+      { ...med_pres, prescription: prescription },
+    ]);
   }
   function handleAddTest() {
-    /*    API.testPres.saveTest(test_pres as Test_Prescription).then(response =>{
-      console.log(response.data)
-    }) 
-    
-    localStorage.setItem("Test_Prescription",JSON.stringify(test_pres))  */
-    //showSnackbar(enqueueSnackbar, "Test successfully added to prescription", () => {})
     setTestPres({
       ...test_pres,
-      prescription:prescription
-    })
-    //@ts-ignore
-    setTestPresArray([...testPresArray,{
-      ...test_pres,
-      prescription:prescription
-    }])
+      prescription: prescription,
+    });
+
+    setTestPresArray([
+      ...testPresArray,
+      {
+        ...test_pres,
+        prescription: prescription,
+      },
+    ]);
   }
-   function handleUpload(){
-    
-    console.log("Med-array",medPresArray)
-    console.log("test-array",testPresArray)
+  function handleUpload() {
+    console.log("Med-array", medPresArray);
+    console.log("test-array", testPresArray);
 
-    localStorage.setItem("MedicineInPrescription",JSON.stringify(medPresArray))
-    localStorage.setItem("TestInPrescription",JSON.stringify(testPresArray))
+    localStorage.setItem(
+      "MedicineInPrescription",
+      JSON.stringify(medPresArray)
+    );
+    localStorage.setItem("TestInPrescription", JSON.stringify(testPresArray));
 
-    API.medicinePres.saveMedicine(medPresArray).then(response=>{
+    API.medicinePres.saveMedicine(medPresArray).then((response) => {});
+    API.testPres.saveTest(testPresArray).then((response) => {});
+    console.log("test0");
+    let generatePrescription: GeneratePrescription = new GeneratePrescription();
+    console.log("test");
+    generatePrescription.patient = JSON.parse(
+      localStorage.getItem("Patient") || ""
+    ) as Patient;
+    generatePrescription.doctor = JSON.parse(
+      localStorage.getItem("Doctor") || ""
+    ) as Doctor;
+    generatePrescription.medPresArray = medPresArray;
+    generatePrescription.testPresArray = testPresArray;
 
-    });
-    API.testPres.saveTest(testPresArray).then(response=>{
-      
-    });
-    console.log("test0")
-    let generatePrescription : GeneratePrescription = new GeneratePrescription()
-    console.log("test")
-    generatePrescription.patient = (JSON.parse(localStorage.getItem("Patient") || "") as Patient)
-    generatePrescription.doctor = (JSON.parse(localStorage.getItem("Doctor") || "") as Doctor)
-    generatePrescription.medPresArray = medPresArray
-    generatePrescription.testPresArray = testPresArray
-    
-    console.log("gp: ",generatePrescription)
-    
-    navigate("/prescription-page",{state:generatePrescription})
+    console.log("gp: ", generatePrescription);
 
-  } 
+    navigate("/prescription-page", { state: generatePrescription });
+  }
 
   useEffect(() => {
     state && setAppointment(state as Appointment);
@@ -136,17 +129,19 @@ export default function SetPrescriptionInfo() {
       problem: (state as Appointment).problem,
       appointment: state as Appointment,
     });
-        API.prescription.savePrescription({
-      ...prescription,
-      problem: (state as Appointment).problem,
-      appointment: (state as Appointment),
-    }).then(response=>{
-      console.log("Pres: "+response.data)
-      setPrescription({
+    API.prescription
+      .savePrescription({
         ...prescription,
-        id:response.data.id
+        problem: (state as Appointment).problem,
+        appointment: state as Appointment,
       })
-    })   
+      .then((response) => {
+        console.log("Pres: " + response.data);
+        setPrescription({
+          ...prescription,
+          id: response.data.id,
+        });
+      });
     /*  localStorage.setItem(
       "Prescription",
       JSON.stringify({
@@ -232,7 +227,9 @@ export default function SetPrescriptionInfo() {
               </Button>
             </Grid>
             <Grid item>
-              <Button variant="contained" onClick={handleUpload}>Upload Prescription</Button>
+              <Button variant="contained" onClick={handleUpload}>
+                Upload Prescription
+              </Button>
             </Grid>
           </Grid>
         </Grid>
@@ -246,10 +243,10 @@ export default function SetPrescriptionInfo() {
             spacing={2}
           >
             <Grid item>
-              <Typography>Prescription</Typography>
+              <Typography sx={{color:"Green"}}>###  Medicine  ###</Typography>
             </Grid>
             <Grid item>
-             {/*   <List
+              <List
                 sx={{
                   width: "100%",
                   maxWidth: 360,
@@ -257,14 +254,33 @@ export default function SetPrescriptionInfo() {
                 }}
               >
                 {medPresArray.map((value) => (
-                  <ListItem
-                    key={value.medicine?.name}
-                    disableGutters
-                  >
-                    <ListItemText primary={`${value.medicine?.name}`} />
+                  <ListItem key={value.medicine?.name}>
+                    <ListItemText
+                      primary={`${value.medicine?.name}     ${value.dose}             ${value.duration}`}
+                    />
                   </ListItem>
                 ))}
-              </List>  */}
+              </List>
+            </Grid>
+            <Grid item>
+              <Typography sx={{color:"Blue"}}>### Test ###</Typography>
+            </Grid>
+            <Grid item>
+              <List
+                sx={{
+                  width: "100%",
+                  maxWidth: 360,
+                  bgcolor: "background.paper",
+                }}
+              >
+                {testPresArray.map((value) => (
+                  <ListItem key={value.test?.name}>
+                    <ListItemText
+                      primary={`${value.test?.name}`}
+                    />
+                  </ListItem>
+                ))}
+              </List>
             </Grid>
           </Grid>
         </Grid>
@@ -275,4 +291,3 @@ export default function SetPrescriptionInfo() {
 function enqueueSnackbar(enqueueSnackbar: any, arg1: string, arg2: () => void) {
   throw new Error("Function not implemented.");
 }
-
