@@ -23,7 +23,7 @@ export default function SpecialityCard({spec}:SpecialiyCardProps) {
       sx={{ width: "100%" }}
     >
 
-    <Card onClick={()=>navigate("/doctor-list")} sx={{ width: "100%" }}>+
+    <Card onClick={()=>navigate("/doctor-list")} sx={{ width: "100%" }}>
 
       <CardActionArea>
         <CardMedia

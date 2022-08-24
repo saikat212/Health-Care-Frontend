@@ -10,6 +10,7 @@ export default function DoctorInPrescription({doctor}:{doctor:Doctor}){
         alignItems="center"
         sx={{ padding: "40px", height: "100%" }}
         spacing={3}
+        color="black"
       >
         <Grid item>
             <Typography>{`Doctor Name: ${doctor?.person?.firstName} ${doctor?.person?.lastName}` }</Typography>

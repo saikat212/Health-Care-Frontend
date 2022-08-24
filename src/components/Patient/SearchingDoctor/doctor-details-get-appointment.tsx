@@ -13,6 +13,7 @@ import React from "react";
 import { DatePicker } from "@mui/x-date-pickers";
 import PatientAppbar from "components/Patient/patient-appbar";
 import PatientLayout from "components/Patient/patient-layout";
+import { getVisitingDays } from "./visiting-day-decryption";
 
 export function DoctorDetails_Get_Appointment({ doctor }: { doctor: Doctor }) {
   const navigate = useNavigate();
@@ -139,7 +140,7 @@ export function DoctorDetails_Get_Appointment({ doctor }: { doctor: Doctor }) {
                     </Typography>
                   </Grid>
                   <Grid item>
-                    <Typography>Sat - Mon - Wed</Typography>
+                    {/*  <Typography>{getVisitingDays(doctor?.visitingDay)}</Typography>  */}
                   </Grid>
                 </Grid>
               </Grid>

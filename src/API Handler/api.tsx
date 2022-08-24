@@ -15,7 +15,7 @@ import {
   DCTestList,
 } from "Classes/entity-class";
 
-const HOST = "http://localhost:5051";
+const HOST = "http://localhost:5052";
 
 function post(url, body = {}, param = {}) {
   return axios.post(HOST + url, body);
@@ -25,6 +25,9 @@ function postParam(url, param) {
 }
 function postBody(url, body) {
   return post(url, body);
+}
+function postUrl(url) {
+  return axios.post(HOST + url);
 }
 function get(url, param = {}) {
   return axios.get(HOST + url);
@@ -84,7 +87,9 @@ export const API = {
   notification: {
     saveNotification: (notify: _Notification) =>
       post("/save-notification", notify),
-    getNotification : (id : number) => get("/get-all-notification/"+id)
+    getNotification : (id : number) => get("/get-all-notification/"+id),
+    updateNotification : (notification:_Notification) => put("/update-notification",notification),
+    changeStatus: (id: number) => post("/change-status",id)
   },
   prescription:{
     savePrescription: (pres: Prescription) => post("/save-prescription",pres)

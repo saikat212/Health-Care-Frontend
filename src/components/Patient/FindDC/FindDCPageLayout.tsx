@@ -29,13 +29,14 @@ import {
   import MoreIcon from '@mui/icons-material/MoreVert';
   import { useState } from "react";
 import { API } from "API Handler/api";
-import { DCTestList, DiagnosticCenter } from "Classes/entity-class";
+import { DCTestList, DiagnosticCenter, Patient } from "Classes/entity-class";
   
   // import SearchBar from "./search-bar";
   export const headerHeight = 90;
   
   
   export default function PatientAppbar() {
+    const patient_id =  (JSON.parse(localStorage.getItem("Patient") || "") as Patient).id
    const navigate = useNavigate();
 //    const choiceList = ['yes','no'];
   
@@ -152,7 +153,7 @@ import { DCTestList, DiagnosticCenter } from "Classes/entity-class";
                 <Button>Profile</Button>
               </Grid>
               <Grid item>
-                <ShowNotification num = {3} />
+                <ShowNotification id = {patient_id as number} />
               </Grid>
               <Grid item>
                 <Button onClick={

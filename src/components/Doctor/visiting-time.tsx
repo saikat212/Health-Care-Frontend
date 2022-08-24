@@ -22,25 +22,25 @@ export default function VisitingTime() {
   function handleConfirm() {
     console.log("s: " +selectedDays)
     //@ts-ignore
-    if (selectedDays[0] === "Sat") str=str+"1";
+    if (selectedDays[0] == "Sat") str=str+"1";
     else str=str+"0";
     //@ts-ignore
-    if (selectedDays[1] === "Sun") str=str+"1";
+    if (selectedDays[1] == "Sun") str=str+"1";
     else str=str+"0";
     //@ts-ignore
-    if(selectedDays[2]  === "Mon") str=str+"1"
+    if(selectedDays[2]  == "Mon") str=str+"1"
     else str=str+"0" 
     //@ts-ignore
-    if (selectedDays[3] === "Tues") str=str+"1";
+    if (selectedDays[3] == "Tues") str=str+"1";
     else str=str+"0";
     //@ts-ignore
-    if (selectedDays[4] === "Wed") str=str+"1";
+    if (selectedDays[4] == "Wed") str=str+"1";
     else str=str+"0";
     //@ts-ignore
-    if(selectedDays[5]  === "Thu") str=str+"1"
+    if(selectedDays[5]  == "Thu") str=str+"1"
     else str=str+"0" 
     //@ts-ignore
-    if(selectedDays[5]  === "Fri") str=str+"1"
+    if(selectedDays[5]  == "Fri") str=str+"1"
     else str=str+"0" 
 
     
