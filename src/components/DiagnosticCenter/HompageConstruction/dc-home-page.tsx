@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import FixedBottomNavigation from 'components/Doctor/doctor-homepage-container'
+
 import { useNavigate } from 'react-router-dom';
 import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 import DCUserPageAppbar from './dc-user-page-appbar';
@@ -22,7 +22,10 @@ const DCHomePage = () => {
   return (
     <>
     <DCUserPageAppbar/>
-    <FixedBottomNavigation/>
+    {/* <FixedBottomNavigation/> */}
+    <img
+                    src={require("./images/sample.jpg")}
+                    height="900px" />
     </>
   );
 };

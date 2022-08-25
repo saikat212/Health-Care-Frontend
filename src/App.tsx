@@ -49,6 +49,8 @@ import PreviousPageSetInfo from "components/Patient/FindDC/DCTestRequest/previou
 import DCListByTestname from "components/Patient/FindDC/dc-list-by-testname";
 import DCSearchPage from "components/Patient/FindDC/dc-search-page";
 import { UploadPage } from "components/DiagnosticCenter/Admin/SubmittedTest/upload-page";
+import PendingACKListUI from "components/DiagnosticCenter/Admin/PendingACK/pending-ack-test-list";
+import CompletedServiceListUI from "components/DiagnosticCenter/CompletedService/completed-service-list";
 function App() {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -98,7 +100,9 @@ function App() {
            <Route path="/previous-page-set-info" element={<PreviousPageSetInfo/>}/> 
            <Route path="/dc-list-by-testname" element={<DCListByTestname/>}/>
            <Route path="/dc-search-page" element={<DCSearchPage/>}/>
-           <Route path="/upload-page" element={<UploadPage/>}/>        
+           <Route path="/upload-page" element={<UploadPage/>}/> 
+           <Route path="/pending-ack-test-list-ui" element={<PendingACKListUI/>}/>   
+           <Route path="/completed-service-list-ui" element={<CompletedServiceListUI/>}/>        
            
           </Routes>
         </BrowserRouter>

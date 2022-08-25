@@ -1,77 +1,19 @@
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import { Grid, Typography, Rating, Stack, Button, IconButton } from "@mui/material";
 import { API } from "API Handler/api";
-import { DC_Test, Taker, _Notification } from "Classes/entity-class";
-import React from "react";
+import { DC_Test, Taker } from "Classes/entity-class";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export function ConfirmedTestDetails({ dc_test_info }: { dc_test_info: DC_Test }) {
+export function CompletedServiceDetails({ dc_test_info }: { dc_test_info: DC_Test }) {
   const navigate = useNavigate();
-  const [notification, setNotification] = React.useState<_Notification>(
-    new _Notification()
-  );
-  const [notification1, setNotification1] = React.useState<_Notification>(
-    new _Notification()
-  );
-
-
   useEffect(() => {
     const id = (JSON.parse(localStorage.getItem("Taker") || "") as Taker).id;
     console.log("idd: ", id);
   }, []);
 
-  const handleComplete = (e) => {
-    e.preventDefault();
-    // dc_test_info.report = "report.pdf"
-    dc_test_info.status = "pack"
-    API.diagnosticCenter.addDCTest(dc_test_info).then((response) => {
-      console.log(response);
-      console.log("yes.");
-      navigate("/confirmed-test-list-ui")
-    });
 
-// for patient
-    setNotification({
-      ...notification,
-      receiver: dc_test_info.patient?.person,
-      type: "Sample Submitted To Diagnostic Center",
-      message: "Collected by "+ dc_test_info.taker?.person?.firstName+"( Taker's Contact : "+dc_test_info.taker?.person?.mobileNo+" ). To : "+ dc_test_info.dcTestList?.dc?.name+"( DC Contact : "+dc_test_info.dcTestList?.dc?.person?.mobileNo+" )",
-      status: "approved",
-    });
-    API.notification.saveNotification({
-      ...notification,
-      receiver: dc_test_info.patient?.person,
-      type: "Sample Submitted To Diagnostic Center",
-      message: "Collected by "+ dc_test_info.taker?.person?.firstName+"( Taker's Contact : "+dc_test_info.taker?.person?.mobileNo+" ). To : "+ dc_test_info.dcTestList?.dc?.name+"( DC Contact : "+dc_test_info.dcTestList?.dc?.person?.mobileNo+" )",
-      status: "approved",
-    }).then((response) => {
-      console.log(response);
-    });
-
-
-    // for admin 
-
-    setNotification1({
-      ...notification1,
-      receiver: dc_test_info.dcTestList?.dc?.person,
-      type: "Sample Submitted To Diagnostic Center",
-      message: "Collected by "+ dc_test_info.taker?.person?.firstName+"( Taker's Contact : "+dc_test_info.taker?.person?.mobileNo+" ). From Patient:  "+ dc_test_info.patient?.person?.firstName+"( Patient's Contact : "+dc_test_info.patient?.person?.mobileNo+" )",
-      status: "approved",
-    });
-    API.notification.saveNotification({
-      ...notification1,
-      receiver: dc_test_info.dcTestList?.dc?.person,
-      type: "Sample Submitted To Diagnostic Center",
-      message: "Collected by "+ dc_test_info.taker?.person?.firstName+"( Taker's Contact : "+dc_test_info.taker?.person?.mobileNo+" ). From Patient:  "+ dc_test_info.patient?.person?.firstName+"( Patient's Contact : "+dc_test_info.patient?.person?.mobileNo+" )",
-      status: "approved",
-    }).then((response) => {
-      console.log(response);
-    });
-
-  };
-
-  function get_Date(strDate:string) {
+function get_Date(strDate:string) {
     var date = new Date(strDate);
     var day = date.getDate();
     var month = date.getMonth();
@@ -79,18 +21,7 @@ export function ConfirmedTestDetails({ dc_test_info }: { dc_test_info: DC_Test }
 
     var str = day + "-" + month + "-" + year;
     return str;
-  }  {get_Date(dc_test_info.date?.toString() as string)}
- 
-
-
-  const handleSubmit = (e) => {
-
-
-  };
-
-
-
-
+  }
 
   return (
 
@@ -114,7 +45,7 @@ export function ConfirmedTestDetails({ dc_test_info }: { dc_test_info: DC_Test }
           alignItems="center"
           justifyContent="space-between"
           sx={{ padding: "10px", height: "100%" }}
-          spacing={2}
+          spacing={5}
         >
           <Grid item >
             <Grid
@@ -123,7 +54,7 @@ export function ConfirmedTestDetails({ dc_test_info }: { dc_test_info: DC_Test }
               alignItems="center"
               justifyContent="space-between"
               sx={{ padding: "10px", height: "100%" }}
-              spacing={10}
+              spacing={7}
             >
               <Grid item>
                 <Typography sx={{ fontWeight: "bold" }}>
@@ -162,7 +93,7 @@ export function ConfirmedTestDetails({ dc_test_info }: { dc_test_info: DC_Test }
                 alignItems="center"
                 justifyContent="space-between"
                 sx={{ padding: "10px", height: "100%" }}
-                spacing={7}
+                spacing={5}
               >
                 <Grid item>
                   <Typography sx={{ fontWeight: "bold" }}>
@@ -258,7 +189,7 @@ export function ConfirmedTestDetails({ dc_test_info }: { dc_test_info: DC_Test }
                 sx={{ padding: "10px", height: "100%" }}
                 spacing={2}
               >
-                <Grid item>
+                {/* <Grid item>
                   <Typography sx={{ fontWeight: "bold" }}></Typography>
                   <Stack direction="row" alignItems="center" spacing={2}>
                     <Button onClick={handleComplete} variant="contained" component="label">
@@ -266,7 +197,7 @@ export function ConfirmedTestDetails({ dc_test_info }: { dc_test_info: DC_Test }
                     </Button>
                   </Stack>
 
-                </Grid>
+                </Grid> */}
                 <Grid item>
                   <Grid item>
                     <Typography></Typography>

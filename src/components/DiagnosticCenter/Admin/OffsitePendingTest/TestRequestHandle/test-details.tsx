@@ -1,5 +1,5 @@
 import { Grid, Typography, Rating, Stack } from "@mui/material";
-import { DC_Test, Doctor, Taker } from "Classes/entity-class";
+import { DC_Test, Doctor, Taker, _Notification } from "Classes/entity-class";
 
 import * as React from 'react';
 import Button from '@mui/material/Button';
@@ -12,6 +12,9 @@ import id from "date-fns/esm/locale/id/index.js";
 
 export  function TestDetails({dc_test_info}:{dc_test_info:DC_Test}) {
   const [dc_test,setDCTest] = React.useState<DC_Test>();
+  const [notification, setNotification] = React.useState<_Notification>(
+    new _Notification()
+  );
   
   const navigate = useNavigate();
 
@@ -42,10 +45,36 @@ export  function TestDetails({dc_test_info}:{dc_test_info:DC_Test}) {
       navigate("/offsite-requested-test-list-ui")
     });
 
+    setNotification({
+      ...notification,
+      receiver: dc_test_info.patient?.person,
+      type: "Offsite DC Test Request is Approved ",
+      message: " DC : "+ dc_test_info.dcTestList?.dc?.name + " ( DC Contact : "+ dc_test_info.dcTestList?.dc?.person?.mobileNo+" )" ,
+      status: "approved",
+    });
+    API.notification.saveNotification({
+      ...notification,
+      receiver: dc_test_info.patient?.person,
+      type: "Offsite DC Test Request is Approved ",
+      message: " DC : "+ dc_test_info.dcTestList?.dc?.name + " ( DC Contact : "+ dc_test_info.dcTestList?.dc?.person?.mobileNo+" )" ,
+      status: "approved",
+    }).then((response) => {
+      console.log(response);
+    });
+
    }; 
 
-return(
+   function get_Date(strDate:string) {
+    var date = new Date(strDate);
+    var day = date.getDate();
+    var month = date.getMonth();
+    var year = date.getFullYear();
 
+    var str = day + "-" + month + "-" + year;
+    return str;
+  } 
+
+return(
 
   <Grid
     container
@@ -76,7 +105,7 @@ return(
           alignItems="center"
           justifyContent="space-between"
           sx={{ padding: "10px", height: "100%" }}
-          spacing={2}
+          spacing={12}
         >
           <Grid item>
             <Typography sx={{ fontWeight: "bold" }}>
@@ -99,7 +128,7 @@ return(
             Date
             </Typography>
             <Typography>
-            {String(dc_test_info.date)}
+            {get_Date(dc_test_info.date?.toString() as string)}
             </Typography>
           </Grid>
 
@@ -114,7 +143,7 @@ return(
           alignItems="center"
           justifyContent="space-between"
           sx={{ padding: "10px", height: "100%" }}
-          spacing={2}
+          spacing={12}
         >
           <Grid item>
             <Typography sx={{ fontWeight: "bold" }}>

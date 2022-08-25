@@ -11,7 +11,8 @@ import {
 } from "@mui/material";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { useNavigate } from "react-router-dom";
-import ShowNotification from "components/notification";
+import ShowNotification from "components/Patient/PatientNotification/show-notification";
+
 import Search from "@mui/icons-material/Search";
 import { styled, alpha } from '@mui/material/styles';
 

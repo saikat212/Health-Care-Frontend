@@ -51,6 +51,7 @@ export default function SignInSide() {
   const [t,setTaker] =  React.useState<Taker>();
   const [a,setDCAdmin] =  React.useState<DiagnosticCenter>();
   const [DC,setDC] = React.useState<DiagnosticCenter>();
+  const [DCInfo,setDCInfo] = React.useState<DiagnosticCenter>();
 
   function errorVerify() {
     if (!state.email || !state.password) {
@@ -141,10 +142,22 @@ export default function SignInSide() {
                     id: response.data?.id,
                   });
 
+                  
+                  localStorage.setItem(
+                    "DCAdminId",
+                    JSON.stringify(
+                      response.data?.id
+                    )
+                  );
+
+
+
                   API.diagnosticCenter.getDCByAdminId(response.data.id as number).then((response) => {
                     setDC(response.data);
+                     
                     console.log("DC: after set in sign in ")
-                    console.log(response.data)
+                    console.log(response.data );
+                    setDCInfo(response.data);
 
                     localStorage.setItem(
                       "DC",
