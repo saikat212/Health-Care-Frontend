@@ -12,8 +12,8 @@ export default function MedicineInPrescription({
       container
       direction="column"
       //alignItems="center"
-      sx={{ padding: "40px", height: "100%" }}
-      spacing={3}
+      sx={{ padding: "20px", height: "100%" }}
+      spacing={1}
       justifyContent="space-between"
       color="blue"
       >
@@ -23,12 +23,12 @@ export default function MedicineInPrescription({
         {mcPresArray?.map((mip, idx) => (
           <Grid
             key={idx}
-            //item
+            item
             container
             direction="row"
             alignItems="center"
-            sx={{ padding: "40px", height: "100%" }}
-            spacing={3}
+            sx={{ padding: "10px", height: "100%" }}
+            spacing={1}
             justifyContent="space-between"
           
           >

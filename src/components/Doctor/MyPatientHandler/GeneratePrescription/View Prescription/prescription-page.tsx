@@ -33,21 +33,21 @@ export default function PrescriptionPage() {
     state as GeneratePrescription;
  
     const exportPDF = () => {
-      const input = document.getElementById("makePDF")
+      const input = document.getElementById("prescription")
       
-   /*    html2canvas(input as HTMLElement, {logging:true, letterRendering:1, useCORS:true, scale: 2}).then(canvas =>{
+       html2canvas(input as HTMLElement, {logging:true,  useCORS:true, scale: 2}).then(canvas =>{
           const imgWidth = 208; //default 208
           const imgHeight = canvas.height * imgWidth / canvas.width;
           const imgData = canvas.toDataURL('img/png');
           const pdf = new jsPDF ('p', 'mm', 'a4');
           pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
-          pdf.save("Report_PDF.pdf") 
-      }) */
+          pdf.save("Prescription_PDF.pdf") 
+      }) 
   }
   return (
     <DoctorLayout>
-      <StyledEngineProvider injectFirst>
         <Grid
+         id="prescription"
           container
           direction="column"
           //alignItems="center"
@@ -61,7 +61,7 @@ export default function PrescriptionPage() {
             direction="row"
             alignItems="center"
             justifyContent="space-between"
-            sx={{ backgroundColor: "white", padding: "10px", height: "100%" }}
+            sx={{ backgroundColor: "white",  height: "100%" }}
             spacing={2}
           >
             <Grid item>
@@ -75,8 +75,7 @@ export default function PrescriptionPage() {
             item
             container
             sx={{
-              backgroundColor: "white",
-              padding: "10px",
+              backgroundColor: "#9AEDF5",
               height: "100%",
               width: "50%",
             }}
@@ -85,19 +84,20 @@ export default function PrescriptionPage() {
               mcPresArray={generatePrescription.medPresArray}
             />
           </Grid>
-          <Grid item container>
+          <Grid  item
+            container
+            sx={{
+              backgroundColor: "#F8E594",
+              padding: "10px",
+              height: "100%",
+              width: "50%",
+            }}>
             <TestInPrescription
               testPresArray={generatePrescription.testPresArray}
             />
           </Grid>
-          <Grid item>
-            <Button variant="contained" onClick={exportPDF}
-            >
-              Make PDF
-            </Button>
-          </Grid>
         </Grid>
-      </StyledEngineProvider>
+      <Button variant="contained" onClick={exportPDF}>Download Prescription</Button>
     </DoctorLayout>
   );
 }
