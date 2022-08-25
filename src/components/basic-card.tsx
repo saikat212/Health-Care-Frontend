@@ -8,11 +8,11 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea, CardMedia } from '@mui/material';
 import { useNavigate } from 'react-router';
 
-export default function BasicCard({text} : {text:string}) {
+export default function BasicCard({text,link} : {text:string,link:string}) {
     const navigate = useNavigate();
   return (
     <Card
-  onClick={() => navigate("/doctor-list")}
+  onClick={() => navigate(link)}
     sx={{ width: "100%" }} 
   >
     <CardActionArea>

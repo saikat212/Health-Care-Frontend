@@ -2,7 +2,7 @@ import { Button, Grid, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import React from "react";
 import PatientAppbar from "./patient-appbar";
-import BasicCard from "components/card";
+import BasicCard from "components/basic-card";
 import PatientLayout from "./patient-layout";
 import FindDCCard from "./FindDC/FindDCCard";
 
@@ -55,10 +55,10 @@ export default function Patient_Home_Page() {
             spacing={2}
           >
             <Grid item>
-              <BasicCard text="Medical History"></BasicCard>
+              <BasicCard text="Medical History" link="/medical-history" ></BasicCard>
             </Grid>
             <Grid item>
-              <BasicCard text="Lab Reports"></BasicCard>
+              <BasicCard text="Lab Reports" link=""></BasicCard>
             </Grid>
             <Grid item>
               <FindDCCard text="Find a diagnostic Center"></FindDCCard>

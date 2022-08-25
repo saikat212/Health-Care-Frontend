@@ -13,7 +13,6 @@ import React from "react";
 import { DatePicker } from "@mui/x-date-pickers";
 import PatientAppbar from "components/Patient/patient-appbar";
 import PatientLayout from "components/Patient/patient-layout";
-import { getVisitingDays } from "./visiting-day-decryption";
 
 export function DoctorDetails_Get_Appointment({ doctor }: { doctor: Doctor }) {
   const navigate = useNavigate();
@@ -140,7 +139,7 @@ export function DoctorDetails_Get_Appointment({ doctor }: { doctor: Doctor }) {
                     </Typography>
                   </Grid>
                   <Grid item>
-                    {/*  <Typography>{getVisitingDays(doctor?.visitingDay)}</Typography>  */}
+                      <Typography>{doctor?.visitingDay}</Typography>  
                   </Grid>
                 </Grid>
               </Grid>
@@ -182,7 +181,9 @@ export function DoctorDetails_Get_Appointment({ doctor }: { doctor: Doctor }) {
             <Grid item>
               <DatePicker
                 label="Select an appointment date"
+                //selected={this.state.startDate}
                 value={appointment?.date}
+                //minDate={moment().toDate()}
                 onChange={(newValue) => {
                   setAppointmet({
                     ...appointment,

@@ -79,10 +79,13 @@ export const API = {
   appointment: {
     saveAppointment: (appointment: Appointment) =>
       post("/save-appointment", appointment),
+      getAppointments: (patient_id:number)=> get("/get-all-appointments/"+patient_id),
+    updateAppointment:(appt:Appointment) => post("/update-appointemnt",appt), 
     getAppointmentList: (id: string, status: string) =>
       postBody("/get-AppointmentList", { id: id, status: status }),
     confirmAppointment: (appointment: Appointment) =>
       put("/appointment-confirmation", appointment), // ask to sakib
+
   },
   notification: {
     saveNotification: (notify: _Notification) =>
@@ -92,13 +95,16 @@ export const API = {
     changeStatus: (id: number) => post("/change-status/"+id)
   },
   prescription:{
-    savePrescription: (pres: Prescription) => post("/save-prescription",pres)
+    savePrescription: (pres: Prescription) => post("/save-prescription",pres),
+    getAllPrescription: (p_id: number ) =>get("/get-all-prescription/"+p_id)
   },
   medicinePres:{
-    saveMedicine: (med: MC_Prescription[]) => post("/save-medicine-pres",med)
+    saveMedicine: (med: MC_Prescription[]) => post("/save-medicine-pres",med),
+    getMedicine: (p_id: number) => get("/get-medicine-in-prescription/"+p_id)
   },
   testPres:{
-    saveTest: (test: Test_Prescription[]) => post ("/save-test-pres",test)
+    saveTest: (test: Test_Prescription[]) => post ("/save-test-pres",test),
+    getTest: (p_id:number) => get("/get-test-in-prescription/"+p_id)
   },
   medicine:{
     getAllMedicine: ()=> get("/get-all-medicine")

@@ -49,6 +49,7 @@ import PreviousPageSetInfo from "components/Patient/FindDC/DCTestRequest/previou
 import DCListByTestname from "components/Patient/FindDC/dc-list-by-testname";
 import DCSearchPage from "components/Patient/FindDC/dc-search-page";
 import { UploadPage } from "components/DiagnosticCenter/Admin/SubmittedTest/upload-page";
+import MedicalHistory from "components/Patient/MedicalHistory/medical-history";
 function App() {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -63,8 +64,9 @@ function App() {
             <Route path="/doctor-home-page" element={<DoctorHomePage/>} />
             <Route path="/sign-up-patient" element={<SignUpPatient />} />
             <Route path="/sign-up-doctor" element={<SignUpDoctor />} />
+            <Route path="/medical-history" element={<MedicalHistory /> }/>
            
-            <Route path="/set-appointment-details" element={<SetAppointment />}/>
+          <Route path="/set-appointment-details" element={<SetAppointment />}/>
           <Route path="/requested-appointment-ui" element={<RequestedAppointmentListUI/>}/>
           <Route path="/set-appointment-info" element={<SetAppointmentInfo/>}/>
           <Route path="/set-visiting-time" element={<VisitingTime/>}/>

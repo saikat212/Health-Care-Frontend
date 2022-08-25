@@ -81,7 +81,6 @@ export default function SignInSide() {
                 handleNotification(response.data.id)
                 console.log(response.data);
                 if (response.data.role == "patient") {
-                  console.log("In patientttt")
                   setPatient({
                     ...pat,
                     person: response.data,

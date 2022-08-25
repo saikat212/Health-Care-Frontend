@@ -33,7 +33,9 @@ export default function SetPrescriptionInfo() {
   const navigate = useNavigate();
   const { state } = useLocation();
   const [appointment, setAppointment] = React.useState<Appointment>();
-  const [prescription, setPrescription] = React.useState<Prescription>();
+  const [prescription, setPrescription] = React.useState<Prescription>(
+    new Prescription()
+  );
   const [med_pres, setMedPres] = React.useState<MC_Prescription>();
   const [test_pres, setTestPres] = React.useState<Test_Prescription>();
 
@@ -42,35 +44,7 @@ export default function SetPrescriptionInfo() {
     []
   );
 
-  /* const styles = StyleSheet.create({
-    page: {
-      flexDirection: 'row',
-      backgroundColor: '#E4E4E4'
-    },
-    section: {
-      margin: 10,
-      padding: 10,
-      flexGrow: 1
-    }
-  });
-  
-  // Create Document Component
-  const MyDocument = () => (
-    <Document>
-      <Page size="A4" style={styles.page}>
-        <View style={styles.section}>
-          <Text>Section #1</Text>
-        </View>
-        <View style={styles.section}>
-          <Text>Section #2</Text>
-        </View>
-      </Page>
-    </Document>
-  );
- */
   function handleAddMedicine() {
-    console.log("mehedi");
-
     setMedPres({ ...med_pres, prescription: prescription });
 
     setMedPresArray([
@@ -93,6 +67,11 @@ export default function SetPrescriptionInfo() {
     ]);
   }
   function handleUpload() {
+    setAppointment({
+      ...appointment,
+      prescription: prescription,
+    });
+
     console.log("Med-array", medPresArray);
     console.log("test-array", testPresArray);
 
@@ -104,9 +83,15 @@ export default function SetPrescriptionInfo() {
 
     API.medicinePres.saveMedicine(medPresArray).then((response) => {});
     API.testPres.saveTest(testPresArray).then((response) => {});
-    console.log("test0");
+    API.appointment
+      .updateAppointment({
+        ...appointment,
+        prescription: prescription,
+      })
+      .then((response) => {});
+
+    console.log("pres_aoot;: ", appointment);
     let generatePrescription: GeneratePrescription = new GeneratePrescription();
-    console.log("test");
     generatePrescription.patient = JSON.parse(
       localStorage.getItem("Patient") || ""
     ) as Patient;
@@ -115,8 +100,6 @@ export default function SetPrescriptionInfo() {
     ) as Doctor;
     generatePrescription.medPresArray = medPresArray;
     generatePrescription.testPresArray = testPresArray;
-
-    console.log("gp: ", generatePrescription);
 
     navigate("/prescription-page", { state: generatePrescription });
   }
@@ -127,21 +110,19 @@ export default function SetPrescriptionInfo() {
     setPrescription({
       ...prescription,
       problem: (state as Appointment).problem,
-      appointment: state as Appointment,
     });
     API.prescription
       .savePrescription({
         ...prescription,
         problem: (state as Appointment).problem,
-        appointment: state as Appointment,
       })
       .then((response) => {
-        console.log("Pres: " + response.data);
         setPrescription({
           ...prescription,
           id: response.data.id,
         });
       });
+
     /*  localStorage.setItem(
       "Prescription",
       JSON.stringify({
@@ -243,7 +224,7 @@ export default function SetPrescriptionInfo() {
             spacing={2}
           >
             <Grid item>
-              <Typography sx={{color:"Green"}}>###  Medicine  ###</Typography>
+              <Typography sx={{ color: "Green" }}>### Medicine ###</Typography>
             </Grid>
             <Grid item>
               <List
@@ -263,7 +244,7 @@ export default function SetPrescriptionInfo() {
               </List>
             </Grid>
             <Grid item>
-              <Typography sx={{color:"Blue"}}>### Test ###</Typography>
+              <Typography sx={{ color: "Blue" }}>### Test ###</Typography>
             </Grid>
             <Grid item>
               <List
@@ -275,9 +256,7 @@ export default function SetPrescriptionInfo() {
               >
                 {testPresArray.map((value) => (
                   <ListItem key={value.test?.name}>
-                    <ListItemText
-                      primary={`${value.test?.name}`}
-                    />
+                    <ListItemText primary={`${value.test?.name}`} />
                   </ListItem>
                 ))}
               </List>
@@ -287,7 +266,4 @@ export default function SetPrescriptionInfo() {
       </Grid>
     </DoctorLayout>
   );
-}
-function enqueueSnackbar(enqueueSnackbar: any, arg1: string, arg2: () => void) {
-  throw new Error("Function not implemented.");
 }

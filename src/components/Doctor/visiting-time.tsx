@@ -13,7 +13,7 @@ import DoctorLayout from "./doctor-layout";
 
 export default function VisitingTime() {
   const days = ["Sat", "Sun", "Mon","Tues","Wed","Thu","Fri"];
-  const [selectedDays, setSelectedDays] = React.useState<string[]>();
+  const [selectedDays, setSelectedDays] = React.useState<string[]>([]);
   const [startTime, setStartTime] = React.useState<Date | null>(new Date());
   const [endTime, setEndTime] = React.useState<Date | null>(new Date());
   const [doctor, setDoctor] = React.useState<Doctor>();
@@ -21,43 +21,25 @@ export default function VisitingTime() {
   var st, et;
   function handleConfirm() {
     console.log("s: " +selectedDays)
-    //@ts-ignore
-    if (selectedDays[0] == "Sat") str=str+"1";
-    else str=str+"0";
-    //@ts-ignore
-    if (selectedDays[1] == "Sun") str=str+"1";
-    else str=str+"0";
-    //@ts-ignore
-    if(selectedDays[2]  == "Mon") str=str+"1"
-    else str=str+"0" 
-    //@ts-ignore
-    if (selectedDays[3] == "Tues") str=str+"1";
-    else str=str+"0";
-    //@ts-ignore
-    if (selectedDays[4] == "Wed") str=str+"1";
-    else str=str+"0";
-    //@ts-ignore
-    if(selectedDays[5]  == "Thu") str=str+"1"
-    else str=str+"0" 
-    //@ts-ignore
-    if(selectedDays[5]  == "Fri") str=str+"1"
-    else str=str+"0" 
-
+    for(let i = 0 ;i < selectedDays?.length;i++){
+      if(i != selectedDays.length-1)  str+= selectedDays[i]+" - "
+      else str+= selectedDays[i]
+    }
+    
     
     //@ts-ignore
     st=startTime.toLocaleString('en-US', { hour: 'numeric', hour12: true })
     //@ts-ignore
     et = endTime.toLocaleString('en-US', { hour: 'numeric', hour12: true })
-    console.log("str: "+str)
    
-    API.doctor.updateVisitingTime({
+     API.doctor.updateVisitingTime({
         ...doctor,
         id: (JSON.parse(localStorage.getItem("Doctor")||"") as Doctor).id,
         visitingDay:str,
         visitingTime:st+" - "+et
     }).then(response=>{
         console.log(response.data)
-    })
+    }) 
   }
 
   return (

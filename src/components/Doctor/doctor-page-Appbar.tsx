@@ -15,11 +15,15 @@ import AdbIcon from '@mui/icons-material/Adb';
 import FixedBottomNavigation from 'components/Doctor/doctor-homepage-container'
 import { useNavigate } from 'react-router-dom';
 import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
+import { Doctor } from 'Classes/entity-class';
+import ShowNotification from 'components/notification';
 
 const pages = ['Monitor', 'About', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 export const headerHeight = 70;
 const ResponsiveAppBar = () => {
+  const doctor_id =  (JSON.parse(localStorage.getItem("Doctor") || "") as Doctor).id
+
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
   const navigate = useNavigate();
@@ -77,7 +81,7 @@ const ResponsiveAppBar = () => {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              color="secondary"
             >
               <MenuIcon />
             </IconButton>
@@ -129,6 +133,7 @@ const ResponsiveAppBar = () => {
               <Button  sx={{ my: 2, color: 'white', display: 'block' }}  onClick={()=>navigate("/requested-appointment-ui")} variant="contained">Pending-Appointment</Button>
               <Button sx={{ my: 2, color: 'white', display: 'block' }}  onClick={()=>navigate("/approved-appointment-list")} variant="contained">MyPatient</Button>
               <Button sx={{ my: 2, color: 'white', display: 'block' }}  onClick={()=>navigate("/set-visiting-time")} variant="contained">Set Visiting Time</Button>
+              <ShowNotification id = {doctor_id as number}/>
           </Box>
      
 

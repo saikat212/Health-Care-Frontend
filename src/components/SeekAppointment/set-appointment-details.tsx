@@ -6,9 +6,20 @@ import Checkbox from "@mui/material/Checkbox";
 import { useEffect, useState } from "react";
 import React from "react";
 import { Appointment, Patient } from "Classes/entity-class";
+import { API } from "API Handler/api";
 
 export default function SetAppointmentDetails({appointment,onChange}:{appointment:Appointment; onChange:(value)=>void}) {
-  //console.log(JSON.parse(localStorage.getItem("Patient")||"") )
+
+
+  const[patient, setPatient] = React.useState<Patient>();
+  let id = (JSON.parse(localStorage.getItem("Patient")||"") as Patient).id;
+  useEffect(() => {   //Data will be loaded first time only
+    API.patient.getPatientById(id as number).then(response=>{
+      setPatient(response.data)
+      console.log(response.data)
+      console.log("Check")
+    })
+  }, [])
 
   return (
     <React.Fragment>
@@ -76,12 +87,13 @@ export default function SetAppointmentDetails({appointment,onChange}:{appointmen
             fullWidth
             autoComplete="weight"
             variant="standard"
+            value =  {patient?.weight}
             onChange={(e)=>{
               onChange({
                 ...appointment,
                 patient:{
                   ...appointment?.patient,
-                  height : parseInt((e.target.value)),
+                  weight : parseInt((e.target.value)),
                 }
               })
             }}
@@ -89,18 +101,20 @@ export default function SetAppointmentDetails({appointment,onChange}:{appointmen
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+            required
             id="state"
             name="state"
             label="Height (cm)"
             fullWidth
             autoComplete="height"
             variant="standard"
+            value = {patient?.height}
             onChange={(e)=>{
               onChange({
                 ...appointment,
                 patient:{
                   ...appointment?.patient,
-                  weight : parseInt((e.target.value)),
+                  height : parseInt((e.target.value)),
                 }
               })
             }}

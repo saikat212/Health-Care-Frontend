@@ -60,11 +60,12 @@ export class Appointment{
     status?:string;
     commentFromDoctor?:string;
     dateGivenByDoctor?:Date | null;
+    prescription?:Prescription
 }
 export class Prescription{
     id?:number;
     problem?:string;
-    appointment?:Appointment;
+    commnet?:string;
 
 }
 export class Medicine{
