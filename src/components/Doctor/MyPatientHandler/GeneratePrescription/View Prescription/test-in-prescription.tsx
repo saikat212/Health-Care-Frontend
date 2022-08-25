@@ -7,8 +7,8 @@ export default function TestInPrescription({testPresArray}:{testPresArray:Test_P
       container
       direction="column"
       //alignItems="center"
-      sx={{ padding: "40px", height: "100%" }}
-      spacing={3}
+      sx={{ padding: "20px", height: "100%" }}
+      spacing={1}
       justifyContent="space-between"
       color="#8b0000"
       >
@@ -22,8 +22,8 @@ export default function TestInPrescription({testPresArray}:{testPresArray:Test_P
             container
             direction="row"
             alignItems="center"
-            sx={{ padding: "40px", height: "100%" }}
-            spacing={3}
+            sx={{ padding: "10px", height: "100%" }}
+            spacing={1}
             justifyContent="space-between"
             
           >

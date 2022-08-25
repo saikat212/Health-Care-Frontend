@@ -89,7 +89,7 @@ export const API = {
     post("/save-notification", notify),
     getNotification : (id : number) => get("/get-all-notification/"+id),
     updateNotification : (notification:_Notification) => put("/update-notification",notification),
-    changeStatus: (id: number) => post("/change-status",id)
+    changeStatus: (id: number) => post("/change-status/"+id)
   },
   prescription:{
     savePrescription: (pres: Prescription) => post("/save-prescription",pres)
