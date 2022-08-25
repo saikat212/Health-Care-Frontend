@@ -48,7 +48,7 @@ export default function VisitingTime() {
     st=startTime.toLocaleString('en-US', { hour: 'numeric', hour12: true })
     //@ts-ignore
     et = endTime.toLocaleString('en-US', { hour: 'numeric', hour12: true })
-    console.log(str)
+    console.log("str: "+str)
    
     API.doctor.updateVisitingTime({
         ...doctor,

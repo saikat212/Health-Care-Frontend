@@ -41,14 +41,14 @@ export function SetAppointmentInfo() {
       receiver: appointment?.patient?.person,
       type: "appointment",
       message: "Your appointment is approved",
-      status: "approved",
+      status: "pending",
     });
     API.notification.saveNotification({
       ...notification,
       receiver: appointment?.patient?.person,
       type: "appointment",
       message: "Your appointment is approved",
-      status: "approved",
+      status: "pending",
     }).then((response) => {
       console.log(response);
     });
@@ -70,14 +70,14 @@ export function SetAppointmentInfo() {
       receiver: appointment?.patient?.person,
       type: "appointment",
       message: "Your appointment is rejected",
-      status: "rejected",
+      status: "pending",
     });
     API.notification.saveNotification({
       ...notification,
       receiver: appointment?.patient?.person,
       type: "appointment",
       message: "Your appointment is rejected",
-      status: "rejected",
+      status: "pending",
     }).then((response) => {
       console.log("Reject: ",response);
     });

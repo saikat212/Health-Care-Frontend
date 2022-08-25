@@ -23,25 +23,27 @@ import PatientInPrescription from "./patient-in-prescription";
 import DoctorInPrescription from "./doctor-in-prescription";
 import MedicineInPrescription from "./medicine-in-prescription";
 import TestInPrescription from "./test-in-prescription";
-// import jsPDF from "jspdf";
+import jsPDF from "jspdf";
+import html2canvas from 'html2canvas';
 
 export default function PrescriptionPage() {
   const { state } = useLocation();
   const navigate = useNavigate();
   let generatePrescription: GeneratePrescription =
     state as GeneratePrescription;
-  console.log("gp2: ", generatePrescription);
-
-  function handleMakePdf() {
-    // var doc = new jsPDF("p", "pt", "a4");
-    // //@ts-ignore
-    // doc.html(document.querySelector("#content"), {
-    //   callback: function (pdf) {
-    //     pdf.save("mypdf.pdf");
-    //   }
-    // });
+ 
+    const exportPDF = () => {
+      const input = document.getElementById("makePDF")
+      
+   /*    html2canvas(input as HTMLElement, {logging:true, letterRendering:1, useCORS:true, scale: 2}).then(canvas =>{
+          const imgWidth = 208; //default 208
+          const imgHeight = canvas.height * imgWidth / canvas.width;
+          const imgData = canvas.toDataURL('img/png');
+          const pdf = new jsPDF ('p', 'mm', 'a4');
+          pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+          pdf.save("Report_PDF.pdf") 
+      }) */
   }
-
   return (
     <DoctorLayout>
       <StyledEngineProvider injectFirst>
@@ -89,7 +91,7 @@ export default function PrescriptionPage() {
             />
           </Grid>
           <Grid item>
-            <Button variant="contained" onClick={handleMakePdf}
+            <Button variant="contained" onClick={exportPDF}
             >
               Make PDF
             </Button>
@@ -99,3 +101,5 @@ export default function PrescriptionPage() {
     </DoctorLayout>
   );
 }
+
+

@@ -17,7 +17,7 @@ import PaymentForm from "./PaymentForm";
 import Review from "./Review";
 import PatientAppbar from "components/Patient/patient-appbar";
 import { useLocation } from "react-router-dom";
-import { Appointment, Patient } from "Classes/entity-class";
+import { Appointment, Patient, _Notification } from "Classes/entity-class";
 import { valueToPercent } from "@mui/base";
 import { API } from "API Handler/api";
 import PatientLayout from "components/Patient/patient-layout";
@@ -45,6 +45,9 @@ export default function SetAppointment() {
   const [_appointment, setAppointment] = React.useState<Appointment>(
     new Appointment()
   );
+  const [notification, setNotification] = React.useState<_Notification>(
+    new _Notification()
+  );
   useEffect(() => {
     //Data will be loaded first time only
     state && setAppointment(state as Appointment);
@@ -67,6 +70,15 @@ export default function SetAppointment() {
           ..._appointment,
           id: response.data.id,
         });
+      });
+      API.notification.saveNotification({
+        ...notification,
+        receiver: _appointment?.doctor?.person,
+        type: "appointment",
+        message: "Your have a pending appointment",
+        status: "pending",
+      }).then((response) => {
+        console.log("Notification placed");
       });
       API.patient.updatePatientByHeightWeight(_appointment.patient as Patient)
     }
