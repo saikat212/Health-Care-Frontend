@@ -5,8 +5,8 @@ import { DCTestList, DC_Test, DiagnosticCenter, Taker } from "Classes/entity-cla
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export  function DCDetails1({dc_test_list_info}:{dc_test_list_info:DCTestList}) {
-   const navigate = useNavigate();
+export function DCDetails1({ dc_test_list_info }: { dc_test_list_info: DCTestList }) {
+  const navigate = useNavigate();
 
   //  const handleComplete = (e) => {
   //   e.preventDefault();
@@ -18,16 +18,16 @@ export  function DCDetails1({dc_test_list_info}:{dc_test_list_info:DCTestList}) 
   //     navigate("/submitted-test-list-ui")
   //   });
   //  };
-   
-
-   const handleSubmit = (e) => {
 
 
-   };
+  const handleSubmit = (e) => {
 
-  return(
-  
-      <Grid
+
+  };
+
+  return (
+
+    <Grid
       container
       direction="row"
       alignItems="center"
@@ -58,50 +58,72 @@ export  function DCDetails1({dc_test_list_info}:{dc_test_list_info:DCTestList}) 
             spacing={2}
           >
             <Grid item>
-            <Typography sx={{ fontWeight: "bold" }}>
-                Test Info  
-              </Typography>
-            <Typography >
-                Name: {dc_test_list_info.test?.name} 
-              </Typography>
-              <Typography >
-                Price : {dc_test_list_info.price} 
-              </Typography>
-              <Typography >
-               onlinetest : {dc_test_list_info.isOnlineTestAvailable} 
-              </Typography>
-{/* 
-              <Typography sx={{ fontWeight: "bold" }}>
-                DC Info
-              </Typography>
 
-              <Typography sx={{ fontWeight: "bold" }}>
-                Name: {dc_test_list_info.dc?.name} 
-              </Typography>   */}
-            
+              <Grid
+                container
+                direction="column"
+                alignItems="center"
+                justifyContent="space-between"
+                sx={{ padding: "10px", height: "100%" }}
+                spacing={6}
+              >
+                <Grid item >
+                  <Typography sx={{ fontWeight: "bold" }}>
+                    Test Information
+                  </Typography>
+                </Grid>
+
+                <Grid item>
+
+                  <Grid
+                    container
+                    direction="row"
+                    alignItems="center"
+                    justifyContent="space-between"
+                    sx={{ padding: "10px", height: "100%" }}
+                    spacing={8}
+                  >
+
+                    <Grid item >
+                      <Typography sx={{ fontWeight: "bold" }} > Name  </Typography>
+                      <Typography >
+                        {dc_test_list_info.test?.name}
+                      </Typography>
+                    </Grid>
+
+
+                    <Grid item >
+                      <Typography sx={{ fontWeight: "bold" }} >Price  </Typography>
+                      <Typography >
+                        {dc_test_list_info.price}
+                      </Typography>
+
+                    </Grid>
+
+                    <Grid item>
+                      <Typography sx={{ fontWeight: "bold" }} >OnlineTest </Typography>
+                      <Typography >
+                        {dc_test_list_info.isOnlineTestAvailable}
+                      </Typography>
+
+                    </Grid>
+
+                  </Grid>
+
+
+                </Grid>
+
+
+              </Grid>
+
             </Grid>
-            <Grid item>
-              <Typography></Typography>
-            </Grid>
+
+           
           </Grid>
-  
-          <Grid
-            container
-            direction="column"
-            alignItems="center"
-            justifyContent="space-between"
-            sx={{ padding: "10px", height: "100%" }}
-            spacing={2}
-          >
-            <Grid item>
-              
-            </Grid>
-            <Grid item>
-              <Typography></Typography>
-            </Grid>
-          </Grid>
+
         </Grid>
       </Grid>
+
       {/*  //2nd Column */}
       <Grid item>
         <Grid
@@ -120,29 +142,72 @@ export  function DCDetails1({dc_test_list_info}:{dc_test_list_info:DCTestList}) 
             sx={{ padding: "10px", height: "100%" }}
             spacing={2}
           >
-            
-            <Typography sx={{ fontWeight: "bold" }}>
-                DC Info
-              </Typography>
 
-              <Typography >
-                Name: {dc_test_list_info.dc?.name} 
-              </Typography>  
+            <Grid item>
+
+              <Grid
+                container
+                direction="column"
+                alignItems="center"
+                justifyContent="space-between"
+                sx={{ padding: "10px", height: "100%" }}
+                spacing={2}
+              >
+                <Grid item >
+                  <Typography sx={{ fontWeight: "bold" }}>
+                    Diagnostic Center Information
+                  </Typography>
+                </Grid>
+
+                <Grid item>
+
+                  <Grid
+                    container
+                    direction="row"
+                    alignItems="center"
+                    justifyContent="space-between"
+                    sx={{ padding: "10px", height: "100%" }}
+                    spacing={8}
+                  >
 
 
-              <Typography >
-               Regi-No.: {dc_test_list_info.dc?.registrationNum}
-              </Typography>
-  
-              <Typography >
-              Location: {dc_test_list_info.dc?.location}
-              </Typography>
-              <Typography >
-               Rating: 4.4
-              </Typography>
+                    <Grid item >
+                      <Typography sx={{ fontWeight: "bold" }} > Name  </Typography>
+                      <Typography >
+                        {dc_test_list_info.dc?.name}
+                      </Typography>
+                    </Grid>
+
+
+                    <Grid item >
+                      <Typography sx={{ fontWeight: "bold" }} >Location  </Typography>
+                      <Typography >
+                        {dc_test_list_info.dc?.location}
+                      </Typography>
+
+                    </Grid>
+
+                    <Grid item>
+                      <Typography sx={{ fontWeight: "bold" }} >Rating </Typography>
+                      <Typography >
+                        4.4
+                      </Typography>
+
+                    </Grid>
+
+                  </Grid>
+
+
+                </Grid>
+
+
+              </Grid>
+
+            </Grid>
+
 
           </Grid>
-  
+
           <Grid
             container
             direction="row"
@@ -168,70 +233,11 @@ export  function DCDetails1({dc_test_list_info}:{dc_test_list_info:DCTestList}) 
                 </Grid>
               </Grid>
             </Grid>
-  
-            <Grid item>
-              <Grid
-                container
-                direction="column"
-                alignItems="center"
-                justifyContent="space-between"
-                sx={{ padding: "10px", height: "100%" }}
-                spacing={2}
-              >
-                <Grid item>
-                  <Typography sx={{ fontWeight: "bold" }}></Typography>
-                  {/* <Stack direction="row" alignItems="center" spacing={2}>
-                    <Button  onClick={handleComplete} variant="contained" component="label">
-                     upload report
-                    </Button>
-                  </Stack> */}
-
-                  {/* <Stack direction="row" alignItems="center" spacing={2}>
-                    <Button onClick={handleComplete} variant="contained" component="label">
-                      Upload
-                      <input hidden accept="image/*" multiple type="file" />
-                    </Button>
-                    <IconButton color="primary" aria-label="upload picture" component="label">
-                      <input hidden accept="image/*" type="file" />
-                      <PhotoCamera />
-                    </IconButton>
-                  </Stack> */}
-        
-                </Grid>
-                <Grid item>
-                <Grid item>
-                  <Typography></Typography>
-
-                </Grid>
-                <Stack spacing={1}>
-        
-          {/* <Rating name="half-rating-read" defaultValue={2.5} precision={0.5} readOnly /> */}
-        </Stack>
-                </Grid>
-              </Grid>
-            </Grid>
           </Grid>
         </Grid>
       </Grid>
-  
+
       {/*    //3rd column */}
-      <Grid item>
-        <Grid
-          container
-          direction="column"
-          alignItems="center"
-          justifyContent="space-between"
-          sx={{ padding: "10px", height: "100%" }}
-          spacing={2}
-        >
-          {/* <Grid item>
-            <Typography>Fee:</Typography>
-          </Grid>
-          <Grid item>
-            <Typography>500</Typography>
-          </Grid> */}
-        </Grid>
-      </Grid>
     </Grid>
-    );
+  );
 }

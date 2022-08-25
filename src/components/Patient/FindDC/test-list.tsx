@@ -15,19 +15,20 @@ export default function TestListUI() {
   const {state} = useLocation(); // selected dc
   console.log("selected dc assign in state using use location")
   console.log(state);
-  const [selected_dc,setSelectedDC] = React.useState<DiagnosticCenter>();
+  const [selected_dc,setSelectedDC] = React.useState<DiagnosticCenter>(state as DiagnosticCenter);
   const [dc_test_list,setDCTestList] = React.useState<DCTestList[]>();
 
   useEffect ( () => {
-  API.dcTestList.getAllDCTestList().then((response) =>{
+  setSelectedDC(state as DiagnosticCenter);
+    
+  API.dcTestList.getTestListByDCId(selected_dc.id as number).then((response) =>{
    if(response.data == null)
    {
     console.log("No item here .")
    }
     setDCTestList(response.data)
-    console.log(response)
     console.log("selected dc er related dctestlist table er rows ")
-    
+    console.log(response)
   });
 
   },[]);

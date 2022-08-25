@@ -1,36 +1,36 @@
 import {
-    Grid,
-    Typography,
-    Rating,
-    Stack,
-    Button,
-    TextField,
-  } from "@mui/material";
-  import { Appointment, DCTestList, DC_Test, Doctor, Patient } from "Classes/entity-class";
-  import { useLocation, useNavigate } from "react-router-dom";
-  import { useEffect, useState } from "react";
-  import React from "react";
-  import { DatePicker } from "@mui/x-date-pickers";
-  import PatientAppbar from "components/Patient/patient-appbar";
-  import PatientLayout from "components/Patient/patient-layout";
-  
-  export default function SetInfo({ dc_test_list }: { dc_test_list: DCTestList }) {
-    const navigate = useNavigate();
-    // const {state} = useLocation();
-    // const [dc_test_list,setDCTestList] = React.useState<DCTestList>(new DCTestList());
-    const [dc_test,setDCTest] = React.useState<DC_Test>();
+  Grid,
+  Typography,
+  Rating,
+  Stack,
+  Button,
+  TextField,
+} from "@mui/material";
+import { Appointment, DCTestList, DC_Test, Doctor, Patient } from "Classes/entity-class";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import React from "react";
+import { DatePicker } from "@mui/x-date-pickers";
+import PatientAppbar from "components/Patient/patient-appbar";
+import PatientLayout from "components/Patient/patient-layout";
 
-   // dc_test_list class object = one row
-    console.log("SetInfo: passed : dc_test_list : ")
-    console.log(dc_test_list)
-    //dc_test == appointment data
-    // dc_test_list , dc_test er ekta column
-  
+export default function SetInfo({ dc_test_list }: { dc_test_list: DCTestList }) {
+  const navigate = useNavigate();
+  // const {state} = useLocation();
+  // const [dc_test_list,setDCTestList] = React.useState<DCTestList>(new DCTestList());
+  const [dc_test, setDCTest] = React.useState<DC_Test>();
+
+  // dc_test_list class object = one row
+  console.log("SetInfo: passed : dc_test_list : ")
+  console.log(dc_test_list)
+  //dc_test == appointment data
+  // dc_test_list , dc_test er ekta column
 
 
-    useEffect(() => {
-      //Data will be loaded first time only
-    
+
+  useEffect(() => {
+    //Data will be loaded first time only
+
     // confusion : set call duibar
     //  console.log("in useeffect call")    
     // state && setDCTestList(state as DCTestList);
@@ -41,41 +41,52 @@ import {
     console.log("SetInfo: useeffect")
     console.log("SetInfo:Before dcTestList: dc_test_list =? ")
     console.log(dc_test_list)
-      setDCTest({
-        ...dc_test,
-        patient: JSON.parse(localStorage.getItem("Patient") || "") as Patient,
-        // Problematic part
-        dcTestList: dc_test_list,
+    setDCTest({
+      ...dc_test,
+      patient: JSON.parse(localStorage.getItem("Patient") || "") as Patient,
+      // Problematic part
+      dcTestList: dc_test_list,
 
-      });
-      
+    });
 
-    }, []);
-  
-    return (
-     
+
+  }, []);
+
+  return (
+
+    <Grid
+      container
+      direction="row"
+      alignItems="center"
+      justifyContent="space-between"
+      sx={{ padding: "10px", height: "100%" }}
+      spacing={2}
+    >
+      {/* Picture */}
+      <Grid item>
+        <img src={require("./images/DC.jpg")} height="150px" />
+      </Grid>
+      {/* //1st Column */}
+      <Grid item>
         <Grid
           container
-          direction="row"
+          direction="column"
           alignItems="center"
           justifyContent="space-between"
           sx={{ padding: "10px", height: "100%" }}
           spacing={2}
         >
-          {/* Picture */}
-          <Grid item>
-            <img src={require("./images/DC.jpg")} height="150px" />
-          </Grid>
-          {/* //1st Column */}
-          <Grid item>
-            <Grid
-              container
-              direction="column"
-              alignItems="center"
-              justifyContent="space-between"
-              sx={{ padding: "10px", height: "100%" }}
-              spacing={2}
-            >
+          <Grid
+            container
+            direction="column"
+            alignItems="center"
+            justifyContent="space-between"
+            sx={{ padding: "10px", height: "100%" }}
+            spacing={2}
+          >
+
+            <Grid item>
+
               <Grid
                 container
                 direction="column"
@@ -84,184 +95,268 @@ import {
                 sx={{ padding: "10px", height: "100%" }}
                 spacing={2}
               >
+                <Grid item >
+                  <Typography sx={{ fontWeight: "bold" }}>
+                    Test Information
+                  </Typography>
+                </Grid>
+
                 <Grid item>
 
-                  <Typography sx={{ fontWeight: "bold" }}>
-                   ########## Test Info ##########: 
-                  </Typography>
-              
-                  <Typography >
-                    Name : {dc_test_list.test?.name}
-                  </Typography>
-                  <Typography >
-                    OnlineTest: {dc_test_list.isOnlineTestAvailable}
-                  </Typography>
-                  <Typography >
-                    Price : {dc_test_list.price}
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <Typography></Typography>
-                </Grid>
-              </Grid>
-  
-              <Grid
-                container
-                direction="column"
-                alignItems="center"
-                justifyContent="space-between"
-                sx={{ padding: "10px", height: "100%" }}
-                spacing={2}
-              >
-                <Grid item>
-                  <Typography sx={{ fontWeight: "bold" }}>
-                    {/* Specialities */}
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  {/* <Typography>{doctor.speciality?.name}</Typography> */}
-                </Grid>
-              </Grid>
-            </Grid>
-          </Grid>
-          {/*  //2nd Column */}
-          <Grid item>
-            <Grid
-              container
-              direction="column"
-              alignItems="center"
-              justifyContent="space-between"
-              sx={{ padding: "10px", height: "100%" }}
-              spacing={2}
-            >
-              <Grid
-                container
-                direction="column"
-                alignItems="center"
-                justifyContent="space-between"
-                sx={{ padding: "10px", height: "100%" }}
-                spacing={2}
-              >
-                <Grid item>
-                <Typography sx={{ fontWeight: "bold" }}>
-                   ########## DC Info ##########: 
-                  </Typography>
-                  <Typography >
-                   Name : {dc_test_list.dc?.name}
-                  </Typography>
-                  <Typography >
-                   Location : {dc_test_list.dc?.location}
-                  </Typography>
-                  <Typography >
-                   Rating : 4.4
-                  </Typography>
-                </Grid>
-               
-              </Grid>
-  
-              <Grid
-                container
-                direction="row"
-                alignItems="center"
-                justifyContent="space-between"
-                sx={{ padding: "10px", height: "100%" }}
-                spacing={2}
-              >
-                <Grid item>
                   <Grid
                     container
-                    direction="column"
+                    direction="row"
                     alignItems="center"
                     justifyContent="space-between"
                     sx={{ padding: "10px", height: "100%" }}
-                    spacing={2}
+                    spacing={8}
                   >
-                    <Grid item>
-                      <Typography sx={{ fontWeight: "bold" }}>
-                        {/* Visiting Day */}
+
+                    <Grid item >
+                      <Typography sx={{ fontWeight: "bold" }} > Name  </Typography>
+                      <Typography >
+                        {dc_test_list.test?.name}
                       </Typography>
                     </Grid>
-                    <Grid item>
-                      {/* <Typography>Sat - Mon - Wed</Typography> */}
+
+
+                    <Grid item >
+                      <Typography sx={{ fontWeight: "bold" }} >Price  </Typography>
+                      <Typography >
+                        {dc_test_list.price}
+                      </Typography>
+
                     </Grid>
+
+                    <Grid item>
+                      <Typography sx={{ fontWeight: "bold" }} >OnlineTest </Typography>
+                      <Typography >
+                        {dc_test_list.isOnlineTestAvailable}
+                      </Typography>
+
+                    </Grid>
+
                   </Grid>
+
+
                 </Grid>
-  
+
+
+              </Grid>
+
+            </Grid>
+
+
+
+
+          </Grid>
+
+          <Grid
+            container
+            direction="column"
+            alignItems="center"
+            justifyContent="space-between"
+            sx={{ padding: "10px", height: "100%" }}
+            spacing={2}
+          >
+            <Grid item>
+              <Typography sx={{ fontWeight: "bold" }}>
+                {/* Specialities */}
+              </Typography>
+            </Grid>
+            <Grid item>
+              {/* <Typography>{doctor.speciality?.name}</Typography> */}
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+
+
+
+      {/*  //2nd Column */}
+      <Grid item>
+        <Grid
+          container
+          direction="column"
+          alignItems="center"
+          justifyContent="space-between"
+          sx={{ padding: "10px", height: "100%" }}
+          spacing={2}
+        >
+          <Grid
+            container
+            direction="column"
+            alignItems="center"
+            justifyContent="space-between"
+            sx={{ padding: "10px", height: "100%" }}
+            spacing={2}
+          >
+            <Grid item>
+
+              <Grid
+                container
+                direction="column"
+                alignItems="center"
+                justifyContent="space-between"
+                sx={{ padding: "10px", height: "100%" }}
+                spacing={2}
+              >
+                <Grid item >
+                  <Typography sx={{ fontWeight: "bold" }}>
+                    Diagnostic Center Information
+                  </Typography>
+                </Grid>
+
                 <Grid item>
+
                   <Grid
                     container
-                    direction="column"
+                    direction="row"
                     alignItems="center"
                     justifyContent="space-between"
                     sx={{ padding: "10px", height: "100%" }}
-                    spacing={2}
+                    spacing={8}
                   >
-                    <Grid item>
-                      {/* <Typography sx={{ fontWeight: "bold" }}>Visiting Time</Typography> */}
+                
+
+                    <Grid item >
+                      <Typography sx={{ fontWeight: "bold" }} > Name  </Typography>
+                      <Typography >
+                      {dc_test_list.dc?.name}
+                      </Typography>
                     </Grid>
-                    <Grid item>
-                     {/* {doctor.visitingTime} */}
+
+
+                    <Grid item >
+                      <Typography sx={{ fontWeight: "bold" }} >Location  </Typography>
+                      <Typography >
+                      {dc_test_list.dc?.location}
+                      </Typography>
+
                     </Grid>
+
+                    <Grid item>
+                      <Typography sx={{ fontWeight: "bold" }} >Rating </Typography>
+                      <Typography >
+                       4.4
+                      </Typography>
+
+                    </Grid>
+
                   </Grid>
+
+
+                </Grid>
+
+
+              </Grid>
+
+            </Grid>
+
+          </Grid>
+
+          <Grid
+            container
+            direction="row"
+            alignItems="center"
+            justifyContent="space-between"
+            sx={{ padding: "10px", height: "100%" }}
+            spacing={2}
+          >
+            <Grid item>
+              <Grid
+                container
+                direction="column"
+                alignItems="center"
+                justifyContent="space-between"
+                sx={{ padding: "10px", height: "100%" }}
+                spacing={2}
+              >
+                <Grid item>
+                  <Typography sx={{ fontWeight: "bold" }}>
+                    {/* Visiting Day */}
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  {/* <Typography>Sat - Mon - Wed</Typography> */}
                 </Grid>
               </Grid>
             </Grid>
-          </Grid>
-  
-          {/*    //3rd column */}
-          <Grid item>
-            <Grid
-              container
-              direction="column"
-              alignItems="center"
-              justifyContent="space-between"
-              sx={{ padding: "10px", height: "100%" }}
-              spacing={2}
-            >
-              <Grid item>
-                <Typography></Typography>
-              </Grid>
-              <Grid item>
-                <DatePicker
-                //   label="Select an appointment date"
-                //   value={appointment?.date}
-                //   onChange={(newValue) => {
-                //     setAppointmet({
-                //       ...appointment,
-                //       date: newValue || undefined,
-                //     });
-                //   }}
 
-                label="Testing date"
-                value={dc_test?.date}
-                onChange={(newValue) => {
-                  setDCTest({
-                    ...dc_test,
-                    date: newValue || undefined,
-                  });
-                }}
-
-                
-                  renderInput={(params) => (
-                    <TextField required fullWidth {...params} />
-                  )}
-                />
-              </Grid>
-              <Grid item>
-                <Button
-                  onClick={() =>
-                    navigate("/set-dc-appointment", { state: dc_test })
-                  }
-                  variant="contained"
-                  color="success"
-                >
-                  DC Request
-                </Button>
+            <Grid item>
+              <Grid
+                container
+                direction="column"
+                alignItems="center"
+                justifyContent="space-between"
+                sx={{ padding: "10px", height: "100%" }}
+                spacing={2}
+              >
+                <Grid item>
+                  {/* <Typography sx={{ fontWeight: "bold" }}>Visiting Time</Typography> */}
+                </Grid>
+                <Grid item>
+                  {/* {doctor.visitingTime} */}
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
-     
-    );
-  }
-  
+      </Grid>
+
+      {/*    //3rd column */}
+      <Grid item>
+        <Grid
+          container
+          direction="column"
+          alignItems="center"
+          justifyContent="space-between"
+          sx={{ padding: "10px", height: "100%" }}
+          spacing={2}
+        >
+          <Grid item>
+            <Typography></Typography>
+          </Grid>
+          <Grid item>
+            <DatePicker
+              //   label="Select an appointment date"
+              //   value={appointment?.date}
+              //   onChange={(newValue) => {
+              //     setAppointmet({
+              //       ...appointment,
+              //       date: newValue || undefined,
+              //     });
+              //   }}
+
+              label="Testing date"
+              value={dc_test?.date}
+              onChange={(newValue) => {
+                setDCTest({
+                  ...dc_test,
+                  date: newValue || undefined,
+                });
+              }}
+
+
+              renderInput={(params) => (
+                <TextField required fullWidth {...params} />
+              )}
+            />
+          </Grid>
+          <Grid item>
+            <Button
+              onClick={() =>
+                navigate("/set-dc-appointment", { state: dc_test })
+              }
+              variant="contained"
+              color="success"
+            >
+              DC Request
+            </Button>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Grid>
+
+  );
+}

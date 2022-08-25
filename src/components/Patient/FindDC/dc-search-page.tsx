@@ -68,98 +68,97 @@ export default function DCSearchPage() {
           <FindDCPageLayout />
 
 
-          <Grid
-              container
-              direction="column"
-              alignItems="left"
-              justifyContent="space-between"
-              sx={{ backgroundColor: "white", padding: "120px" }}
-              spacing={2}
-          >
+      <Grid
+        container
+        direction="column"
+        alignItems="center"
+        justifyContent="space-between"
+        sx={{ backgroundColor: "white", padding: "120px" }}
+        spacing={2}
+      >
 
 
-            
-<Grid item >
-            <FormControl>
-              <InputLabel id="demo-simple-select-label">
-                Test
-              </InputLabel>
-              <Select 
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                //@ts-ignore
-                // value={dcAdmin?.isOfferOnsiteTest || null}
-                 value={testname}
-                label="Test"
-                onChange={handleSearch}
-              >
-                {choiceList?.map((option, idx) => (
-                  <MenuItem key={idx} value={option.name}>
-                    {option.name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
+        <Grid item >
+          <FormControl>
+            <InputLabel id="demo-simple-select-label">
+              Test
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              //@ts-ignore
+              // value={dcAdmin?.isOfferOnsiteTest || null}
+              value={testname}
+              label="Test"
+              onChange={handleSearch}
+            >
+              {choiceList?.map((option, idx) => (
+                <MenuItem key={idx} value={option.name}>
+                  {option.name}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </Grid>
+
+
+        <Grid
+          container
+          direction="column"
+          alignItems="center"
+          justifyContent="space-between"
+          sx={{ backgroundColor: "white", padding: "20px" }}
+          spacing={2}
+        >
+          <Grid >
+            {/* onSubmit={handleSearch} */}
+
+            <form onSubmit={handleSearch} >
+              <label>
+                <input
+                  type="text"
+                  placeholder="Type test name"
+                  value={testname}
+                  onChange={(e) => setTestName(e.target.value)}
+                />
+              </label>
+              <input type="submit" />
+            </form>
+
           </Grid>
 
 
-              <Grid
-                  container
-                  direction="column"
-                  alignItems="left"
-                  justifyContent="space-between"
-                  sx={{ backgroundColor: "white", padding: "20px" }}
-                  spacing={2}
-              >
-                  <Grid >
-                      {/* onSubmit={handleSearch} */}
 
-                      <form onSubmit={handleSearch} >
-                          <label>
-                              <input
-                                  type="text"
-                                  placeholder="Type test name"
-                                  value={testname}
-                                  onChange={(e) => setTestName(e.target.value)}
-                              />
-                          </label>
-                          <input type="submit" />
-                      </form>
+        </Grid>
 
-                  </Grid>
+        <Grid
+          container
+          direction="column"
+          alignItems="center"
+          justifyContent="space-between"
+          sx={{ backgroundColor: "white", padding: "20px" }}
+          spacing={2}
+        >
+          <Grid>
+
+            <Grid item>
+              <Button onClick={handleDCBasedSearch} variant="contained">
+                Best DC Based Search
+              </Button>
+            </Grid>
 
 
-
-              </Grid>
-
-              <Grid
-                  container
-                  direction="column"
-                  alignItems="left"
-                  justifyContent="space-between"
-                  sx={{ backgroundColor: "white", padding: "20px" }}
-                  spacing={2}
-              >
-                <Grid>
-
-                <Grid item>
-                <Button onClick={handleDCBasedSearch} variant="contained">
-                 Best DC Based Search
-                </Button>
-              </Grid>
-
-
-
-
-                </Grid>
-
-                </Grid>
-
-
-          
 
 
           </Grid>
+
+        </Grid>
+
+
+
+
+
+      </Grid>
 
 
       </>

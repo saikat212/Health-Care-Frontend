@@ -5,14 +5,14 @@ import { DC_Test, Taker } from "Classes/entity-class";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export  function ConfirmedTestDetails({dc_test_info}:{dc_test_info:DC_Test}) {
-   const navigate = useNavigate();
-   useEffect(() => {
-    const id = (JSON.parse(localStorage.getItem("Taker")||"") as Taker).id;
-    console.log("idd: ",id);
+export function ConfirmedTestDetails({ dc_test_info }: { dc_test_info: DC_Test }) {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const id = (JSON.parse(localStorage.getItem("Taker") || "") as Taker).id;
+    console.log("idd: ", id);
   }, []);
 
-   const handleComplete = (e) => {
+  const handleComplete = (e) => {
     e.preventDefault();
     // dc_test_info.report = "report.pdf"
     dc_test_info.status = "completed"
@@ -21,21 +21,21 @@ export  function ConfirmedTestDetails({dc_test_info}:{dc_test_info:DC_Test}) {
       console.log("yes.");
       navigate("/confirmed-test-list-ui")
     });
-   };
-   
-
-   const handleSubmit = (e) => {
+  };
 
 
-   };
+  const handleSubmit = (e) => {
 
-  
-  
-  
-  
-  return(
-  
-      <Grid
+
+  };
+
+
+
+
+
+  return (
+
+    <Grid
       container
       direction="row"
       alignItems="center"
@@ -57,51 +57,85 @@ export  function ConfirmedTestDetails({dc_test_info}:{dc_test_info:DC_Test}) {
           sx={{ padding: "10px", height: "100%" }}
           spacing={2}
         >
-          <Grid
-            container
-            direction="column"
-            alignItems="center"
-            justifyContent="space-between"
-            sx={{ padding: "10px", height: "100%" }}
-            spacing={2}
-          >
-            <Grid item>
-  
-              <Typography sx={{ fontWeight: "bold" }}>
-                Patient Name: {dc_test_info.patient?.person?.firstName +" "+ dc_test_info.patient?.person?.lastName} 
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography></Typography>
-            </Grid>
-          </Grid>
-  
-          <Grid
-            container
-            direction="column"
-            alignItems="center"
-            justifyContent="space-between"
-            sx={{ padding: "10px", height: "100%" }}
-            spacing={2}
-          >
-            <Grid item>
-              <Typography sx={{ fontWeight: "bold" }}>
-               Test Name: {dc_test_info.dcTestList?.test?.name}
-              </Typography>
-  
-              <Typography sx={{ fontWeight: "bold" }}>
-               DC Name: {dc_test_info.dcTestList?.dc?.name}
-              </Typography>
-              <Typography sx={{ fontWeight: "bold" }}>
-               DC Location: {dc_test_info.dcTestList?.dc?.location}
-              </Typography>
-  
-     
-            </Grid>
-            <Grid item>
-              <Typography></Typography>
+          <Grid item >
+            <Grid
+              container
+              direction="row"
+              alignItems="center"
+              justifyContent="space-between"
+              sx={{ padding: "10px", height: "100%" }}
+              spacing={2}
+            >
+              <Grid item>
+                <Typography sx={{ fontWeight: "bold" }}>
+                  Patient Name
+                </Typography>
+                <Typography>
+                  {dc_test_info.patient?.person?.firstName + " " + dc_test_info.patient?.person?.lastName}
+                </Typography>
+              </Grid>
+
+              <Grid item>
+                <Typography sx={{ fontWeight: "bold" }}>
+                  Patient's Location
+                </Typography>
+                <Typography>
+                  {dc_test_info.location}
+                </Typography>
+              </Grid>
+
+              <Grid item>
+                <Typography sx={{ fontWeight: "bold" }}>
+                  Date
+                </Typography>
+                <Typography>
+                  {String(dc_test_info.date)}
+                </Typography>
+              </Grid>
             </Grid>
           </Grid>
+
+            <Grid item>
+              <Grid
+                container
+                direction="row"
+                alignItems="center"
+                justifyContent="space-between"
+                sx={{ padding: "10px", height: "100%" }}
+                spacing={7}
+              >
+                <Grid item>
+                  <Typography sx={{ fontWeight: "bold" }}>
+                  Test Name
+                  </Typography>
+                  <Typography>
+                  {dc_test_info.dcTestList?.test?.name}
+                  </Typography>
+                </Grid>
+
+                <Grid item>
+                  <Typography sx={{ fontWeight: "bold" }}>
+                  DC Name
+                  </Typography>
+                  <Typography>
+                  {dc_test_info.dcTestList?.dc?.name}
+                  </Typography>
+                </Grid>
+
+                <Grid item>
+                  <Typography sx={{ fontWeight: "bold" }}>
+                  DC Location
+                  </Typography>
+                  <Typography>
+                  {dc_test_info.dcTestList?.dc?.location}
+                  </Typography>
+                </Grid>
+
+                <Grid item>
+                  <Typography></Typography>
+                </Grid>
+              </Grid>
+            </Grid>
         </Grid>
       </Grid>
       {/*  //2nd Column */}
@@ -122,18 +156,13 @@ export  function ConfirmedTestDetails({dc_test_info}:{dc_test_info:DC_Test}) {
             sx={{ padding: "10px", height: "100%" }}
             spacing={2}
           >
-            <Grid item>
-              <Typography sx={{ fontWeight: "bold" }}>Patient's Location :{dc_test_info.location} </Typography>
-              <Typography sx={{ fontWeight: "bold" }}> 
-               Date: {String(dc_test_info.date)}
-              </Typography>
-            </Grid>
-         
+
+
             <Grid item>
               <Typography></Typography>
             </Grid>
           </Grid>
-  
+
           <Grid
             container
             direction="row"
@@ -159,7 +188,7 @@ export  function ConfirmedTestDetails({dc_test_info}:{dc_test_info:DC_Test}) {
                 </Grid>
               </Grid>
             </Grid>
-  
+
             <Grid item>
               <Grid
                 container
@@ -172,28 +201,28 @@ export  function ConfirmedTestDetails({dc_test_info}:{dc_test_info:DC_Test}) {
                 <Grid item>
                   <Typography sx={{ fontWeight: "bold" }}></Typography>
                   <Stack direction="row" alignItems="center" spacing={2}>
-                    <Button  onClick={handleComplete} variant="contained" component="label">
+                    <Button onClick={handleComplete} variant="contained" component="label">
                       Collection Complete
                     </Button>
                   </Stack>
-        
-                </Grid>
-                <Grid item>
-                <Grid item>
-                  <Typography></Typography>
 
                 </Grid>
-                <Stack spacing={1}>
-        
-          {/* <Rating name="half-rating-read" defaultValue={2.5} precision={0.5} readOnly /> */}
-        </Stack>
+                <Grid item>
+                  <Grid item>
+                    <Typography></Typography>
+
+                  </Grid>
+                  <Stack spacing={1}>
+
+                    {/* <Rating name="half-rating-read" defaultValue={2.5} precision={0.5} readOnly /> */}
+                  </Stack>
                 </Grid>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
       </Grid>
-  
+
       {/*    //3rd column */}
       <Grid item>
         <Grid
@@ -213,5 +242,5 @@ export  function ConfirmedTestDetails({dc_test_info}:{dc_test_info:DC_Test}) {
         </Grid>
       </Grid>
     </Grid>
-    );
+  );
 }

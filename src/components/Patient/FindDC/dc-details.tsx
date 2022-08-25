@@ -5,8 +5,8 @@ import { DC_Test, DiagnosticCenter, Taker } from "Classes/entity-class";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export  function DCDetails({dc_info}:{dc_info:DiagnosticCenter}) {
-   const navigate = useNavigate();
+export function DCDetails({ dc_info }: { dc_info: DiagnosticCenter }) {
+  const navigate = useNavigate();
 
   //  const handleComplete = (e) => {
   //   e.preventDefault();
@@ -18,201 +18,90 @@ export  function DCDetails({dc_info}:{dc_info:DiagnosticCenter}) {
   //     navigate("/submitted-test-list-ui")
   //   });
   //  };
-   
-
-   const handleSubmit = (e) => {
 
 
-   };
+  const handleSubmit = (e) => {
 
-  return(
-  
-      <Grid
+
+  };
+
+  return (
+<>
+<Grid
+    container
+    direction="column"
+    alignItems="center"
+    justifyContent="space-between"
+    sx={{ padding: "80px", height: "100%" }}
+    spacing={2}
+  >
+    <Grid item>
+            <Typography sx={{ fontWeight: "bold" }} >Diagnostic Center Info</Typography>
+    </Grid>
+
+    <Grid item>
+
+    <Grid
       container
       direction="row"
-      alignItems="center"
+      alignItems="baseline"
       justifyContent="space-between"
       sx={{ padding: "80px", height: "100%" }}
-      spacing={2}
+      spacing={8}
     >
-      {/* Picture */}
-      <Grid item>
-        {/* <img src={require("./images/me.PNG")} height="150px" /> */}
-      </Grid>
-      {/* //1st Column */}
-      <Grid item>
-        <Grid
-          container
-          direction="column"
-          alignItems="center"
-          justifyContent="space-between"
-          sx={{ padding: "10px", height: "100%" }}
-          spacing={2}
-        >
-          <Grid
-            container
-            direction="column"
-            alignItems="center"
-            justifyContent="space-between"
-            sx={{ padding: "10px", height: "100%" }}
-            spacing={2}
-          >
-            <Grid item>
-  
-              <Typography sx={{ fontWeight: "bold" }}>
-                DC Name: {dc_info.name} 
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography></Typography>
-            </Grid>
-          </Grid>
-  
-          <Grid
-            container
-            direction="column"
-            alignItems="center"
-            justifyContent="space-between"
-            sx={{ padding: "10px", height: "100%" }}
-            spacing={2}
-          >
-            <Grid item>
-              <Typography sx={{ fontWeight: "bold" }}>
-              DC Regi-No.: {dc_info.registrationNum}
-              </Typography>
-  
-              <Typography sx={{ fontWeight: "bold" }}>
-              DC Location: {dc_info.location}
-              </Typography>
-              <Typography sx={{ fontWeight: "bold" }}>
-               Is-Offer-Onsite-Test: {dc_info.isOfferOnsiteTest}
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography></Typography>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
-      {/*  //2nd Column */}
-      <Grid item>
-        <Grid
-          container
-          direction="column"
-          alignItems="center"
-          justifyContent="space-between"
-          sx={{ padding: "10px", height: "100%" }}
-          spacing={2}
-        >
-          <Grid
-            container
-            direction="column"
-            alignItems="center"
-            justifyContent="space-between"
-            sx={{ padding: "10px", height: "100%" }}
-            spacing={2}
-          >
-            <Grid item>
-              
-              <Typography sx={{ fontWeight: "bold" }}> 
-               
-              </Typography>
-            </Grid>
-         
-            <Grid item>
-              <Typography></Typography>
-            </Grid>
-          </Grid>
-  
-          <Grid
-            container
-            direction="row"
-            alignItems="center"
-            justifyContent="space-between"
-            sx={{ padding: "10px", height: "100%" }}
-            spacing={2}
-          >
-            <Grid item>
-              <Grid
-                container
-                direction="column"
-                alignItems="center"
-                justifyContent="space-between"
-                sx={{ padding: "10px", height: "100%" }}
-                spacing={2}
-              >
-                <Grid item>
-                  <Typography sx={{ fontWeight: "bold" }}></Typography>
-                </Grid>
-                <Grid item>
-                  <Typography></Typography>
-                </Grid>
-              </Grid>
-            </Grid>
-  
-            <Grid item>
-              <Grid
-                container
-                direction="column"
-                alignItems="center"
-                justifyContent="space-between"
-                sx={{ padding: "10px", height: "100%" }}
-                spacing={2}
-              >
-                <Grid item>
-                  <Typography sx={{ fontWeight: "bold" }}></Typography>
-                  {/* <Stack direction="row" alignItems="center" spacing={2}>
-                    <Button  onClick={handleComplete} variant="contained" component="label">
-                     upload report
-                    </Button>
-                  </Stack> */}
 
-                  {/* <Stack direction="row" alignItems="center" spacing={2}>
-                    <Button onClick={handleComplete} variant="contained" component="label">
-                      Upload
-                      <input hidden accept="image/*" multiple type="file" />
-                    </Button>
-                    <IconButton color="primary" aria-label="upload picture" component="label">
-                      <input hidden accept="image/*" type="file" />
-                      <PhotoCamera />
-                    </IconButton>
-                  </Stack> */}
-        
-                </Grid>
-                <Grid item>
-                <Grid item>
-                  <Typography></Typography>
+      {/* <Grid item>
+        <img src={require("./images/DC.jpg")} height="100px" />
+      </Grid> */}
 
-                </Grid>
-                <Stack spacing={1}>
-        
-          {/* <Rating name="half-rating-read" defaultValue={2.5} precision={0.5} readOnly /> */}
-        </Stack>
-                </Grid>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
-  
-      {/*    //3rd column */}
       <Grid item>
-        <Grid
-          container
-          direction="column"
-          alignItems="center"
-          justifyContent="space-between"
-          sx={{ padding: "10px", height: "100%" }}
-          spacing={2}
-        >
-          {/* <Grid item>
-            <Typography>Fee:</Typography>
-          </Grid>
-          <Grid item>
-            <Typography>500</Typography>
-          </Grid> */}
-        </Grid>
+        
+      <Typography sx={{ fontWeight: "bold" }} >Name</Typography>
+                  <Typography >
+                    {dc_info.name}
+                  </Typography>
+
       </Grid>
+
+      <Grid item>
+        
+
+      <Typography sx={{ fontWeight: "bold" }} >Location</Typography>
+                  <Typography >
+                    {dc_info.location}
+                  </Typography>
+           
+        
+      </Grid>
+
+
+      <Grid item>
+      <Typography sx={{ fontWeight: "bold" }} > Rating </Typography>
+            <Typography>
+             4.4 
+            </Typography>
+        
+      </Grid>
+
+
+      <Grid item>
+      <Typography sx={{ fontWeight: "bold" }} >Onsite Test  </Typography>
+            <Typography>
+             {dc_info.isOfferOnsiteTest}
+            </Typography>
+        
+      </Grid>
+
     </Grid>
-    );
+
+
+
+    </Grid>
+
+
+  </Grid>
+
+</>
+
+  );
 }
