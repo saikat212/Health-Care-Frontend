@@ -51,6 +51,8 @@ import DCSearchPage from "components/Patient/FindDC/dc-search-page";
 import { UploadPage } from "components/DiagnosticCenter/Admin/SubmittedTest/upload-page";
 import PendingACKListUI from "components/DiagnosticCenter/Admin/PendingACK/pending-ack-test-list";
 import CompletedServiceListUI from "components/DiagnosticCenter/CompletedService/completed-service-list";
+import LabReportListUI from "components/Patient/LabReport/lab-report-list";
+import ReportPage from "components/Patient/LabReport/report-page";
 function App() {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -102,7 +104,9 @@ function App() {
            <Route path="/dc-search-page" element={<DCSearchPage/>}/>
            <Route path="/upload-page" element={<UploadPage/>}/> 
            <Route path="/pending-ack-test-list-ui" element={<PendingACKListUI/>}/>   
-           <Route path="/completed-service-list-ui" element={<CompletedServiceListUI/>}/>        
+           <Route path="/completed-service-list-ui" element={<CompletedServiceListUI/>}/>   
+           <Route path="/lab-report-list-ui" element={<LabReportListUI/>}/>     
+           <Route path="/report-page" element={<ReportPage/>}/>        
            
           </Routes>
         </BrowserRouter>

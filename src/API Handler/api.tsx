@@ -130,6 +130,8 @@ export const API = {
     addDC: (dcObject :DiagnosticCenter) => post("/addDC",dcObject),
     getDCByAdminId: (id:number) => get("/get-dc-by-admin-id/"+id),
     getOffsitePending: () => get("/get-offsite-pending"),
+    getLabReport: (id:number) => get("/get-lab-report/"+id),
+
   },
 
   dcTestList:
