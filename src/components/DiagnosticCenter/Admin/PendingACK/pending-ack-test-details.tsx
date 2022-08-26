@@ -34,14 +34,14 @@ export default function PendingACKTestDetails({ dc_test_info }: { dc_test_info: 
       receiver: dc_test_info.taker?.person,
       type: "Sample Collection Acknowledgement ",
       message: "Patient : "+dc_test_info.patient?.person?.firstName+"( Patient's Contact :"+ dc_test_info.patient?.person?.mobileNo + " ) .\nTo : "+ dc_test_info.dcTestList?.dc?.name + " ( DC Contact : "+ dc_test_info.dcTestList?.dc?.person?.mobileNo+" )" ,
-      status: "approved",
+      status: "pending",
     });
     API.notification.saveNotification({
       ...notification,
       receiver: dc_test_info.taker?.person,
       type: "Sample Collection Acknowledgement ",
       message: "( Patient's Contact :"+ dc_test_info.patient?.person?.mobileNo + "To : "+ dc_test_info.dcTestList?.dc?.name + " ( DC Contact : "+ dc_test_info.dcTestList?.dc?.person?.mobileNo+" )" ,
-      status: "approved",
+      status: "pending",
     }).then((response) => {
       console.log(response);
     });
@@ -51,14 +51,14 @@ export default function PendingACKTestDetails({ dc_test_info }: { dc_test_info: 
       receiver: dc_test_info.patient?.person,
       type: " DC Received Sample For Test ",
       message: "Patient : "+dc_test_info.patient?.person?.firstName+"( Patient's Contact :"+ dc_test_info.patient?.person?.mobileNo + " ) .\nTo : "+ dc_test_info.dcTestList?.dc?.name + " ( DC Contact : "+ dc_test_info.dcTestList?.dc?.person?.mobileNo+" )" ,
-      status: "approved",
+      status: "pending",
     });
     API.notification.saveNotification ({
       ...notification1,
       receiver: dc_test_info.patient?.person,
       type: " DC Received Sample For Test",
       message: "Patient : "+dc_test_info.patient?.person?.firstName+"( Patient's Contact :"+ dc_test_info.patient?.person?.mobileNo + " ) .\nTo : "+ dc_test_info.dcTestList?.dc?.name + " ( DC Contact : "+ dc_test_info.dcTestList?.dc?.person?.mobileNo+" )" ,
-      status: "approved",
+      status: "pending",
     }).then((response) => {
       console.log(response);
     });

@@ -25,9 +25,9 @@ export default function ShowNotification({id}:{id:number}) {
   function handleClose(){
     setOpen(false);
     console.log("Id check: ",id)
-    API.notification.changeStatus(id as number).then(response=>{
-      console.log("Notification status changed")
-    })
+    // API.notification.changeStatus(id as number).then(response=>{
+    //   console.log("Notification status changed")
+    // })
     
   }
   return (

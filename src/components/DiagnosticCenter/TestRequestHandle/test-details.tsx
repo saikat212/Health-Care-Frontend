@@ -55,14 +55,14 @@ export function TestDetails({ dc_test_info }: { dc_test_info: DC_Test }) {
       receiver: dc_test_info.patient?.person,
       type: "Remote DC Test is confirmed ",
       message: "Confirmed By : "+taker_name+"( Taker's Contact :"+ taker_mobile + " ) To : "+ dc_test_info.dcTestList?.dc?.name + " ( DC Contact : "+ dc_test_info.dcTestList?.dc?.person?.mobileNo+" )" ,
-      status: "approved",
+      status: "pending",
     });
     API.notification.saveNotification({
       ...notification,
       receiver: dc_test_info.patient?.person,
       type: "Remote DC Test is confirmed ",
       message: "Confirmed By : "+taker_name+"( Taker's Contact :"+ taker_mobile + " ) To : "+ dc_test_info.dcTestList?.dc?.name + " ( DC Contact : "+ dc_test_info.dcTestList?.dc?.person?.mobileNo+" )" ,
-      status: "approved",
+      status: "pending",
     }).then((response) => {
       console.log(response);
     });
