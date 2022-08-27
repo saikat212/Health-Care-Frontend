@@ -50,6 +50,7 @@ import DCListByTestname from "components/Patient/FindDC/dc-list-by-testname";
 import DCSearchPage from "components/Patient/FindDC/dc-search-page";
 import { UploadPage } from "components/DiagnosticCenter/Admin/SubmittedTest/upload-page";
 import MedicalHistory from "components/Patient/MedicalHistory/medical-history";
+import PrescriptionPageInPatient from "components/Patient/MedicalHistory/prescription-page-in-patient-side";
 function App() {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -76,6 +77,7 @@ function App() {
           <Route path="/selection-prescription" element={<SelectionPrescription/>}/>  
            <Route path="/prescription-list-ui" element={<PrescriptionListUI/>}/>  
            <Route path="/prescription-page" element={<PrescriptionPage/>}/> 
+           <Route path="/prescription-page-patient-side" element={<PrescriptionPageInPatient/>}/> 
            <Route path="/set-prescription-info" element={<SetPrescriptionInfo/>}/> 
 
            <Route path="/requested-test-list-ui" element={<RequestedTestListUI/>}/> 
