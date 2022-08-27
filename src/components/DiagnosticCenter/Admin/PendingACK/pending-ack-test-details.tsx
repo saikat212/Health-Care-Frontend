@@ -6,61 +6,66 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export function SubmittedTestDetails({ dc_test_info }: { dc_test_info: DC_Test }) {
+export default function PendingACKTestDetails({ dc_test_info }: { dc_test_info: DC_Test }) {
   const navigate = useNavigate();
-  //  const [file,setFile] = useState<File>();
   const [notification, setNotification] = React.useState<_Notification>(
     new _Notification()
   );
+  const [notification1, setNotification1] = React.useState<_Notification>(
+    new _Notification()
+  );
 
-  const [url_file, setURL] = useState("");
-
-  const handleUpload = (e) => {
+  const handleConfirm = (e) => {
     e.preventDefault();
-    dc_test_info.report = url_file;
-    dc_test_info.status = "reported"
-    API.diagnosticCenter.addDCTest(dc_test_info).then((response) => {
+
+    dc_test_info.status = "completed"
+
+    API.diagnosticCenter.addDCTest( dc_test_info
+   
+      ).then((response) => {
       console.log(response);
-      console.log("yes.");
-      navigate("/submitted-test-list-ui")
+      console.log("yes1.");
+      navigate("/pending-ack-test-list-ui")
     });
+
 
     setNotification({
       ...notification,
-      receiver: dc_test_info.patient?.person,
-      type: "Test Report Uploaded",
-      message:  " DC : "+ dc_test_info.dcTestList?.dc?.name + " ( DC Contact : "+ dc_test_info.dcTestList?.dc?.person?.mobileNo+" )" ,
+      receiver: dc_test_info.taker?.person,
+      type: "Sample Collection Acknowledgement ",
+      message: "Patient : "+dc_test_info.patient?.person?.firstName+"( Patient's Contact :"+ dc_test_info.patient?.person?.mobileNo + " ) .\nTo : "+ dc_test_info.dcTestList?.dc?.name + " ( DC Contact : "+ dc_test_info.dcTestList?.dc?.person?.mobileNo+" )" ,
       status: "pending",
     });
     API.notification.saveNotification({
       ...notification,
-      receiver: dc_test_info.patient?.person,
-      type: "Test Report Uploaded",
-      message:  " DC : "+ dc_test_info.dcTestList?.dc?.name + " ( DC Contact : "+ dc_test_info.dcTestList?.dc?.person?.mobileNo+" )" ,
+      receiver: dc_test_info.taker?.person,
+      type: "Sample Collection Acknowledgement ",
+      message: "( Patient's Contact :"+ dc_test_info.patient?.person?.mobileNo + "To : "+ dc_test_info.dcTestList?.dc?.name + " ( DC Contact : "+ dc_test_info.dcTestList?.dc?.person?.mobileNo+" )" ,
       status: "pending",
-      
     }).then((response) => {
       console.log(response);
     });
 
+        setNotification1({
+      ...notification1,
+      receiver: dc_test_info.patient?.person,
+      type: " DC Received Sample For Test ",
+      message: "Patient : "+dc_test_info.patient?.person?.firstName+"( Patient's Contact :"+ dc_test_info.patient?.person?.mobileNo + " ) .\nTo : "+ dc_test_info.dcTestList?.dc?.name + " ( DC Contact : "+ dc_test_info.dcTestList?.dc?.person?.mobileNo+" )" ,
+      status: "pending",
+    });
+    API.notification.saveNotification ({
+      ...notification1,
+      receiver: dc_test_info.patient?.person,
+      type: " DC Received Sample For Test",
+      message: "Patient : "+dc_test_info.patient?.person?.firstName+"( Patient's Contact :"+ dc_test_info.patient?.person?.mobileNo + " ) .\nTo : "+ dc_test_info.dcTestList?.dc?.name + " ( DC Contact : "+ dc_test_info.dcTestList?.dc?.person?.mobileNo+" )" ,
+      status: "pending",
+    }).then((response) => {
+      console.log(response);
+    });
 
+   }; 
 
-  };
-
-  const handleFile = (e) => {
-    // setFile(e.target.files[0]);
-
-    let url = URL.createObjectURL(e.target.files[0]);
-    setURL(url);
-
-    console.log("url: ")
-    console.log(url)
-    console.log("which file is uploaded: ")
-    console.log(e.target.files[0]);
-
-  };
-
-  function get_Date(strDate:string) {
+   function get_Date(strDate:string) {
     var date = new Date(strDate);
     var day = date.getDate();
     var month = date.getMonth();
@@ -68,15 +73,7 @@ export function SubmittedTestDetails({ dc_test_info }: { dc_test_info: DC_Test }
 
     var str = day + "-" + month + "-" + year;
     return str;
-  } 
-
-  //  const handleUpload = (e) => {
-  //   e.preventDefault();
-  //   console.log("upload that file: ")
-  //   console.log(file);
-  //   console.log(url_file);
-  //  };
-
+  }  
 
   return (
 
@@ -277,33 +274,12 @@ export function SubmittedTestDetails({ dc_test_info }: { dc_test_info: DC_Test }
                 spacing={2}
               >
                 <Grid item>
-                  <Typography sx={{ fontWeight: "bold" }}></Typography>
-                  {/* <Stack direction="row" alignItems="center" spacing={2}>
-                    <Button  onClick={handleComplete} variant="contained" component="label">
-                     upload report
-                    </Button>
-                  </Stack> */}
+                <Typography sx={{ fontWeight: "bold" }}></Typography>
+                 <Button  onClick={handleConfirm}  variant="contained" >
+                 Acknowledge
+                </Button>
+              </Grid>
 
-                  <Stack direction="column" alignItems="center" spacing={2}>
-                    <input onChange={handleFile} type="file" />
-                    <Button onClick={handleUpload} variant="contained" component="label">
-                      Upload
-                    </Button>
-                    {/* <IconButton color="primary" aria-label="upload picture" component="label">
-                      <input hidden accept="image/*" type="file" />
-                      <PhotoCamera />
-                    </IconButton> */}
-                  </Stack>
-
-                  <Grid item>
-
-                    {/* <img src={url_file} height="150px" />
-        <object data= {url_file} type="application/pdf" width="100%" height="100%">
-      <p>Alternative text - include a link <a href= {url_file} >to the PDF!</a></p>
-     </object> */}
-                  </Grid>
-
-                </Grid>
                 <Grid item>
                   <Grid item>
                     <Typography></Typography>

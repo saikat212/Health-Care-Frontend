@@ -15,14 +15,19 @@ import AdbIcon from '@mui/icons-material/Adb';
 import FixedBottomNavigation from 'components/Doctor/doctor-homepage-container'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
+import ShowNotification from '../AdminNotification/ShowNotification';
+import { DiagnosticCenter } from 'Classes/entity-class';
 
 const pages = ['Monitor', 'About', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const setting = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const DCAdminPageAppbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
   const navigate = useNavigate();
+  const admin_id = (JSON.parse(localStorage.getItem("DCAdminId") || "") as number );
+  console.log("admin_id: ");
+  console.log(admin_id);
   
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -39,6 +44,16 @@ const DCAdminPageAppbar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  function handleProfile()
+  {
+
+  }
+  function handleLogout()
+  {
+    localStorage.clear();
+    navigate("/")
+  }
 
   return (
     <>
@@ -124,7 +139,10 @@ const DCAdminPageAppbar = () => {
               <Button  sx={{ my: 2, color: 'white', display: 'block' }} onClick={()=>navigate("/dc-admin-home-page")} variant="contained">Home</Button>
               <Button sx={{ my: 2, color: 'white', display: 'block' }}  onClick={()=>navigate("/submitted-test-list-ui")} variant="contained">Submitted-Test</Button>
               <Button sx={{ my: 2, color: 'white', display: 'block' }}  onClick={()=>navigate("/offsite-requested-test-list-ui")} variant="contained"> Offsite-pending-test </Button>
-              <Button sx={{ my: 2, color: 'white', display: 'block' }}  onClick={()=>navigate("/specialities")} variant="contained">Overview</Button>
+              <Button sx={{ my: 2, color: 'white', display: 'block' }}  onClick={()=>navigate("/pending-ack-test-list-ui")} variant="contained">Pending-ACK</Button>
+              <Button sx={{ my: 2, color: 'white', display: 'block' }} onClick={() => navigate("")} variant="contained"> 
+              Notification <ShowNotification id = {admin_id as number} />
+              </Button>
           </Box>
      
 
@@ -150,11 +168,14 @@ const DCAdminPageAppbar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+             
+                <MenuItem key={setting[0]} onClick={handleProfile}>
+                  <Typography textAlign="center">{setting[0]}</Typography>
                 </MenuItem>
-              ))}
+                <MenuItem key={setting[3]} onClick={handleLogout}>
+                  <Typography textAlign="center">{setting[3]}</Typography>
+                </MenuItem>
+  
             </Menu>
           </Box>
         </Toolbar>
