@@ -16,7 +16,7 @@ import FixedBottomNavigation from 'components/Doctor/doctor-homepage-container'
 import { useNavigate } from 'react-router-dom';
 import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 import { Doctor } from 'Classes/entity-class';
-import ShowNotification from 'components/notification';
+import ShowNotification from './DoctorNotification/show-notification';
 
 const pages = ['Monitor', 'About', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];

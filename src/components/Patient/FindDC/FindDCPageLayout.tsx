@@ -88,7 +88,7 @@ import { DCTestList, DiagnosticCenter, Patient } from "Classes/entity-class";
           <Grid item>
             <Grid container direction="column">
               <Grid item>
-                {/* <img src={require("../../images/heaa.jpg")} height="40px" /> */}
+                <img src={require("./images/heaa.jpg")} height="40px" />
               </Grid>
               <Grid item>
                 <Typography color={"red"} fontSize={"6"}>

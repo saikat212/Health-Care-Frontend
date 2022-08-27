@@ -1,3 +1,4 @@
+import { WindowSharp } from "@mui/icons-material";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import { Grid, Typography, Rating, Stack, Button, IconButton } from "@mui/material";
 import { API } from "API Handler/api";
@@ -29,6 +30,7 @@ export function ConfirmedTestDetails({ dc_test_info }: { dc_test_info: DC_Test }
       console.log(response);
       console.log("yes.");
       navigate("/confirmed-test-list-ui")
+      // window.reload();
     });
 
 // for patient
