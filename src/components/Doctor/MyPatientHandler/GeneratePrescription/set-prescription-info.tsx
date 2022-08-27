@@ -100,6 +100,8 @@ export default function SetPrescriptionInfo() {
     ) as Doctor;
     generatePrescription.medPresArray = medPresArray;
     generatePrescription.testPresArray = testPresArray;
+    
+    API.appointment.updateStatus({...appointment,status:"closed"}).then(response=>{})
 
     navigate("/prescription-page", { state: generatePrescription });
   }

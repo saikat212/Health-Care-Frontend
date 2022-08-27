@@ -25,6 +25,7 @@ import MedicineInPrescription from "./medicine-in-prescription";
 import TestInPrescription from "./test-in-prescription";
 import jsPDF from "jspdf";
 import html2canvas from 'html2canvas';
+import { API } from "API Handler/api";
 
 export default function PrescriptionPage() {
   const { state } = useLocation();
@@ -43,6 +44,7 @@ export default function PrescriptionPage() {
           pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
           pdf.save("Prescription_PDF.pdf") 
       }) 
+   
   }
   return (
     <DoctorLayout>

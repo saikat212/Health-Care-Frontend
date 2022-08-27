@@ -85,7 +85,7 @@ export const API = {
       postBody("/get-AppointmentList", { id: id, status: status }),
     confirmAppointment: (appointment: Appointment) =>
       put("/appointment-confirmation", appointment), // ask to sakib
-
+    updateStatus:(appt:Appointment) =>post("/update-status",appt)
   },
   notification: {
     saveNotification: (notify: _Notification) =>
