@@ -30,7 +30,7 @@ export function ConfirmedTestDetails({ dc_test_info }: { dc_test_info: DC_Test }
       console.log(response);
       console.log("yes.");
       navigate("/confirmed-test-list-ui")
-      // window.reload();
+     
     });
 
 // for patient
